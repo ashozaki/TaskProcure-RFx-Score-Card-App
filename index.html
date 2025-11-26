@@ -57,9 +57,9 @@
       gap: 18px;
     }
 
-    /* Logo blends with header – no rounded box */
+    /* Larger logo blended into header */
     .brand-logo-hero {
-      height: 64px; /* nice big logo like your site */
+      height: 90px;      /* bigger, hero style */
       width: auto;
       object-fit: contain;
     }
@@ -327,7 +327,7 @@
       display: flex;
       flex-direction: column;
       gap: 3px;
-      min-height: 76px; /* tighter, proportional to text */
+      min-height: 76px;
     }
 
     .summary-label {
@@ -419,7 +419,7 @@
     table {
       border-collapse: collapse;
       width: 100%;
-      min-width: 720px;
+      min-width: 680px;
       font-size: 12px;
     }
 
@@ -457,8 +457,7 @@
     }
 
     input.score-input,
-    input.weight-input,
-    input.max-input {
+    input.weight-input {
       width: 60px;
       padding: 2px 4px;
       font-size: 12px;
@@ -482,7 +481,6 @@
 
     input.score-input:focus,
     input.weight-input:focus,
-    input.max-input:focus,
     select.score-select:focus {
       border-color: var(--tp-primary);
       background: #ffffff;
@@ -529,13 +527,13 @@
 
 <body>
   <div class="app-shell">
-    <!-- Header with TaskProcure logo blended into header -->
+    <!-- Header with big blended logo -->
     <header class="app-header">
       <div class="brand-left">
         <img src="Taskprocure%20Logo.png" alt="TaskProcure Logo" class="brand-logo-hero" />
         <div class="brand-title">
           <span class="brand-tagline">RFx Evaluation Dashboard</span>
-          <span class="brand-heading">RFX Score Card &amp; Vendor Ranking</span>
+          <span class="brand-heading">Score Card &amp; Vendor Ranking</span>
         </div>
       </div>
       <div class="header-right">
@@ -589,10 +587,6 @@
         <div class="add-criterion-field">
           <label>Weight %</label>
           <input id="newCriterionWeight" type="number" value="10" />
-        </div>
-        <div class="add-criterion-field">
-          <label>Max score</label>
-          <input id="newCriterionMax" type="number" value="3" />
         </div>
         <button id="confirmAddCriterion" class="btn btn-primary">Add</button>
       </div>
@@ -716,6 +710,8 @@
     let vendors = ["Vendor A", "Vendor B"];
     let scores = {};
 
+    const GLOBAL_MAX_SCORE = 3; // all criteria use 0–3 scale
+
     function ensureScoresStructure() {
       criteria.forEach(c => {
         if (!scores[c.id]) scores[c.id] = {};
@@ -736,7 +732,7 @@
 
         vendors.forEach(v => {
           const raw = Number(scores[c.id]?.[v]) || 0;
-          const max = Number(c.maxScore) || 1;
+          const max = GLOBAL_MAX_SCORE;
           if (max > 0) {
             const normalized = (raw / max) * weight;
             totals[v] += normalized;
@@ -799,12 +795,11 @@
 
       const { totals, weightSum } = calculateTotals();
 
-      // Header row
+      // Header row (no Max Score column)
       const headerRow = document.createElement("tr");
       headerRow.innerHTML = `
         <th class="cell-label">RFx Evaluation Section</th>
         <th>Weight %</th>
-        <th>Max Score (3)</th>
       `;
 
       vendors.forEach(v => {
@@ -864,19 +859,6 @@
         weightTd.appendChild(weightInput);
         tr.appendChild(weightTd);
 
-        const maxTd = document.createElement("td");
-        const maxInput = document.createElement("input");
-        maxInput.type = "number";
-        maxInput.className = "max-input";
-        maxInput.value = c.maxScore;
-        maxInput.addEventListener("input", () => {
-          c.maxScore = Number(maxInput.value) || 1;
-          renderTable();
-          renderSummaryCards();
-        });
-        maxTd.appendChild(maxInput);
-        tr.appendChild(maxTd);
-
         let criterionWeightedTotal = 0;
 
         vendors.forEach(v => {
@@ -913,7 +895,7 @@
           tr.appendChild(td);
 
           const raw = Number(scores[c.id][v]) || 0;
-          const max = Number(c.maxScore) || 1;
+          const max = GLOBAL_MAX_SCORE;
           const weight = Number(c.weight) || 0;
           if (max > 0) {
             const normalized = (raw / max) * weight;
@@ -944,7 +926,7 @@
         table.appendChild(tr);
       });
 
-      // Total Weight % row
+      // Total Weight % row (no Max column now)
       const weightRow = document.createElement("tr");
       weightRow.className = "weight-total-row";
 
@@ -954,7 +936,6 @@
       weightRow.appendChild(weightLabelTd);
 
       const weightValueTd = document.createElement("td");
-      weightValueTd.colSpan = 1;
       weightValueTd.textContent = weightSum.toFixed(1) + "%";
       if (weightSum === 100) {
         weightValueTd.classList.add("weight-ok");
@@ -962,10 +943,6 @@
         weightValueTd.classList.add("weight-not-ok");
       }
       weightRow.appendChild(weightValueTd);
-
-      const spacerMaxTd = document.createElement("td");
-      spacerMaxTd.textContent = "";
-      weightRow.appendChild(spacerMaxTd);
 
       vendors.forEach(() => {
         const emptyTd = document.createElement("td");
@@ -995,13 +972,9 @@
       `;
       totalsRow.appendChild(labelTd);
 
-      const spacer1 = document.createElement("td");
-      spacer1.textContent = "";
-      totalsRow.appendChild(spacer1);
-
-      const spacer2 = document.createElement("td");
-      spacer2.textContent = "";
-      totalsRow.appendChild(spacer2);
+      const spacerWeight = document.createElement("td");
+      spacerWeight.textContent = "";
+      totalsRow.appendChild(spacerWeight);
 
       vendors.forEach(v => {
         const td = document.createElement("td");
@@ -1027,17 +1000,18 @@
     function exportToExcel() {
       const wb = XLSX.utils.book_new();
 
-      const header = ["RFx Evaluation Section", "Weight %", "Max Score"].concat(vendors).concat(["Criterion Weighted Score"]);
+      // No Max Score column in export either
+      const header = ["RFx Evaluation Section", "Weight %"].concat(vendors).concat(["Criterion Weighted Score"]);
       const data = [header];
 
       criteria.forEach(c => {
         let row = [];
-        row.push(c.name, c.weight, c.maxScore);
+        row.push(c.name, c.weight);
         let critTotal = 0;
         vendors.forEach(v => {
           const raw = Number(scores[c.id][v]) || 0;
           row.push(raw);
-          const max = Number(c.maxScore) || 1;
+          const max = GLOBAL_MAX_SCORE;
           const weight = Number(c.weight) || 0;
           if (max > 0) {
             const normalized = (raw / max) * weight;
@@ -1050,7 +1024,7 @@
 
       const { totals } = calculateTotals();
       let totalRow = [];
-      totalRow.push("Total Vendor Score (0–100)", "", "");
+      totalRow.push("Total Vendor Score (0–100)", "");
       vendors.forEach(v => totalRow.push(Number((totals[v] || 0).toFixed(2))));
       totalRow.push("");
       data.push(totalRow);
@@ -1101,9 +1075,7 @@
       const chosen = criteriaLibrary.find(c => c.id === id);
       if (!chosen) return;
       const weightInput = document.getElementById("newCriterionWeight");
-      const maxInput = document.getElementById("newCriterionMax");
       if (chosen.weight) weightInput.value = chosen.weight;
-      maxInput.value = chosen.maxScore || 3;
       if (!document.getElementById("customCriterionName").value) {
         document.getElementById("customCriterionName").value = chosen.name;
       }
@@ -1113,12 +1085,10 @@
       const select = document.getElementById("criterionLibrarySelect");
       const custom = document.getElementById("customCriterionName");
       const weightInput = document.getElementById("newCriterionWeight");
-      const maxInput = document.getElementById("newCriterionMax");
 
       const selectedId = select.value ? Number(select.value) : null;
       let name = custom.value.trim();
       let weight = Number(weightInput.value) || 0;
-      let maxScore = Number(maxInput.value) || 1;
       let id;
 
       if (selectedId) {
@@ -1127,7 +1097,6 @@
           id = chosen.id;
           if (!name) name = chosen.name;
           if (!weight) weight = chosen.weight;
-          if (!maxScore) maxScore = chosen.maxScore;
         }
       }
 
@@ -1140,7 +1109,7 @@
         id = criteria.length ? Math.max(...criteria.map(c => c.id)) + 1 : criteriaLibrary.length + 1;
       }
 
-      criteria.push({ id, name, weight, maxScore });
+      criteria.push({ id, name, weight, maxScore: GLOBAL_MAX_SCORE });
       scores[id] = {};
       vendors.forEach(v => scores[id][v] = "");
       custom.value = "";
