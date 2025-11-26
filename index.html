@@ -31,7 +31,7 @@
       margin: 20px auto;
       padding: 12px 16px 24px;
       border-radius: 24px;
-      border: 1px solid #d1d5e5;          /* thin frame around whole dashboard */
+      border: 1px solid #d1d5e5;      /* thin frame around whole app */
       background: transparent;
     }
 
@@ -39,7 +39,7 @@
     .app-header {
       background: #ffffff;
       border-radius: 18px;
-      padding: 10px 24px;
+      padding: 4px 24px;               /* reduced vertical padding */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -54,9 +54,11 @@
       gap: 18px;
     }
 
+    /* Bigger logo without blowing up header too much */
     .brand-logo-hero {
-      height: 100px;
+      height: 72px;                    /* zoomed in */
       width: auto;
+      display: block;
     }
 
     .brand-title {
@@ -212,7 +214,6 @@
       color: #4b5563;
     }
 
-    /* Leading vendor highlight */
     .kpi-card.leader .kpi-value {
       color: #00b894;
     }
@@ -298,7 +299,7 @@
       color: #111827;
     }
 
-    /* TOTALS ROWS – HIGH VISIBILITY */
+    /* TOTALS ROWS */
     .totals-row {
       background: #dce9ff !important;
       color: #0f172a !important;
@@ -319,7 +320,6 @@
       text-align: left;
     }
 
-    /* SCORE SELECTS & INPUTS */
     .score-cell {
       padding: 4px;
       border-radius: 6px;
@@ -448,12 +448,14 @@
   </div>
 
   <script>
-    /* ============================
-       INITIAL DATA
-       NOTE: This currently contains your 8 primary sections.
-       To add ALL RFx Toolkit criteria, just add more objects to this array:
-       { id: 9, name: "Your criterion name", weight: 5 }, etc.
-    ============================ */
+    /* =======================================
+       CRITERIA LIBRARY
+       Currently populated with the 8 primary sections.
+       To add ALL your RFx Toolkit criteria, append each
+       additional section here as:
+       { id: 9, name: "Your full criterion name", weight: 5 },
+       etc. They will automatically appear in the dropdown.
+    ======================================= */
     const criteriaLibrary = [
       { id: 1, name: "Alignment with Organizational Goals", weight: 12 },
       { id: 2, name: "API Availability and Functionality", weight: 13 },
@@ -463,15 +465,14 @@
       { id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
       { id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
       { id: 8, name: "Reporting and Analytics", weight: 10 },
-      // >>> Paste additional RFx Toolkit criteria below this line
+      // >>> Add the rest of your RFx Toolkit evaluation criteria here
     ];
 
-    /* Default visible rows = current criteriaLibrary snapshot */
+    /* Default visible criteria = current library snapshot */
     let criteria = [...criteriaLibrary];
     let vendors = ["Vendor A", "Vendor B"];
     let scores = {};
 
-    /* Ensure score structure */
     function ensureScores() {
       criteria.forEach(c => {
         if (!scores[c.id]) scores[c.id] = {};
@@ -481,7 +482,6 @@
       });
     }
 
-    /* Calculate totals */
     function calculateTotals() {
       let raw = {}, weighted = {};
       vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
@@ -497,7 +497,6 @@
       return { raw, weighted };
     }
 
-    /* Update dashboard tiles */
     function updateDashboard(weighted, weightTotal) {
       const vendorsInScope = vendors.length;
       const criteriaCount = criteria.length;
@@ -534,7 +533,6 @@
       }
     }
 
-    /* Render table */
     function renderTable() {
       ensureScores();
       const table = document.getElementById("scorecardTable");
@@ -587,7 +585,7 @@
         table.appendChild(row);
       });
 
-      /* Dynamic max values */
+      /* Dynamic max values (not printed in labels anymore, but still used if needed) */
       const maxRaw = criteria.length * 3;
       const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
 
@@ -601,32 +599,32 @@
       `;
       table.appendChild(weightRow);
 
-      /* RAW TOTAL ROW */
+      /* RAW TOTAL ROW (label now just "Total Vendor Score") */
       const rawRow = document.createElement("tr");
       rawRow.className = "totals-row";
       rawRow.innerHTML = `
-        <td class="cell-label">Total Vendor Score (max ${maxRaw.toFixed(1)})</td>
+        <td class="cell-label">Total Vendor Score</td>
         <td></td>
         ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
         <td></td>
       `;
       table.appendChild(rawRow);
 
-      /* WEIGHTED TOTAL ROW + SUMMARY (raw + weighted) */
+      /* WEIGHTED TOTAL ROW, summary uses "Score" instead of "raw" */
       const weightedRow = document.createElement("tr");
       weightedRow.className = "totals-row";
       const summary = vendors
-        .map(v => `${v} (raw ${raw[v].toFixed(1)}, weighted ${weighted[v].toFixed(2)})`)
+        .map(v => `${v} (Score ${raw[v].toFixed(1)}, Weighted ${weighted[v].toFixed(2)})`)
         .join(" | ");
       weightedRow.innerHTML = `
-        <td class="cell-label">Total Weighted Score (max ${maxWeighted.toFixed(2)})</td>
+        <td class="cell-label">Total Weighted Score</td>
         <td></td>
         ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
         <td>${summary}</td>
       `;
       table.appendChild(weightedRow);
 
-      /* Score change listeners */
+      /* SCORE CHANGE LISTENERS */
       document.querySelectorAll(".score-cell").forEach(sel => {
         sel.onchange = () => {
           const id = Number(sel.dataset.id);
@@ -636,7 +634,7 @@
         };
       });
 
-      /* Weight change listeners */
+      /* WEIGHT CHANGE LISTENERS */
       document.querySelectorAll(".weight-input").forEach(inp => {
         inp.oninput = () => {
           const index = Number(inp.dataset.index);
@@ -646,7 +644,6 @@
       });
     }
 
-    /* Remove criterion */
     function removeCriterion(id) {
       criteria = criteria.filter(c => c.id !== id);
       delete scores[id];
@@ -654,7 +651,6 @@
       populateDropdown();
     }
 
-    /* Add vendor */
     document.getElementById("addVendorBtn").onclick = () => {
       const name = prompt("Vendor name?");
       if (name && !vendors.includes(name.trim())) {
@@ -663,13 +659,11 @@
       }
     };
 
-    /* Toggle add criterion bar */
     document.getElementById("addCriterionBtn").onclick = () => {
       const bar = document.getElementById("addCriterionBar");
       bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "flex" : "none";
     };
 
-    /* Populate dropdown options with full RFx library array */
     function populateDropdown() {
       const s = document.getElementById("criterionLibrarySelect");
       s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
@@ -681,7 +675,6 @@
       });
     }
 
-    /* Confirm Add Criterion */
     document.getElementById("confirmAddCriterion").onclick = () => {
       const libSel = document.getElementById("criterionLibrarySelect").value;
       const custom = document.getElementById("customCriterionName").value.trim();
@@ -713,7 +706,6 @@
       renderTable();
     };
 
-    /* Export Excel */
     document.getElementById("exportExcelBtn").onclick = () => {
       const wb = XLSX.utils.book_new();
       const data = [["Criterion", "Weight", ...vendors]];
