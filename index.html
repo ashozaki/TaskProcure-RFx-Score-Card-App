@@ -585,7 +585,7 @@
         table.appendChild(row);
       });
 
-      /* MAX POSSIBLE SCORES (dynamic) */
+      /* MAX POSSIBLE SCORES (dynamic, but show just the number) */
       const maxRaw = criteria.length * 3;
       const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
 
@@ -605,7 +605,7 @@
       rawRow.innerHTML = `
         <td class="cell-label">
           Total Vendor Score
-          <span style="color:#16a34a;">(0–${maxRaw})</span>
+          <span style="color:#16a34a;">(${maxRaw})</span>
         </td>
         <td></td>
         ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
@@ -622,7 +622,7 @@
       weightedRow.innerHTML = `
         <td class="cell-label">
           Total Weighted Score
-          <span style="color:#16a34a;">(0–${maxWeighted.toFixed(2)})</span>
+          <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
         </td>
         <td></td>
         ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
@@ -716,7 +716,7 @@
 
       criteria.push({ id: newId, name: newName, weight });
       scores[newId] = {};
-      vendors.forEach(v => scores[newId][v] = "");
+      vendors.forEach(v => scores[newId][v] = "";
 
       document.getElementById("criterionLibrarySelect").value = "";
       document.getElementById("customCriterionName").value = "";
