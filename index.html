@@ -41,7 +41,7 @@
     .app-header {
       background: #ffffff;
       border-radius: 18px;
-      padding: 14px 18px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,24 +54,24 @@
     .brand-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .brand-logo-wrap {
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
       background: #f3f5ff;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.5);
     }
 
     .brand-logo {
-      max-width: 36px;
-      max-height: 36px;
+      max-width: 64px;
+      max-height: 64px;
       object-fit: contain;
     }
 
@@ -89,7 +89,7 @@
     }
 
     .brand-title span:nth-child(2) {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
     }
 
@@ -373,30 +373,16 @@
       margin-bottom: 6px;
     }
 
-    .legend-wrapper {
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #dde1ea;
+    .legend-instructions {
       background: #ffffff;
-    }
-
-    .legend-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-      font-size: 11px;
-    }
-
-    .legend-table th,
-    .legend-table td {
+      border-radius: 10px;
       border: 1px solid #dde1ea;
-      padding: 4px 6px;
-      text-align: center;
+      padding: 8px 10px;
+      line-height: 1.5;
     }
 
-    .legend-table th {
-      background: #e5edf9;
-      font-weight: 600;
+    .legend-instructions p {
+      margin: 0 0 4px;
     }
 
     .legend-note {
@@ -470,11 +456,6 @@
       font-weight: 500;
     }
 
-    .cell-subtle {
-      color: var(--tp-text-muted);
-      font-size: 11px;
-    }
-
     input.score-input,
     input.weight-input,
     input.max-input {
@@ -488,9 +469,21 @@
       outline: none;
     }
 
+    select.score-select {
+      width: 60px;
+      padding: 3px 4px;
+      font-size: 12px;
+      border-radius: 6px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      outline: none;
+      text-align: center;
+    }
+
     input.score-input:focus,
     input.weight-input:focus,
-    input.max-input:focus {
+    input.max-input:focus,
+    select.score-select:focus {
       border-color: var(--tp-primary);
       background: #ffffff;
       box-shadow: 0 0 0 1px rgba(12, 60, 120, 0.14);
@@ -584,7 +577,7 @@
         </div>
       </div>
 
-      <!-- Add criterion bar (toggle via button) -->
+      <!-- Add criterion bar -->
       <div id="addCriterionBar" class="add-criterion-bar">
         <div class="add-criterion-field">
           <label>From RFx Toolkit Library</label>
@@ -611,33 +604,15 @@
       <section class="upper-section">
         <div class="summary" id="summaryCards"></div>
         <div class="legend-card">
-          <div class="legend-title">Score Options (from your RFx Toolkit)</div>
-          <div class="legend-wrapper">
-            <table class="legend-table">
-              <tr>
-                <th>Score</th>
-                <th>Description</th>
-              </tr>
-              <tr>
-                <td>0</td>
-                <td>Does not meet requirements</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Partially meets requirements</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Meets requirements</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Exceeds requirements</td>
-              </tr>
-            </table>
+          <div class="legend-title">Score Card Instructions</div>
+          <div class="legend-instructions">
+            <p>0 – If Solution does not meet needs</p>
+            <p>1 – If Solution only partially meets needs</p>
+            <p>2 – If Solution fully meets needs</p>
+            <p>3 – If Solution exceeds needs (without adding unnecessary cost)</p>
           </div>
           <div class="legend-note">
-            Enter 0–3 for each vendor against the RFx Evaluation Sections from your scorecard.
+            Use the score dropdown (0–3) for each vendor against every RFx Evaluation Section.
           </div>
         </div>
       </section>
@@ -733,8 +708,26 @@
       { id: 79, name: "Warranty Terms", weight: 0, maxScore: 3 }
     ];
 
-    // Start with all library criteria active by default
-    let criteria = criteriaLibrary.map(c => ({ ...c }));
+    // 8 primary default sections totalling 100%
+    const primaryCriteriaIds = [2, 3, 4, 6, 7, 9, 33, 50];
+    const defaultWeights = {
+      2: 12,
+      3: 13,
+      4: 12,
+      6: 13,
+      7: 15,
+      9: 15,
+      33: 10,
+      50: 10
+    }; // sums to 100
+
+    // Active criteria to start with: just the primary set
+    let criteria = criteriaLibrary
+      .filter(c => primaryCriteriaIds.includes(c.id))
+      .map(c => ({
+        ...c,
+        weight: defaultWeights[c.id] ?? c.weight ?? 0
+      }));
 
     // Initial vendors
     let vendors = ["Vendor A", "Vendor B"];
@@ -830,7 +823,7 @@
       headerRow.innerHTML = `
         <th class="cell-label">RFx Evaluation Section</th>
         <th>Weight %</th>
-        <th>Max Score (0–3)</th>
+        <th>Max Score (3)</th>
       `;
 
       vendors.forEach(v => {
@@ -907,16 +900,35 @@
 
         vendors.forEach(v => {
           const td = document.createElement("td");
-          const input = document.createElement("input");
-          input.type = "number";
-          input.className = "score-input";
-          input.value = scores[c.id][v];
-          input.addEventListener("input", () => {
-            scores[c.id][v] = input.value;
+          const select = document.createElement("select");
+          select.className = "score-select";
+
+          const blankOpt = document.createElement("option");
+          blankOpt.value = "";
+          blankOpt.textContent = "-";
+          select.appendChild(blankOpt);
+
+          [0, 1, 2, 3].forEach(scoreVal => {
+            const opt = document.createElement("option");
+            opt.value = String(scoreVal);
+            opt.textContent = String(scoreVal);
+            select.appendChild(opt);
+          });
+
+          const currentVal = scores[c.id][v];
+          if (currentVal !== undefined && currentVal !== "") {
+            select.value = String(currentVal);
+          } else {
+            select.value = "";
+          }
+
+          select.addEventListener("change", () => {
+            scores[c.id][v] = select.value;
             renderTable();
             renderSummaryCards();
           });
-          td.appendChild(input);
+
+          td.appendChild(select);
           tr.appendChild(td);
 
           const raw = Number(scores[c.id][v]) || 0;
@@ -1116,7 +1128,6 @@
       if (chosen.weight) weightInput.value = chosen.weight;
       maxInput.value = chosen.maxScore || 3;
       if (!document.getElementById("customCriterionName").value) {
-        // show the name but still keep it editable if they want
         document.getElementById("customCriterionName").value = chosen.name;
       }
     });
