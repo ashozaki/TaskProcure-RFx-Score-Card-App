@@ -524,6 +524,11 @@
     .weight-not-ok {
       background: #fef9c3;
       color: #854d0e;
+      /* Hide "Criterion Weighted Score (sum across vendors)" column (5th column) */
+table thead th:nth-child(5),
+table tbody td:nth-child(5),
+table tfoot td:nth-child(5) {
+  display: none !important;
     }
   </style>
 
