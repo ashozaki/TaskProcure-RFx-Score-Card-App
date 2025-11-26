@@ -41,7 +41,7 @@
     .app-header {
       background: #ffffff;
       border-radius: 18px;
-      padding: 18px 22px;
+      padding: 16px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,24 +54,13 @@
     .brand-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
-    .brand-logo-wrap {
-      width: 104px;
-      height: 104px;
-      border-radius: 24px;
-      background: #f3f5ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-
-    .brand-logo {
-      max-width: 92px;
-      max-height: 92px;
+    /* Logo blends with header – no rounded box */
+    .brand-logo-hero {
+      height: 64px; /* nice big logo like your site */
+      width: auto;
       object-fit: contain;
     }
 
@@ -80,16 +69,17 @@
       flex-direction: column;
     }
 
-    .brand-title span:nth-child(1) {
-      font-size: 12px;
-      letter-spacing: 0.14em;
+    .brand-tagline {
+      font-size: 11px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: #4b5563;
+      color: #6b7280;
       margin-bottom: 2px;
+      font-weight: 600;
     }
 
-    .brand-title span:nth-child(2) {
-      font-size: 22px;
+    .brand-heading {
+      font-size: 24px;
       font-weight: 700;
       color: var(--tp-primary);
     }
@@ -131,7 +121,7 @@
     .card {
       background: var(--tp-card-bg);
       border-radius: var(--radius-lg);
-      padding: 16px 18px 18px;
+      padding: 14px 18px 18px;
       border: 1px solid var(--tp-border);
       box-shadow: var(--shadow-soft);
     }
@@ -142,7 +132,7 @@
       gap: 10px 16px;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .project-input-wrap {
@@ -223,7 +213,6 @@
       font-size: 14px;
     }
 
-    /* Remove button for criteria rows */
     .btn-remove {
       border-radius: 999px;
       border: 1px solid #fecaca;
@@ -238,7 +227,6 @@
       background: #fee2e2;
     }
 
-    /* Vendor header with remove */
     .vendor-header {
       display: flex;
       align-items: center;
@@ -263,8 +251,8 @@
     /* Add-criterion bar */
     .add-criterion-bar {
       display: none;
-      margin: 8px 0 14px;
-      padding: 10px 12px;
+      margin: 8px 0 12px;
+      padding: 8px 12px;
       border-radius: 10px;
       background: #f8fafc;
       border: 1px dashed #cbd5e1;
@@ -276,7 +264,7 @@
     .add-criterion-field {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
       min-width: 200px;
       flex: 1;
     }
@@ -291,7 +279,7 @@
 
     .add-criterion-field select,
     .add-criterion-field input {
-      padding: 6px 8px;
+      padding: 5px 8px;
       border-radius: 8px;
       border: 1px solid #d1d5db;
       font-size: 12px;
@@ -309,8 +297,8 @@
     .upper-section {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
-      gap: 12px;
-      margin: 8px 0 14px;
+      gap: 10px;
+      margin: 6px 0 12px;
     }
 
     @media (max-width: 900px) {
@@ -327,18 +315,19 @@
 
     .summary {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 8px;
     }
 
     .summary-card {
-      border-radius: 12px;
-      padding: 10px 12px;
+      border-radius: 10px;
+      padding: 8px 10px;
       background: #f9fafb;
       border: 1px solid #e5e7eb;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
+      min-height: 76px; /* tighter, proportional to text */
     }
 
     .summary-label {
@@ -364,8 +353,8 @@
     }
 
     .legend-card {
-      border-radius: 12px;
-      padding: 10px 12px 12px;
+      border-radius: 10px;
+      padding: 8px 10px 9px;
       background: #f9fafb;
       border: 1px solid #e5e7eb;
       font-size: 11px;
@@ -377,25 +366,25 @@
       letter-spacing: 0.08em;
       color: #4b5563;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .legend-instructions {
       background: #ffffff;
-      border-radius: 10px;
+      border-radius: 9px;
       border: 1px solid #dde1ea;
-      padding: 8px 10px;
+      padding: 6px 9px;
       line-height: 1.5;
       color: #374151;
       font-size: 12px;
     }
 
     .legend-instructions p {
-      margin: 0 0 4px;
+      margin: 0 0 3px;
     }
 
     .legend-note {
-      margin-top: 6px;
+      margin-top: 5px;
       color: #6b7280;
       font-size: 11px;
     }
@@ -540,15 +529,13 @@
 
 <body>
   <div class="app-shell">
-    <!-- Header with TaskProcure logo -->
+    <!-- Header with TaskProcure logo blended into header -->
     <header class="app-header">
       <div class="brand-left">
-        <div class="brand-logo-wrap">
-          <img src="Taskprocure%20Logo.png" alt="TaskProcure Logo" class="brand-logo" />
-        </div>
+        <img src="Taskprocure%20Logo.png" alt="TaskProcure Logo" class="brand-logo-hero" />
         <div class="brand-title">
-          <span>Procurement Performance Dashboard</span>
-          <span>TaskProcure RFX Score Card &amp; Vendor Ranking</span>
+          <span class="brand-tagline">RFx Evaluation Dashboard</span>
+          <span class="brand-heading">RFX Score Card &amp; Vendor Ranking</span>
         </div>
       </div>
       <div class="header-right">
@@ -635,7 +622,7 @@
   </div>
 
   <script>
-    // ---- RFx Evaluation Sections library ----
+    /* --- RFx evaluation sections library --- */
     const criteriaLibrary = [
       { id: 1,  name: "Adaptability to Future Technologies", weight: 5,  maxScore: 3 },
       { id: 2,  name: "Alignment with Organizational Goals", weight: 10, maxScore: 3 },
@@ -720,23 +707,11 @@
 
     // 8 primary default sections totalling 100%
     const primaryCriteriaIds = [2, 3, 4, 6, 7, 9, 33, 50];
-    const defaultWeights = {
-      2: 12,
-      3: 13,
-      4: 12,
-      6: 13,
-      7: 15,
-      9: 15,
-      33: 10,
-      50: 10
-    };
+    const defaultWeights = { 2: 12, 3: 13, 4: 12, 6: 13, 7: 15, 9: 15, 33: 10, 50: 10 };
 
     let criteria = criteriaLibrary
       .filter(c => primaryCriteriaIds.includes(c.id))
-      .map(c => ({
-        ...c,
-        weight: defaultWeights[c.id] ?? c.weight ?? 0
-      }));
+      .map(c => ({ ...c, weight: defaultWeights[c.id] ?? c.weight ?? 0 }));
 
     let vendors = ["Vendor A", "Vendor B"];
     let scores = {};
@@ -1035,10 +1010,9 @@
       });
 
       const rankTd = document.createElement("td");
-      const vendorScores = vendors.map(v => ({
-        name: v,
-        score: totals[v] || 0
-      })).sort((a, b) => b.score - a.score);
+      const vendorScores = vendors
+        .map(v => ({ name: v, score: totals[v] || 0 }))
+        .sort((a, b) => b.score - a.score);
       const rankStrings = vendorScores.map((vs, idx) => `${idx + 1}) ${vs.name} (${vs.score.toFixed(1)})`);
       rankTd.innerHTML = `<small>${rankStrings.join("  |  ")}</small>`;
       totalsRow.appendChild(rankTd);
@@ -1088,15 +1062,6 @@
       XLSX.writeFile(wb, projectName.replace(/\s+/g, "_") + ".xlsx");
     }
 
-    function populateCriterionSelect() {
-      const select = document.getElementById("criterionLibrarySelect");
-      select.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
-      const activeIds = new Set(criteria.map(c => c.id));
-      criteriaLibrary
-        .filter(c => !activeIds.includes || !activeIds.has(c.id) ? !activeIds.has(c.id) : false); // just to be safe
-    }
-
-    // fixed populateCriterionSelect (simpler):
     function populateCriterionSelect() {
       const select = document.getElementById("criterionLibrarySelect");
       select.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
