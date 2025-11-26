@@ -549,7 +549,16 @@
       header.innerHTML = `
         <th class="cell-label">RFx Evaluation Section</th>
         <th>Weight %</th>
-        ${vendors.map(v => `<th>${v}</th>`).join("")}
+        ${vendors
+          .map(
+            v => `
+          <th>
+            ${v}
+            <button class="remove-btn" onclick="removeVendor('${v}')"
+              style="margin-left:6px; padding:2px 6px; font-size:11px;">×</button>
+          </th>`
+          )
+          .join("")}
         <th>Remove</th>
       `;
       table.appendChild(header);
@@ -585,7 +594,7 @@
         table.appendChild(row);
       });
 
-      /* Dynamic max values (not printed in labels anymore, but still used if needed) */
+      /* Dynamic max values (if you want to use them later) */
       const maxRaw = criteria.length * 3;
       const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
 
@@ -599,7 +608,7 @@
       `;
       table.appendChild(weightRow);
 
-      /* RAW TOTAL ROW (label now just "Total Vendor Score") */
+      /* RAW TOTAL ROW  */
       const rawRow = document.createElement("tr");
       rawRow.className = "totals-row";
       rawRow.innerHTML = `
@@ -651,11 +660,29 @@
       populateDropdown();
     }
 
+    function removeVendor(vendorName) {
+      if (!confirm(`Remove ${vendorName} from the scorecard?`)) return;
+
+      // 1. Remove vendor from list
+      vendors = vendors.filter(v => v !== vendorName);
+
+      // 2. Remove this vendor's scores from every criterion
+      Object.keys(scores).forEach(cid => {
+        delete scores[cid][vendorName];
+      });
+
+      // 3. Re-render UI
+      renderTable();
+    }
+
     document.getElementById("addVendorBtn").onclick = () => {
       const name = prompt("Vendor name?");
-      if (name && !vendors.includes(name.trim())) {
-        vendors.push(name.trim());
-        renderTable();
+      if (name) {
+        const trimmed = name.trim();
+        if (trimmed && !vendors.includes(trimmed)) {
+          vendors.push(trimmed);
+          renderTable();
+        }
       }
     };
 
