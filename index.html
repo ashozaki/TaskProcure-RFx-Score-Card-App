@@ -487,24 +487,30 @@
       box-shadow: 0 0 0 1px rgba(12, 60, 120, 0.14);
     }
 
-    .totals-row {
-      background: #0b1120;
-      color: #e5e7eb;
-      font-weight: 700;
-    }
+    /* ===== High-visibility totals row ===== */
+.totals-row {
+  background: #e0e7ff;        /* stronger lavender-blue */
+  color: #0f172a !important;  /* VERY dark navy */
+  font-weight: 800;           /* extra bold */
+  font-size: 15px;            /* bigger */
+}
 
-    .totals-row td {
-      border-bottom: none;
-    }
+.totals-row td {
+  padding: 12px 10px;
+  border-bottom: none;
+}
 
-    .totals-row .cell-label {
-      color: #f9fafb;
-    }
+.totals-row .cell-label {
+  color: #0f172a !important;   /* dark navy, max contrast */
+  font-weight: 800;
+}
 
-    .totals-row small {
-      font-size: 14px;
-      color: #cbd5f5;
-    }
+.totals-row small {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e293b !important;    /* dark grey */
+}
+
 
     .weight-total-row {
       font-weight: 700;
