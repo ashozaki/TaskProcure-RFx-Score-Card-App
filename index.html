@@ -41,7 +41,7 @@
     .app-header {
       background: #ffffff;
       border-radius: 18px;
-      padding: 16px 20px;
+      padding: 18px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,24 +54,24 @@
     .brand-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .brand-logo-wrap {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
+      width: 104px;
+      height: 104px;
+      border-radius: 24px;
       background: #f3f5ff;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
     .brand-logo {
-      max-width: 64px;
-      max-height: 64px;
+      max-width: 92px;
+      max-height: 92px;
       object-fit: contain;
     }
 
@@ -82,15 +82,16 @@
 
     .brand-title span:nth-child(1) {
       font-size: 12px;
-      opacity: 0.9;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--tp-primary);
+      color: #4b5563;
+      margin-bottom: 2px;
     }
 
     .brand-title span:nth-child(2) {
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--tp-primary);
     }
 
     .header-right {
@@ -110,6 +111,7 @@
       padding: 4px 10px;
       font-size: 11px;
       color: var(--tp-primary);
+      font-weight: 600;
     }
 
     .pill-dot {
@@ -121,7 +123,8 @@
     }
 
     .header-right small {
-      opacity: 0.9;
+      opacity: 0.95;
+      color: #4b5563;
     }
 
     /* Main card */
@@ -153,7 +156,8 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--tp-text-muted);
+      color: #4b5563;
+      font-weight: 600;
     }
 
     .project-input-wrap input {
@@ -281,7 +285,8 @@
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--tp-text-muted);
+      color: #4b5563;
+      font-weight: 600;
     }
 
     .add-criterion-field select,
@@ -340,7 +345,8 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--tp-text-muted);
+      color: #4b5563;
+      font-weight: 600;
     }
 
     .summary-value {
@@ -349,8 +355,8 @@
     }
 
     .summary-meta {
-      font-size: 11px;
-      color: var(--tp-text-muted);
+      font-size: 12px;
+      color: #6b7280;
     }
 
     .summary-highlight {
@@ -369,7 +375,8 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--tp-text-muted);
+      color: #4b5563;
+      font-weight: 600;
       margin-bottom: 6px;
     }
 
@@ -379,6 +386,8 @@
       border: 1px solid #dde1ea;
       padding: 8px 10px;
       line-height: 1.5;
+      color: #374151;
+      font-size: 12px;
     }
 
     .legend-instructions p {
@@ -387,7 +396,8 @@
 
     .legend-note {
       margin-top: 6px;
-      color: var(--tp-text-muted);
+      color: #6b7280;
+      font-size: 11px;
     }
 
     .badge-warning {
@@ -399,6 +409,7 @@
       background: #fef3c7;
       color: #92400e;
       font-size: 10px;
+      font-weight: 500;
     }
 
     .badge-dot {
@@ -533,12 +544,11 @@
     <header class="app-header">
       <div class="brand-left">
         <div class="brand-logo-wrap">
-          <!-- Use the uploaded TaskProcure logo file -->
           <img src="Taskprocure%20Logo.png" alt="TaskProcure Logo" class="brand-logo" />
         </div>
         <div class="brand-title">
-          <span>TaskProcure RFx Toolkit</span>
-          <span>Scorecard &amp; Vendor Ranking</span>
+          <span>Procurement Performance Dashboard</span>
+          <span>TaskProcure RFX Score Card &amp; Vendor Ranking</span>
         </div>
       </div>
       <div class="header-right">
@@ -625,7 +635,7 @@
   </div>
 
   <script>
-    // ---- RFx Evaluation Sections library (full list from RFx Toolkit) ----
+    // ---- RFx Evaluation Sections library ----
     const criteriaLibrary = [
       { id: 1,  name: "Adaptability to Future Technologies", weight: 5,  maxScore: 3 },
       { id: 2,  name: "Alignment with Organizational Goals", weight: 10, maxScore: 3 },
@@ -719,9 +729,8 @@
       9: 15,
       33: 10,
       50: 10
-    }; // sums to 100
+    };
 
-    // Active criteria to start with: just the primary set
     let criteria = criteriaLibrary
       .filter(c => primaryCriteriaIds.includes(c.id))
       .map(c => ({
@@ -729,10 +738,7 @@
         weight: defaultWeights[c.id] ?? c.weight ?? 0
       }));
 
-    // Initial vendors
     let vendors = ["Vendor A", "Vendor B"];
-
-    // scores[criterionId][vendorName] = numeric value
     let scores = {};
 
     function ensureScoresStructure() {
@@ -1082,7 +1088,15 @@
       XLSX.writeFile(wb, projectName.replace(/\s+/g, "_") + ".xlsx");
     }
 
-    // Populate the library select with criteria that are not currently active
+    function populateCriterionSelect() {
+      const select = document.getElementById("criterionLibrarySelect");
+      select.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
+      const activeIds = new Set(criteria.map(c => c.id));
+      criteriaLibrary
+        .filter(c => !activeIds.includes || !activeIds.has(c.id) ? !activeIds.has(c.id) : false); // just to be safe
+    }
+
+    // fixed populateCriterionSelect (simpler):
     function populateCriterionSelect() {
       const select = document.getElementById("criterionLibrarySelect");
       select.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
@@ -1106,7 +1120,6 @@
       }
     });
 
-    // Toggle add-criterion bar
     document.getElementById("addCriterionBtn").addEventListener("click", () => {
       const bar = document.getElementById("addCriterionBar");
       const isHidden = bar.style.display === "none" || bar.style.display === "";
@@ -1118,7 +1131,6 @@
       }
     });
 
-    // When selecting from library, auto-fill default weight/max if available
     document.getElementById("criterionLibrarySelect").addEventListener("change", (e) => {
       const id = Number(e.target.value);
       const chosen = criteriaLibrary.find(c => c.id === id);
@@ -1132,7 +1144,6 @@
       }
     });
 
-    // Confirm add criterion (library or custom)
     document.getElementById("confirmAddCriterion").addEventListener("click", () => {
       const select = document.getElementById("criterionLibrarySelect");
       const custom = document.getElementById("customCriterionName");
