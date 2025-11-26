@@ -29,7 +29,10 @@
     .app-shell {
       max-width: 1180px;
       margin: 20px auto;
-      padding: 0 16px 24px;
+      padding: 12px 16px 24px;
+      border-radius: 24px;
+      border: 1px solid #d1d5e5;          /* thin frame around whole dashboard */
+      background: transparent;
     }
 
     /* HEADER */
@@ -118,6 +121,7 @@
       align-items: center;
       margin-bottom: 10px;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
     .project-input label {
@@ -208,6 +212,21 @@
       color: #4b5563;
     }
 
+    /* Leading vendor highlight */
+    .kpi-card.leader .kpi-value {
+      color: #00b894;
+    }
+
+    .kpi-meta-ok {
+      color: #16a34a;
+      font-size: 11px;
+    }
+
+    .kpi-meta-warn {
+      color: #b45309;
+      font-size: 11px;
+    }
+
     /* ADD CRITERION BAR */
     #addCriterionBar {
       margin-bottom: 12px;
@@ -216,7 +235,7 @@
       border-radius: 10px;
       background: #f8fafc;
       display: none;
-      display: none;
+      gap: 6px;
     }
 
     #addCriterionBar select,
@@ -324,6 +343,18 @@
       border-radius: 20px;
       cursor: pointer;
     }
+
+    @media (max-width: 900px) {
+      .kpi-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .kpi-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
   </style>
 
   <!-- Excel export -->
@@ -381,7 +412,7 @@
           <div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
         </div>
 
-        <div class="kpi-card">
+        <div class="kpi-card leader">
           <div class="kpi-label">Leading Vendor (Live)</div>
           <div class="kpi-value" id="leadingVendorName">—</div>
           <div class="kpi-caption" id="leadingVendorMeta">Awaiting scores.</div>
@@ -461,7 +492,7 @@
       return { raw, weighted };
     }
 
-    /* Update dashboard tiles */
+    /* Update dashboard tiles (including green/orange meta text) */
     function updateDashboard(weighted, weightTotal) {
       const vendorsInScope = vendors.length;
       const criteriaCount = criteria.length;
@@ -483,15 +514,21 @@
         }
       });
 
+      // Leading vendor text
       if (bestVendor && bestScore > 0) {
         leadingNameEl.textContent = `${bestVendor} (${bestScore.toFixed(2)})`;
       } else {
         leadingNameEl.textContent = "No scores yet";
       }
 
-      leadingMetaEl.textContent =
-        "Weight total: " + weightTotal + "% " +
-        (weightTotal === 100 ? "Perfectly normalised to 100%." : "Must be normalised to 100%.");
+      // Status line in green / amber depending on weight total
+      if (weightTotal === 100) {
+        leadingMetaEl.className = "kpi-caption kpi-meta-ok";
+        leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Perfectly normalised to 100%.`;
+      } else {
+        leadingMetaEl.className = "kpi-caption kpi-meta-warn";
+        leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Must be normalised to 100%.`;
+      }
     }
 
     /* Render table */
@@ -568,16 +605,17 @@
       `;
       table.appendChild(rawRow);
 
-      /* WEIGHTED TOTAL ROW */
+      /* WEIGHTED TOTAL ROW + SUMMARY (raw + weighted, no 1)/2)) */
       const weightedRow = document.createElement("tr");
       weightedRow.className = "totals-row";
+      const summary = vendors
+        .map(v => `${v} (raw ${raw[v].toFixed(1)}, weighted ${weighted[v].toFixed(2)})`)
+        .join(" | ");
       weightedRow.innerHTML = `
         <td class="cell-label">Total Weighted Score (0–3)</td>
         <td></td>
         ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
-        <td>${vendors
-          .map((v, i) => `${i + 1}) ${v} (${weighted[v].toFixed(2)})`)
-          .join(" | ")}</td>
+        <td>${summary}</td>
       `;
       table.appendChild(weightedRow);
 
@@ -621,27 +659,23 @@
     /* Toggle add criterion bar */
     document.getElementById("addCriterionBtn").onclick = () => {
       const bar = document.getElementById("addCriterionBar");
-      bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "block" : "none";
+      bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "flex" : "none";
     };
 
-    /* Populate dropdown options for remaining library criteria */
+    /* Populate dropdown options with full RFx library */
     function populateDropdown() {
       const s = document.getElementById("criterionLibrarySelect");
-      const usedIds = new Set(criteria.map(c => c.id));
       s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
       criteriaLibrary.forEach(c => {
-        if (!usedIds.has(c.id)) {
-          const opt = document.createElement("option");
-          opt.value = c.id;
-          opt.textContent = c.name;
-          s.appendChild(opt);
-        }
+        const opt = document.createElement("option");
+        opt.value = c.id;
+        opt.textContent = c.name;
+        s.appendChild(opt);
       });
     }
 
     /* Confirm Add Criterion */
     document.getElementById("confirmAddCriterion").onclick = () => {
-      populateDropdown();
       const libSel = document.getElementById("criterionLibrarySelect").value;
       const custom = document.getElementById("customCriterionName").value.trim();
       const weight = Number(document.getElementById("newCriterionWeight").value);
@@ -670,7 +704,6 @@
       document.getElementById("addCriterionBar").style.display = "none";
 
       renderTable();
-      populateDropdown();
     };
 
     /* Export Excel */
