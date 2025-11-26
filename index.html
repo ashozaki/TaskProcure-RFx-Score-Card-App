@@ -37,36 +37,38 @@
       padding: 0 16px;
     }
 
-    /* Header */
+    /* ====== HEADER (optimized) ====== */
+
     .app-header {
       background: #ffffff;
       border-radius: 18px;
-      padding: 10px 22px;
+      padding: 8px 20px;          /* compact height */
       display: flex;
       align-items: center;
       justify-content: space-between;
       box-shadow: var(--shadow-soft);
       color: var(--tp-text-main);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       border: 1px solid #e5e7eb;
     }
 
     .brand-left {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
 
-    /* Larger logo blended into header */
     .brand-logo-hero {
-      height: 110px;      /* bigger, hero style */
+      height: 110px;              /* prominent but not huge */
       width: auto;
       object-fit: contain;
+      display: block;
     }
 
     .brand-title {
       display: flex;
       flex-direction: column;
+      justify-content: center;
     }
 
     .brand-tagline {
@@ -82,6 +84,7 @@
       font-size: 24px;
       font-weight: 700;
       color: var(--tp-primary);
+      line-height: 1.25;
     }
 
     .header-right {
@@ -117,7 +120,19 @@
       color: #4b5563;
     }
 
-    /* Main card */
+    @media (max-width: 768px) {
+      .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .header-right {
+        align-items: flex-start;
+      }
+    }
+
+    /* ===== MAIN CARD & CONTROLS ===== */
+
     .card {
       background: var(--tp-card-bg);
       border-radius: var(--radius-lg);
@@ -248,7 +263,8 @@
       color: #7f1d1d;
     }
 
-    /* Add-criterion bar */
+    /* Add Criterion Bar */
+
     .add-criterion-bar {
       display: none;
       margin: 8px 0 12px;
@@ -293,7 +309,8 @@
       box-shadow: 0 0 0 1px rgba(12, 60, 120, 0.12);
     }
 
-    /* Upper section */
+    /* Upper summary + legend */
+
     .upper-section {
       display: grid;
       grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
@@ -304,12 +321,6 @@
     @media (max-width: 900px) {
       .upper-section {
         grid-template-columns: minmax(0, 1fr);
-      }
-      .header-right {
-        align-items: flex-start;
-      }
-      .toolbar {
-        justify-content: flex-start;
       }
     }
 
@@ -408,7 +419,8 @@
       background: #f97316;
     }
 
-    /* Table */
+    /* ===== TABLE ===== */
+
     .table-wrap {
       border-radius: 12px;
       border: 1px solid var(--tp-border);
@@ -430,13 +442,14 @@
       text-align: center;
     }
 
-    th {
-      background: #f9fafb;
-      font-weight: 600;
-      color: #111827;
-      position: sticky;
-      top: 0;
-      z-index: 1;
+    /* Stronger column headings */
+    table th {
+      background: #f1f5f9 !important;
+      font-size: 15px !important;
+      font-weight: 800 !important;
+      color: #0f172a !important;
+      padding: 12px 10px !important;
+      letter-spacing: 0.3px;
     }
 
     td {
@@ -456,7 +469,6 @@
       font-weight: 500;
     }
 
-    input.score-input,
     input.weight-input {
       width: 60px;
       padding: 2px 4px;
@@ -479,7 +491,6 @@
       text-align: center;
     }
 
-    input.score-input:focus,
     input.weight-input:focus,
     select.score-select:focus {
       border-color: var(--tp-primary);
@@ -487,33 +498,8 @@
       box-shadow: 0 0 0 1px rgba(12, 60, 120, 0.14);
     }
 
-    /* ===== High-visibility totals row ===== */
-.totals-row {
-  background: #e0e7ff;        /* stronger lavender-blue */
-  color: #0f172a !important;  /* VERY dark navy */
-  font-weight: 800;           /* extra bold */
-  font-size: 15px;            /* bigger */
-}
-
-.totals-row td {
-  padding: 12px 10px;
-  border-bottom: none;
-}
-
-.totals-row .cell-label {
-  color: #0f172a !important;   /* dark navy, max contrast */
-  font-weight: 800;
-}
-
-.totals-row small {
-  font-size: 13px;
-  font-weight: 700;
-  color: #1e293b !important;    /* dark grey */
-}
-
-
     .weight-total-row {
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .weight-ok {
@@ -524,11 +510,31 @@
     .weight-not-ok {
       background: #fef9c3;
       color: #854d0e;
-      /* Hide "Criterion Weighted Score (sum across vendors)" column (5th column) */
-table thead th:nth-child(5),
-table tbody td:nth-child(5),
-table tfoot td:nth-child(5) {
-  display: none !important;
+    }
+
+    /* ===== TOTALS ROWS (very visible) ===== */
+
+    .totals-row {
+      background: #0c3c78;          /* TaskProcure blue */
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 14px !important;
+    }
+
+    .totals-row td {
+      padding: 10px 8px;
+      border-bottom: none;
+    }
+
+    .totals-row .cell-label {
+      color: #f9fafb !important;
+      font-weight: 800;
+    }
+
+    .totals-row small {
+      font-size: 12px;
+      font-weight: 600;
+      color: #e5e7eb !important;
     }
   </style>
 
@@ -538,12 +544,12 @@ table tfoot td:nth-child(5) {
 
 <body>
   <div class="app-shell">
-    <!-- Header with big blended logo -->
+    <!-- HEADER -->
     <header class="app-header">
       <div class="brand-left">
         <img src="Taskprocure%20Logo.png" alt="TaskProcure Logo" class="brand-logo-hero" />
         <div class="brand-title">
-          <span class="brand-tagline">RFx Evaluation Dashboard</span>
+          <span class="brand-tagline">RFX EVALUATION DASHBOARD</span>
           <span class="brand-heading">Score Card &amp; Vendor Ranking</span>
         </div>
       </div>
@@ -557,7 +563,7 @@ table tfoot td:nth-child(5) {
     </header>
 
     <main class="card">
-      <!-- Project + toolbar -->
+      <!-- PROJECT + TOOLBAR -->
       <div class="top-row">
         <div class="project-input-wrap">
           <label for="projectName">Project / RFx Name</label>
@@ -583,7 +589,7 @@ table tfoot td:nth-child(5) {
         </div>
       </div>
 
-      <!-- Add criterion bar -->
+      <!-- ADD CRITERION BAR -->
       <div id="addCriterionBar" class="add-criterion-bar">
         <div class="add-criterion-field">
           <label>From RFx Toolkit Library</label>
@@ -602,7 +608,7 @@ table tfoot td:nth-child(5) {
         <button id="confirmAddCriterion" class="btn btn-primary">Add</button>
       </div>
 
-      <!-- Upper section: summary + legend -->
+      <!-- SUMMARY + INSTRUCTIONS -->
       <section class="upper-section">
         <div class="summary" id="summaryCards"></div>
         <div class="legend-card">
@@ -619,7 +625,7 @@ table tfoot td:nth-child(5) {
         </div>
       </section>
 
-      <!-- Scorecard table -->
+      <!-- SCORECARD TABLE -->
       <section class="table-wrap">
         <table id="scorecardTable"></table>
       </section>
@@ -627,7 +633,7 @@ table tfoot td:nth-child(5) {
   </div>
 
   <script>
-    /* --- RFx evaluation sections library --- */
+    /* === RFx Evaluation Sections Library === */
     const criteriaLibrary = [
       { id: 1,  name: "Adaptability to Future Technologies", weight: 5,  maxScore: 3 },
       { id: 2,  name: "Alignment with Organizational Goals", weight: 10, maxScore: 3 },
@@ -710,7 +716,7 @@ table tfoot td:nth-child(5) {
       { id: 79, name: "Warranty Terms", weight: 0, maxScore: 3 }
     ];
 
-    // 8 primary default sections totalling 100%
+    // 8 default sections totalling 100%
     const primaryCriteriaIds = [2, 3, 4, 6, 7, 9, 33, 50];
     const defaultWeights = { 2: 12, 3: 13, 4: 12, 6: 13, 7: 15, 9: 15, 33: 10, 50: 10 };
 
@@ -719,9 +725,9 @@ table tfoot td:nth-child(5) {
       .map(c => ({ ...c, weight: defaultWeights[c.id] ?? c.weight ?? 0 }));
 
     let vendors = ["Vendor A", "Vendor B"];
-    let scores = {};
+    let scores = {}; // scores[criterionId][vendorName] = 0–3
 
-    const GLOBAL_MAX_SCORE = 3; // all criteria use 0–3 scale
+    const GLOBAL_MAX_SCORE = 3;
 
     function ensureScoresStructure() {
       criteria.forEach(c => {
@@ -733,29 +739,30 @@ table tfoot td:nth-child(5) {
     }
 
     function calculateTotals() {
-      const totals = {};
-      vendors.forEach(v => totals[v] = 0);
+      const rawTotals = {};
+      const weightedTotals = {};
+      vendors.forEach(v => {
+        rawTotals[v] = 0;
+        weightedTotals[v] = 0;
+      });
+
       let weightSum = 0;
 
       criteria.forEach(c => {
         const weight = Number(c.weight) || 0;
         weightSum += weight;
-
         vendors.forEach(v => {
-          const raw = Number(scores[c.id]?.[v]) || 0;
-          const max = GLOBAL_MAX_SCORE;
-          if (max > 0) {
-            const normalized = (raw / max) * weight;
-            totals[v] += normalized;
-          }
+          const raw = Number(scores[c.id]?.[v]) || 0;  // 0–3
+          rawTotals[v] += raw;
+          weightedTotals[v] += (weight / 100) * raw;  // 0–3 if weights sum to 100 & scores=3
         });
       });
 
-      return { totals, weightSum };
+      return { rawTotals, weightedTotals, weightSum };
     }
 
     function renderSummaryCards() {
-      const { totals, weightSum } = calculateTotals();
+      const { rawTotals, weightedTotals, weightSum } = calculateTotals();
       const summaryDiv = document.getElementById("summaryCards");
       summaryDiv.innerHTML = "";
 
@@ -779,18 +786,18 @@ table tfoot td:nth-child(5) {
 
       const card3 = document.createElement("div");
       card3.className = "summary-card";
-      const entries = vendors.map(v => ({ name: v, score: totals[v] || 0 }));
-      entries.sort((a, b) => b.score - a.score);
+      const entries = vendors.map(v => ({ name: v, weighted: weightedTotals[v] || 0 }));
+      entries.sort((a, b) => b.weighted - a.weighted);
       const best = entries[0];
       card3.innerHTML = `
         <div class="summary-label">Leading Vendor (live)</div>
         <div class="summary-value summary-highlight">
-          ${best ? `${best.name} (${best.score.toFixed(1)})` : "—"}
+          ${best ? `${best.name} (${best.weighted.toFixed(2)} / 3)` : "—"}
         </div>
         <div class="summary-meta">
-          Weight total: ${weightSum}%
+          Weight total: ${weightSum.toFixed(1)}%
           ${
-            weightSum !== 100
+            Math.round(weightSum) !== 100
               ? `<span class="badge-warning"><span class="badge-dot"></span>Must be normalised to 100%.</span>`
               : "Perfectly normalised to 100%."
           }
@@ -799,14 +806,28 @@ table tfoot td:nth-child(5) {
       summaryDiv.appendChild(card3);
     }
 
+    function populateCriterionSelect() {
+      const select = document.getElementById("criterionLibrarySelect");
+      select.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
+      const activeIds = new Set(criteria.map(c => c.id));
+      criteriaLibrary
+        .filter(c => !activeIds.has(c.id))
+        .forEach(c => {
+          const opt = document.createElement("option");
+          opt.value = String(c.id);
+          opt.textContent = c.name;
+          select.appendChild(opt);
+        });
+    }
+
     function renderTable() {
       ensureScoresStructure();
       const table = document.getElementById("scorecardTable");
       table.innerHTML = "";
 
-      const { totals, weightSum } = calculateTotals();
+      const { rawTotals, weightedTotals, weightSum } = calculateTotals();
 
-      // Header row (no Max Score column)
+      /* HEADER ROW */
       const headerRow = document.createElement("tr");
       headerRow.innerHTML = `
         <th class="cell-label">RFx Evaluation Section</th>
@@ -837,17 +858,12 @@ table tfoot td:nth-child(5) {
         headerRow.appendChild(th);
       });
 
-      const critTotalTh = document.createElement("th");
-      critTotalTh.textContent = "Criterion Weighted Score (sum across vendors)";
-      headerRow.appendChild(critTotalTh);
-
       const removeTh = document.createElement("th");
       removeTh.textContent = "Remove";
       headerRow.appendChild(removeTh);
-
       table.appendChild(headerRow);
 
-      // Criteria rows
+      /* CRITERIA ROWS */
       criteria.forEach(c => {
         const tr = document.createElement("tr");
         tr.dataset.criterionId = c.id;
@@ -869,8 +885,6 @@ table tfoot td:nth-child(5) {
         });
         weightTd.appendChild(weightInput);
         tr.appendChild(weightTd);
-
-        let criterionWeightedTotal = 0;
 
         vendors.forEach(v => {
           const td = document.createElement("td");
@@ -904,19 +918,7 @@ table tfoot td:nth-child(5) {
 
           td.appendChild(select);
           tr.appendChild(td);
-
-          const raw = Number(scores[c.id][v]) || 0;
-          const max = GLOBAL_MAX_SCORE;
-          const weight = Number(c.weight) || 0;
-          if (max > 0) {
-            const normalized = (raw / max) * weight;
-            criterionWeightedTotal += normalized;
-          }
         });
-
-        const critTotalTd = document.createElement("td");
-        critTotalTd.textContent = criterionWeightedTotal.toFixed(1);
-        tr.appendChild(critTotalTd);
 
         const removeTd = document.createElement("td");
         const removeBtn = document.createElement("button");
@@ -937,7 +939,7 @@ table tfoot td:nth-child(5) {
         table.appendChild(tr);
       });
 
-      // Total Weight % row (no Max column now)
+      /* TOTAL WEIGHT ROW */
       const weightRow = document.createElement("tr");
       weightRow.className = "weight-total-row";
 
@@ -948,7 +950,7 @@ table tfoot td:nth-child(5) {
 
       const weightValueTd = document.createElement("td");
       weightValueTd.textContent = weightSum.toFixed(1) + "%";
-      if (weightSum === 100) {
+      if (Math.round(weightSum) === 100) {
         weightValueTd.classList.add("weight-ok");
       } else {
         weightValueTd.classList.add("weight-not-ok");
@@ -961,84 +963,97 @@ table tfoot td:nth-child(5) {
         weightRow.appendChild(emptyTd);
       });
 
-      const emptyCritTotal = document.createElement("td");
-      emptyCritTotal.textContent = "";
-      weightRow.appendChild(emptyCritTotal);
-
       const emptyRemove = document.createElement("td");
       emptyRemove.textContent = "";
       weightRow.appendChild(emptyRemove);
 
       table.appendChild(weightRow);
 
-      // Totals row for vendor scores
-      const totalsRow = document.createElement("tr");
-      totalsRow.className = "totals-row";
+      /* TOTAL VENDOR SCORE ROW (RAW) */
+      const totalsRowRaw = document.createElement("tr");
+      totalsRowRaw.className = "totals-row";
 
-      const labelTd = document.createElement("td");
-      labelTd.className = "cell-label";
-      labelTd.innerHTML = `
-        Total Vendor Score (0–100)
-        <br /><small>Based on all RFx Evaluation Sections and weights.</small>
-      `;
-      totalsRow.appendChild(labelTd);
+      const labelTdRaw = document.createElement("td");
+      labelTdRaw.className = "cell-label";
+      labelTdRaw.textContent = "Total Vendor Score (raw 0–N×3)";
+      totalsRowRaw.appendChild(labelTdRaw);
 
-      const spacerWeight = document.createElement("td");
-      spacerWeight.textContent = "";
-      totalsRow.appendChild(spacerWeight);
+      const spacerRaw = document.createElement("td");
+      spacerRaw.textContent = "";
+      totalsRowRaw.appendChild(spacerRaw);
 
       vendors.forEach(v => {
         const td = document.createElement("td");
-        td.textContent = (totals[v] || 0).toFixed(1);
-        totalsRow.appendChild(td);
+        td.textContent = (rawTotals[v] || 0).toFixed(1);
+        totalsRowRaw.appendChild(td);
+      });
+
+      const emptyRawEnd = document.createElement("td");
+      emptyRawEnd.textContent = "";
+      totalsRowRaw.appendChild(emptyRawEnd);
+
+      table.appendChild(totalsRowRaw);
+
+      /* TOTAL WEIGHTED SCORE ROW (0–3) + RANKING */
+      const totalsRowWeighted = document.createElement("tr");
+      totalsRowWeighted.className = "totals-row";
+
+      const labelTdWeighted = document.createElement("td");
+      labelTdWeighted.className = "cell-label";
+      labelTdWeighted.textContent = "Total Weighted Score (0–3)";
+      totalsRowWeighted.appendChild(labelTdWeighted);
+
+      const spacerWeighted = document.createElement("td");
+      spacerWeighted.textContent = "";
+      totalsRowWeighted.appendChild(spacerWeighted);
+
+      vendors.forEach(v => {
+        const td = document.createElement("td");
+        td.textContent = (weightedTotals[v] || 0).toFixed(2);
+        totalsRowWeighted.appendChild(td);
       });
 
       const rankTd = document.createElement("td");
       const vendorScores = vendors
-        .map(v => ({ name: v, score: totals[v] || 0 }))
+        .map(v => ({ name: v, score: weightedTotals[v] || 0 }))
         .sort((a, b) => b.score - a.score);
-      const rankStrings = vendorScores.map((vs, idx) => `${idx + 1}) ${vs.name} (${vs.score.toFixed(1)})`);
+      const rankStrings = vendorScores.map((vs, idx) =>
+        `${idx + 1}) ${vs.name} (${vs.score.toFixed(2)})`
+      );
       rankTd.innerHTML = `<small>${rankStrings.join("  |  ")}</small>`;
-      totalsRow.appendChild(rankTd);
+      totalsRowWeighted.appendChild(rankTd);
 
-      const emptyEnd = document.createElement("td");
-      emptyEnd.textContent = "";
-      totalsRow.appendChild(emptyEnd);
-
-      table.appendChild(totalsRow);
+      table.appendChild(totalsRowWeighted);
     }
 
     function exportToExcel() {
       const wb = XLSX.utils.book_new();
 
-      // No Max Score column in export either
-      const header = ["RFx Evaluation Section", "Weight %"].concat(vendors).concat(["Criterion Weighted Score"]);
+      // Header: Criterion, Weight, Vendors...
+      const header = ["RFx Evaluation Section", "Weight %"].concat(vendors);
       const data = [header];
 
       criteria.forEach(c => {
-        let row = [];
+        const row = [];
         row.push(c.name, c.weight);
-        let critTotal = 0;
         vendors.forEach(v => {
-          const raw = Number(scores[c.id][v]) || 0;
+          const raw = Number(scores[c.id]?.[v]) || 0;
           row.push(raw);
-          const max = GLOBAL_MAX_SCORE;
-          const weight = Number(c.weight) || 0;
-          if (max > 0) {
-            const normalized = (raw / max) * weight;
-            critTotal += normalized;
-          }
         });
-        row.push(Number(critTotal.toFixed(2)));
         data.push(row);
       });
 
-      const { totals } = calculateTotals();
-      let totalRow = [];
-      totalRow.push("Total Vendor Score (0–100)", "");
-      vendors.forEach(v => totalRow.push(Number((totals[v] || 0).toFixed(2))));
-      totalRow.push("");
+      const { rawTotals, weightedTotals } = calculateTotals();
+
+      const totalRow = [];
+      totalRow.push("Total Vendor Score (raw 0–N×3)", "");
+      vendors.forEach(v => totalRow.push(Number((rawTotals[v] || 0).toFixed(2))));
       data.push(totalRow);
+
+      const weightedRow = [];
+      weightedRow.push("Total Weighted Score (0–3)", "");
+      vendors.forEach(v => weightedRow.push(Number((weightedTotals[v] || 0).toFixed(2))));
+      data.push(weightedRow);
 
       const ws = XLSX.utils.aoa_to_sheet(data);
       XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
@@ -1047,26 +1062,17 @@ table tfoot td:nth-child(5) {
       XLSX.writeFile(wb, projectName.replace(/\s+/g, "_") + ".xlsx");
     }
 
-    function populateCriterionSelect() {
-      const select = document.getElementById("criterionLibrarySelect");
-      select.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
-      const activeIds = new Set(criteria.map(c => c.id));
-      criteriaLibrary
-        .filter(c => !activeIds.has(c.id))
-        .forEach(c => {
-          const opt = document.createElement("option");
-          opt.value = String(c.id);
-          opt.textContent = c.name;
-          select.appendChild(opt);
-        });
-    }
+    /* === EVENT WIRING === */
 
     document.getElementById("addVendorBtn").addEventListener("click", () => {
       const name = prompt("Vendor name?");
-      if (name && !vendors.includes(name.trim())) {
-        vendors.push(name.trim());
-        renderTable();
-        renderSummaryCards();
+      if (name) {
+        const trimmed = name.trim();
+        if (trimmed && !vendors.includes(trimmed)) {
+          vendors.push(trimmed);
+          renderTable();
+          renderSummaryCards();
+        }
       }
     });
 
