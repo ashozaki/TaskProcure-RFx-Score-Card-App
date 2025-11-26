@@ -21,7 +21,7 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top left, #e3f2ff 0, #f3f5f9 40%, #eef2ff 100%);
       color: var(--tp-text-main);
     }
@@ -29,14 +29,14 @@
     .app-shell {
       max-width: 1180px;
       margin: 20px auto;
-      padding: 0 16px;
+      padding: 0 16px 24px;
     }
 
     /* HEADER */
     .app-header {
       background: #ffffff;
       border-radius: 18px;
-      padding: 8px 20px;
+      padding: 10px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -48,11 +48,11 @@
     .brand-left {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
     .brand-logo-hero {
-      height: 120px;
+      height: 52px;
       width: auto;
     }
 
@@ -70,7 +70,7 @@
     }
 
     .brand-heading {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--tp-primary);
     }
@@ -90,7 +90,7 @@
       gap: 6px;
       background: var(--tp-primary-soft);
       color: var(--tp-primary);
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 999px;
       font-weight: 600;
     }
@@ -102,13 +102,137 @@
       border-radius: 999px;
     }
 
-    /* CARD */
+    /* MAIN CARD */
     .card {
       background: #ffffff;
       border-radius: 14px;
-      padding: 14px 18px;
+      padding: 14px 18px 18px;
       border: 1px solid var(--tp-border);
       box-shadow: var(--shadow-soft);
+    }
+
+    /* TOP CONTROLS */
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 16px;
+    }
+
+    .project-input label {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .project-input input {
+      margin-top: 4px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      min-width: 260px;
+      font-size: 13px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid #0c3c78;
+      color: #0c3c78;
+      background: #ffffff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      background: #0c3c78;
+      color: #ffffff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* DASHBOARD KPI ROW */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .kpi-card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .kpi-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .kpi-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0c3c78;
+      margin-bottom: 2px;
+    }
+
+    .kpi-caption {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .kpi-card.instructions {
+      background: #f3f6ff;
+    }
+
+    .kpi-card.instructions ul {
+      padding-left: 18px;
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: #4b5563;
+    }
+
+    /* ADD CRITERION BAR */
+    #addCriterionBar {
+      margin-bottom: 12px;
+      padding: 10px;
+      border: 1px dashed #94a3b8;
+      border-radius: 10px;
+      background: #f8fafc;
+      display: none;
+      display: none;
+    }
+
+    #addCriterionBar select,
+    #addCriterionBar input {
+      padding: 5px 8px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 12px;
+    }
+
+    #addCriterionBar select {
+      min-width: 230px;
+    }
+
+    #addCriterionBar input[type="number"] {
+      width: 70px;
     }
 
     /* TABLE */
@@ -126,7 +250,8 @@
       font-size: 13px;
     }
 
-    th, td {
+    th,
+    td {
       border-bottom: 1px solid #e5e7eb;
       padding: 10px;
       text-align: center;
@@ -147,7 +272,14 @@
       background: #f8fbff;
     }
 
-    /* TOTALS (FIXED VISIBILITY) */
+    .cell-label {
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      color: #111827;
+    }
+
+    /* TOTALS ROWS – HIGH VISIBILITY */
     .totals-row {
       background: #dce9ff !important;
       color: #0f172a !important;
@@ -168,8 +300,30 @@
       text-align: left;
     }
 
-    /* HIDE WEIGHTED COLUMN THAT WAS REMOVED */
-    /* No need now — already removed programmatically */
+    /* SCORE SELECTS & INPUTS */
+    .score-cell {
+      padding: 4px;
+      border-radius: 6px;
+      width: 55px;
+      text-align: center;
+    }
+
+    .weight-input {
+      width: 60px;
+      padding: 4px;
+      border-radius: 6px;
+      text-align: center;
+      border: 1px solid #d1d5db;
+    }
+
+    .remove-btn {
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
   </style>
 
   <!-- Excel export -->
@@ -182,10 +336,10 @@
     <!-- HEADER -->
     <header class="app-header">
       <div class="brand-left">
-        <img src="Taskprocure%20Logo.png" class="brand-logo-hero" />
+        <img src="Taskprocure%20Logo.png" class="brand-logo-hero" alt="TaskProcure logo" />
         <div class="brand-title">
           <span class="brand-tagline">RFx Evaluation Dashboard</span>
-          <span class="brand-heading">Score Card & Vendor Ranking</span>
+          <span class="brand-heading">Score Card &amp; Vendor Ranking</span>
         </div>
       </div>
       <div class="header-right">
@@ -199,28 +353,59 @@
     <!-- MAIN CONTENT -->
     <main class="card">
 
-      <div class="top-row" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <div>
-          <label style="font-size:12px;font-weight:600;">Project / RFx Name</label><br>
-          <input id="projectName" placeholder="e.g. Digital Identity & PKI RFx 2026" 
-                 style="padding:6px 12px;border-radius:30px;border:1px solid #cbd5e1;">
+      <!-- TOP CONTROLS -->
+      <div class="top-row">
+        <div class="project-input">
+          <label>Project / RFx Name</label><br />
+          <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
         </div>
 
-        <div style="display:flex;gap:8px;">
-          <button id="addCriterionBtn" style="padding:8px 14px;border-radius:30px;border:1px solid #0c3c78;color:#0c3c78;background:white;">+ Add Criterion</button>
-          <button id="addVendorBtn" style="padding:8px 14px;border-radius:30px;border:1px solid #0c3c78;color:#0c3c78;background:white;">+ Add Vendor</button>
-          <button id="exportExcelBtn" style="padding:8px 14px;border-radius:30px;background:#0c3c78;color:white;border:none;">⬇ Export Scorecard</button>
+        <div class="top-actions">
+          <button id="addCriterionBtn" class="btn-ghost">+ Add Criterion</button>
+          <button id="addVendorBtn" class="btn-ghost">+ Add Vendor</button>
+          <button id="exportExcelBtn" class="btn-primary">⬇ Export Scorecard</button>
+        </div>
+      </div>
+
+      <!-- DASHBOARD KPI TILES -->
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Vendors in Scope</div>
+          <div class="kpi-value" id="vendorsInScopeCount">0</div>
+          <div class="kpi-caption">Vendors currently being scored.</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">RFx Evaluation Sections</div>
+          <div class="kpi-value" id="criteriaCount">0</div>
+          <div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-label">Leading Vendor (Live)</div>
+          <div class="kpi-value" id="leadingVendorName">—</div>
+          <div class="kpi-caption" id="leadingVendorMeta">Awaiting scores.</div>
+        </div>
+
+        <div class="kpi-card instructions">
+          <div class="kpi-label">Score Card Instructions</div>
+          <ul>
+            <li>0 – If Solution does not meet needs</li>
+            <li>1 – If Solution only partially meets needs</li>
+            <li>2 – If Solution fully meets needs</li>
+            <li>3 – If Solution exceeds needs (without adding unnecessary cost)</li>
+          </ul>
         </div>
       </div>
 
       <!-- ADD CRITERION BAR -->
-      <div id="addCriterionBar" style="display:none;margin-bottom:12px;padding:10px;border:1px dashed #94a3b8;border-radius:10px;background:#f8fafc;">
-        <select id="criterionLibrarySelect" style="padding:5px;border-radius:6px;border:1px solid #cbd5e1;">
+      <div id="addCriterionBar">
+        <select id="criterionLibrarySelect">
           <option value="">-- Select RFx Evaluation Section --</option>
         </select>
-        <input id="customCriterionName" placeholder="Custom name" style="padding:5px;border-radius:6px;border:1px solid #cbd5e1;">
-        <input id="newCriterionWeight" type="number" value="10" style="padding:5px;border-radius:6px;border:1px solid #cbd5e1;width:60px;">
-        <button id="confirmAddCriterion" style="padding:6px 14px;border-radius:30px;background:#0c3c78;color:white;border:none;">Add</button>
+        <input id="customCriterionName" placeholder="Custom evaluation section name" />
+        <input id="newCriterionWeight" type="number" value="10" />
+        <button id="confirmAddCriterion" class="btn-primary" style="padding:6px 16px;">Add</button>
       </div>
 
       <!-- SCORE TABLE -->
@@ -231,241 +416,282 @@
     </main>
   </div>
 
-<script>
-/* ============================
-   INITIAL DATA
-============================ */
-const criteriaLibrary = [
-  { id: 1, name: "Alignment with Organizational Goals", weight: 12 },
-  { id: 2, name: "API Availability and Functionality", weight: 13 },
-  { id: 3, name: "Automation and AI Features", weight: 12 },
-  { id: 4, name: "Cloud Capabilities", weight: 13 },
-  { id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
-  { id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
-  { id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
-  { id: 8, name: "Reporting and Analytics", weight: 10 }
-];
+  <script>
+    /* ============================
+       INITIAL DATA
+    ============================ */
+    const criteriaLibrary = [
+      { id: 1, name: "Alignment with Organizational Goals", weight: 12 },
+      { id: 2, name: "API Availability and Functionality", weight: 13 },
+      { id: 3, name: "Automation and AI Features", weight: 12 },
+      { id: 4, name: "Cloud Capabilities", weight: 13 },
+      { id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
+      { id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
+      { id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
+      { id: 8, name: "Reporting and Analytics", weight: 10 }
+    ];
 
-let criteria = [...criteriaLibrary];
-let vendors = ["Vendor A", "Vendor B"];
-let scores = {};
+    let criteria = [...criteriaLibrary];
+    let vendors = ["Vendor A", "Vendor B"];
+    let scores = {};
 
-/* Ensure structure */
-function ensureScores() {
-  criteria.forEach(c => {
-    if (!scores[c.id]) scores[c.id] = {};
-    vendors.forEach(v => {
-      if (scores[c.id][v] === undefined) scores[c.id][v] = "";
-    });
-  });
-}
-
-/* Calculate totals */
-function calculateTotals() {
-  let raw = {}, weighted = {};
-  vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
-
-  criteria.forEach(c => {
-    vendors.forEach(v => {
-      const s = Number(scores[c.id][v]) || 0;
-      raw[v] += s;
-      weighted[v] += (c.weight / 100) * s;
-    });
-  });
-
-  return { raw, weighted };
-}
-
-/* Render table */
-function renderTable() {
-  ensureScores();
-  const table = document.getElementById("scorecardTable");
-  table.innerHTML = "";
-
-  const { raw, weighted } = calculateTotals();
-
-  /* HEADERS */
-  let header = document.createElement("tr");
-  header.innerHTML = `
-    <th class="cell-label">RFx Evaluation Section</th>
-    <th>Weight %</th>
-    ${vendors.map(v => `<th>${v}</th>`).join("")}
-    <th>Remove</th>
-  `;
-  table.appendChild(header);
-
-  /* CRITERIA ROWS */
-  criteria.forEach(c => {
-    let row = document.createElement("tr");
-
-    row.innerHTML = `
-      <td class="cell-label">${c.name}</td>
-      <td><input type="number" value="${c.weight}" style="width:60px;padding:4px;border-radius:6px;text-align:center;"></td>
-    `;
-
-    /* Add score cells */
-    vendors.forEach(v => {
-      row.innerHTML += `
-        <td>
-          <select data-id="${c.id}" data-vendor="${v}" class="score-cell" 
-                  style="padding:4px;border-radius:6px;width:55px;text-align:center;">
-            <option value="">-</option>
-            <option value="0" ${scores[c.id][v] == 0 ? "selected":""}>0</option>
-            <option value="1" ${scores[c.id][v] == 1 ? "selected":""}>1</option>
-            <option value="2" ${scores[c.id][v] == 2 ? "selected":""}>2</option>
-            <option value="3" ${scores[c.id][v] == 3 ? "selected":""}>3</option>
-          </select>
-        </td>
-      `;
-    });
-
-    /* Remove Button */
-    row.innerHTML += `
-      <td><button onclick="removeCriterion(${c.id})" 
-          style="background:#fee2e2;border:1px solid #fecaca;color:#b91c1c;
-                 padding:4px 10px;border-radius:20px;cursor:pointer;">🗑</button></td>
-    `;
-
-    table.appendChild(row);
-  });
-
-  /* TOTAL WEIGHT ROW */
-  let weightTotal = criteria.reduce((a,c)=>a+Number(c.weight),0);
-
-  let weightRow = document.createElement("tr");
-  weightRow.innerHTML = `
-    <td class="cell-label"><b>Total Weight %</b></td>
-    <td><b style="color:${weightTotal===100?"#16a34a":"#b91c1c"};">${weightTotal}%</b></td>
-    ${vendors.map(()=>"<td></td>").join("")}
-    <td></td>
-  `;
-  table.appendChild(weightRow);
-
-  /* RAW TOTAL ROW */
-  let rawRow = document.createElement("tr");
-  rawRow.className = "totals-row";
-  rawRow.innerHTML = `
-    <td class="cell-label">Total Vendor Score (raw 0–N×3)</td>
-    <td></td>
-    ${vendors.map(v=>`<td>${raw[v].toFixed(1)}</td>`).join("")}
-    <td></td>
-  `;
-  table.appendChild(rawRow);
-
-  /* WEIGHTED TOTAL ROW */
-  let weightedRow = document.createElement("tr");
-  weightedRow.className = "totals-row";
-  weightedRow.innerHTML = `
-    <td class="cell-label">Total Weighted Score (0–3)</td>
-    <td></td>
-    ${vendors.map(v=>`<td>${weighted[v].toFixed(2)}</td>`).join("")}
-    <td>${vendors
-      .map((v,i)=>`${i+1}) ${v} (${weighted[v].toFixed(2)})`)
-      .join(" | ")}</td>
-  `;
-  table.appendChild(weightedRow);
-
-  /* Score change listeners */
-  document.querySelectorAll(".score-cell").forEach(sel=>{
-    sel.onchange = e => {
-      const id = Number(sel.dataset.id);
-      const v = sel.dataset.vendor;
-      scores[id][v] = sel.value;
-      renderTable();
-    };
-  });
-
-  /* Weight change listeners */
-  document.querySelectorAll("input[type=number]").forEach((inp,i)=>{
-    inp.oninput = e => {
-      criteria[i].weight = Number(inp.value);
-      renderTable();
-    };
-  });
-
-}
-
-/* Remove criterion */
-function removeCriterion(id){
-  criteria = criteria.filter(c=>c.id !== id);
-  delete scores[id];
-  renderTable();
-}
-
-/* Add vendor */
-document.getElementById("addVendorBtn").onclick = () => {
-  let name = prompt("Vendor name?");
-  if(name && !vendors.includes(name)){
-    vendors.push(name.trim());
-    renderTable();
-  }
-};
-
-/* Add criterion */
-document.getElementById("addCriterionBtn").onclick = () => {
-  let bar = document.getElementById("addCriterionBar");
-  bar.style.display = bar.style.display==="none"||bar.style.display==="" ? "block":"none";
-};
-
-/* Populate dropdown */
-function populateDropdown(){
-  const s=document.getElementById("criterionLibrarySelect");
-  s.innerHTML=`<option value="">-- Select RFx Evaluation Section --</option>`;
-  const used = new Set(criteria.map(c=>c.id));
-  criteriaLibrary.forEach(c=>{
-    if(!used.has(c.id)){
-      let opt=document.createElement("option");
-      opt.value=c.id;
-      opt.textContent=c.name;
-      s.appendChild(opt);
+    /* Ensure score structure */
+    function ensureScores() {
+      criteria.forEach(c => {
+        if (!scores[c.id]) scores[c.id] = {};
+        vendors.forEach(v => {
+          if (scores[c.id][v] === undefined) scores[c.id][v] = "";
+        });
+      });
     }
-  });
-}
 
-/* Confirm Add */
-document.getElementById("confirmAddCriterion").onclick = () => {
-  populateDropdown();
-  const libSel=document.getElementById("criterionLibrarySelect").value;
-  const custom=document.getElementById("customCriterionName").value.trim();
-  const weight=Number(document.getElementById("newCriterionWeight").value);
+    /* Calculate totals */
+    function calculateTotals() {
+      let raw = {}, weighted = {};
+      vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
 
-  if(!libSel && !custom){
-    alert("Select a library item or enter a custom name.");
-    return;
-  }
+      criteria.forEach(c => {
+        vendors.forEach(v => {
+          const s = Number(scores[c.id][v]) || 0;
+          raw[v] += s;
+          weighted[v] += (c.weight / 100) * s;
+        });
+      });
 
-  let newName = custom || criteriaLibrary.find(c=>c.id==libSel).name;
-  let newId = libSel ? Number(libSel) : Date.now();
+      return { raw, weighted };
+    }
 
-  criteria.push({ id:newId, name:newName, weight });
-  scores[newId]={};
-  vendors.forEach(v=>scores[newId][v]="");
+    /* Update dashboard tiles */
+    function updateDashboard(weighted, weightTotal) {
+      const vendorsInScope = vendors.length;
+      const criteriaCount = criteria.length;
 
-  document.getElementById("criterionLibrarySelect").value="";
-  document.getElementById("customCriterionName").value="";
-  document.getElementById("addCriterionBar").style.display="none";
+      document.getElementById("vendorsInScopeCount").textContent = vendorsInScope;
+      document.getElementById("criteriaCount").textContent = criteriaCount;
 
-  renderTable();
-};
+      const leadingNameEl = document.getElementById("leadingVendorName");
+      const leadingMetaEl = document.getElementById("leadingVendorMeta");
 
-/* Export */
-document.getElementById("exportExcelBtn").onclick=()=>{
-  const wb=XLSX.utils.book_new();
-  let data=[["Criterion","Weight",...vendors]];
-  criteria.forEach(c=>{
-    let row=[c.name,c.weight];
-    vendors.forEach(v=>row.push(scores[c.id][v]||""));
-    data.push(row);
-  });
-  const ws=XLSX.utils.aoa_to_sheet(data);
-  XLSX.utils.book_append_sheet(wb,ws,"Scorecard");
-  XLSX.writeFile(wb,"Scorecard.xlsx");
-};
+      let bestVendor = null;
+      let bestScore = -1;
 
-/* Init */
-populateDropdown();
-renderTable();
-</script>
+      vendors.forEach(v => {
+        const s = weighted[v] || 0;
+        if (s > bestScore) {
+          bestScore = s;
+          bestVendor = v;
+        }
+      });
 
+      if (bestVendor && bestScore > 0) {
+        leadingNameEl.textContent = `${bestVendor} (${bestScore.toFixed(2)})`;
+      } else {
+        leadingNameEl.textContent = "No scores yet";
+      }
+
+      leadingMetaEl.textContent =
+        "Weight total: " + weightTotal + "% " +
+        (weightTotal === 100 ? "Perfectly normalised to 100%." : "Must be normalised to 100%.");
+    }
+
+    /* Render table */
+    function renderTable() {
+      ensureScores();
+      const table = document.getElementById("scorecardTable");
+
+      const { raw, weighted } = calculateTotals();
+      const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
+
+      updateDashboard(weighted, weightTotal);
+
+      table.innerHTML = "";
+
+      /* HEADERS */
+      const header = document.createElement("tr");
+      header.innerHTML = `
+        <th class="cell-label">RFx Evaluation Section</th>
+        <th>Weight %</th>
+        ${vendors.map(v => `<th>${v}</th>`).join("")}
+        <th>Remove</th>
+      `;
+      table.appendChild(header);
+
+      /* CRITERIA ROWS */
+      criteria.forEach((c, idx) => {
+        const row = document.createElement("tr");
+
+        let html = `
+          <td class="cell-label">${c.name}</td>
+          <td><input type="number" value="${c.weight}" class="weight-input" data-index="${idx}" /></td>
+        `;
+
+        vendors.forEach(v => {
+          html += `
+            <td>
+              <select data-id="${c.id}" data-vendor="${v}" class="score-cell">
+                <option value="">-</option>
+                <option value="0" ${scores[c.id][v] == 0 ? "selected" : ""}>0</option>
+                <option value="1" ${scores[c.id][v] == 1 ? "selected" : ""}>1</option>
+                <option value="2" ${scores[c.id][v] == 2 ? "selected" : ""}>2</option>
+                <option value="3" ${scores[c.id][v] == 3 ? "selected" : ""}>3</option>
+              </select>
+            </td>
+          `;
+        });
+
+        html += `
+          <td><button class="remove-btn" onclick="removeCriterion(${c.id})">🗑</button></td>
+        `;
+
+        row.innerHTML = html;
+        table.appendChild(row);
+      });
+
+      /* TOTAL WEIGHT ROW */
+      const weightRow = document.createElement("tr");
+      weightRow.innerHTML = `
+        <td class="cell-label"><b>Total Weight %</b></td>
+        <td><b style="color:${weightTotal === 100 ? "#16a34a" : "#b91c1c"};">${weightTotal}%</b></td>
+        ${vendors.map(() => "<td></td>").join("")}
+        <td></td>
+      `;
+      table.appendChild(weightRow);
+
+      /* RAW TOTAL ROW */
+      const rawRow = document.createElement("tr");
+      rawRow.className = "totals-row";
+      rawRow.innerHTML = `
+        <td class="cell-label">Total Vendor Score (raw 0–N×3)</td>
+        <td></td>
+        ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
+        <td></td>
+      `;
+      table.appendChild(rawRow);
+
+      /* WEIGHTED TOTAL ROW */
+      const weightedRow = document.createElement("tr");
+      weightedRow.className = "totals-row";
+      weightedRow.innerHTML = `
+        <td class="cell-label">Total Weighted Score (0–3)</td>
+        <td></td>
+        ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
+        <td>${vendors
+          .map((v, i) => `${i + 1}) ${v} (${weighted[v].toFixed(2)})`)
+          .join(" | ")}</td>
+      `;
+      table.appendChild(weightedRow);
+
+      /* Score change listeners */
+      document.querySelectorAll(".score-cell").forEach(sel => {
+        sel.onchange = () => {
+          const id = Number(sel.dataset.id);
+          const v = sel.dataset.vendor;
+          scores[id][v] = sel.value;
+          renderTable();
+        };
+      });
+
+      /* Weight change listeners */
+      document.querySelectorAll(".weight-input").forEach(inp => {
+        inp.oninput = () => {
+          const index = Number(inp.dataset.index);
+          criteria[index].weight = Number(inp.value);
+          renderTable();
+        };
+      });
+    }
+
+    /* Remove criterion */
+    function removeCriterion(id) {
+      criteria = criteria.filter(c => c.id !== id);
+      delete scores[id];
+      renderTable();
+      populateDropdown();
+    }
+
+    /* Add vendor */
+    document.getElementById("addVendorBtn").onclick = () => {
+      const name = prompt("Vendor name?");
+      if (name && !vendors.includes(name.trim())) {
+        vendors.push(name.trim());
+        renderTable();
+      }
+    };
+
+    /* Toggle add criterion bar */
+    document.getElementById("addCriterionBtn").onclick = () => {
+      const bar = document.getElementById("addCriterionBar");
+      bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "block" : "none";
+    };
+
+    /* Populate dropdown options for remaining library criteria */
+    function populateDropdown() {
+      const s = document.getElementById("criterionLibrarySelect");
+      const usedIds = new Set(criteria.map(c => c.id));
+      s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
+      criteriaLibrary.forEach(c => {
+        if (!usedIds.has(c.id)) {
+          const opt = document.createElement("option");
+          opt.value = c.id;
+          opt.textContent = c.name;
+          s.appendChild(opt);
+        }
+      });
+    }
+
+    /* Confirm Add Criterion */
+    document.getElementById("confirmAddCriterion").onclick = () => {
+      populateDropdown();
+      const libSel = document.getElementById("criterionLibrarySelect").value;
+      const custom = document.getElementById("customCriterionName").value.trim();
+      const weight = Number(document.getElementById("newCriterionWeight").value);
+
+      if (!libSel && !custom) {
+        alert("Select a library item or enter a custom name.");
+        return;
+      }
+
+      let newName, newId;
+      if (libSel) {
+        const libItem = criteriaLibrary.find(c => c.id == libSel);
+        newName = libItem.name;
+        newId = libItem.id;
+      } else {
+        newName = custom;
+        newId = Date.now();
+      }
+
+      criteria.push({ id: newId, name: newName, weight });
+      scores[newId] = {};
+      vendors.forEach(v => scores[newId][v] = "");
+
+      document.getElementById("criterionLibrarySelect").value = "";
+      document.getElementById("customCriterionName").value = "";
+      document.getElementById("addCriterionBar").style.display = "none";
+
+      renderTable();
+      populateDropdown();
+    };
+
+    /* Export Excel */
+    document.getElementById("exportExcelBtn").onclick = () => {
+      const wb = XLSX.utils.book_new();
+      const data = [["Criterion", "Weight", ...vendors]];
+
+      criteria.forEach(c => {
+        const row = [c.name, c.weight];
+        vendors.forEach(v => row.push(scores[c.id][v] || ""));
+        data.push(row);
+      });
+
+      const ws = XLSX.utils.aoa_to_sheet(data);
+      XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
+      XLSX.writeFile(wb, "Scorecard.xlsx");
+    };
+
+    /* INIT */
+    populateDropdown();
+    renderTable();
+  </script>
 </body>
 </html>
