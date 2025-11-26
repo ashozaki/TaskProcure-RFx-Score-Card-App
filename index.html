@@ -171,7 +171,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .kpi-card {
@@ -202,17 +202,6 @@
       color: #6b7280;
     }
 
-    .kpi-card.instructions {
-      background: #f3f6ff;
-    }
-
-    .kpi-card.instructions ul {
-      padding-left: 18px;
-      margin: 4px 0 0;
-      font-size: 11px;
-      color: #4b5563;
-    }
-
     .kpi-card.leader .kpi-value {
       color: #00b894;
     }
@@ -225,6 +214,45 @@
     .kpi-meta-warn {
       color: #b45309;
       font-size: 11px;
+    }
+
+    .kpi-score-line {
+      color: #16a34a;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .kpi-ranking {
+      font-size: 11px;
+      color: #374151;
+    }
+
+    .kpi-ranking div {
+      margin-bottom: 2px;
+    }
+
+    /* INSTRUCTIONS CARD (relocated) */
+    .instructions-card {
+      margin-bottom: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      background: #f3f6ff;
+    }
+
+    .instructions-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .instructions-body {
+      font-size: 11px;
+      color: #4b5563;
+      line-height: 1.4;
     }
 
     /* ADD CRITERION BAR */
@@ -303,7 +331,7 @@
       background: #dce9ff !important;
       color: #0f172a !important;
       font-weight: 800 !important;
-      font-size: 15px !important;
+      font-size: 14px !important;
     }
 
     .totals-row td {
@@ -317,6 +345,10 @@
       color: #0f172a !important;
       font-weight: 900 !important;
       text-align: left;
+    }
+
+    .total-label {
+      white-space: nowrap;
     }
 
     .score-cell {
@@ -343,6 +375,21 @@
       cursor: pointer;
     }
 
+    .vendor-name-input {
+      border: none;
+      background: transparent;
+      text-align: center;
+      font-weight: 700;
+      font-size: 13px;
+      width: 90px;
+      outline: none;
+      color: #0f172a;
+    }
+
+    .vendor-name-input:focus {
+      border-bottom: 1px solid #0c3c78;
+    }
+
     @media (max-width: 900px) {
       .kpi-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -356,7 +403,6 @@
     }
   </style>
 
-  <!-- Excel export -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 
@@ -414,17 +460,24 @@
         <div class="kpi-card leader">
           <div class="kpi-label">Leading Vendor (Live)</div>
           <div class="kpi-value" id="leadingVendorName">—</div>
+          <div class="kpi-score-line" id="leadingVendorScore"></div>
           <div class="kpi-caption" id="leadingVendorMeta">Awaiting scores.</div>
         </div>
 
-        <div class="kpi-card instructions">
-          <div class="kpi-label">Score Card Instructions</div>
-          <ul>
-            <li>0 – If Solution does not meet needs</li>
-            <li>1 – If Solution only partially meets needs</li>
-            <li>2 – If Solution fully meets needs</li>
-            <li>3 – If Solution exceeds needs (without adding unnecessary cost)</li>
-          </ul>
+        <div class="kpi-card">
+          <div class="kpi-label">Vendor Ranking</div>
+          <div id="rankingList" class="kpi-ranking">No scores yet.</div>
+        </div>
+      </div>
+
+      <!-- SCORE CARD INSTRUCTIONS (relocated) -->
+      <div class="instructions-card">
+        <div class="instructions-title">Score Card Instructions</div>
+        <div class="instructions-body">
+          0 – If Solution does not meet needs<br />
+          1 – If Solution only partially meets needs<br />
+          2 – If Solution fully meets needs<br />
+          3 – If Solution exceeds needs (without adding unnecessary cost)
         </div>
       </div>
 
@@ -456,8 +509,8 @@
       { id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
       { id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
       { id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
-      { id: 8, name: "Reporting and Analytics", weight: 10 },
-      // Add more sections here if needed…
+      { id: 8, name: "Reporting and Analytics", weight: 10 }
+      // Add more sections here as needed…
     ];
 
     let criteria = [...criteriaLibrary];
@@ -488,7 +541,7 @@
       return { raw, weighted };
     }
 
-    function updateDashboard(weighted, weightTotal) {
+    function updateDashboard(raw, weighted, weightTotal) {
       const vendorsInScope = vendors.length;
       const criteriaCount = criteria.length;
 
@@ -496,31 +549,53 @@
       document.getElementById("criteriaCount").textContent = criteriaCount;
 
       const leadingNameEl = document.getElementById("leadingVendorName");
+      const leadingScoreEl = document.getElementById("leadingVendorScore");
       const leadingMetaEl = document.getElementById("leadingVendorMeta");
+      const rankingEl = document.getElementById("rankingList");
 
       let bestVendor = null;
-      let bestScore = -1;
+      let bestScoreWeighted = -1;
+      let bestScoreRaw = 0;
 
       vendors.forEach(v => {
-        const s = weighted[v] || 0;
-        if (s > bestScore) {
-          bestScore = s;
+        const sw = weighted[v] || 0;
+        if (sw > bestScoreWeighted) {
+          bestScoreWeighted = sw;
           bestVendor = v;
+          bestScoreRaw = raw[v] || 0;
         }
       });
 
-      if (bestVendor && bestScore > 0) {
-        leadingNameEl.textContent = `${bestVendor} (${bestScore.toFixed(2)})`;
+      if (bestVendor && bestScoreWeighted > 0) {
+        leadingNameEl.textContent = bestVendor;
+        leadingScoreEl.textContent =
+          `Score ${bestScoreRaw.toFixed(2)} • Weighted ${bestScoreWeighted.toFixed(2)}`;
       } else {
         leadingNameEl.textContent = "No scores yet";
+        leadingScoreEl.textContent = "";
       }
 
       if (weightTotal === 100) {
         leadingMetaEl.className = "kpi-caption kpi-meta-ok";
-        leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Perfectly normalised to 100%.`;
+        leadingMetaEl.textContent = `Weight total: 100% • Perfectly normalised to 100%.`;
       } else {
         leadingMetaEl.className = "kpi-caption kpi-meta-warn";
         leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Must be normalised to 100%.`;
+      }
+
+      // Build ranking list (highest weighted score first)
+      const entries = vendors.map(v => ({
+        name: v,
+        raw: raw[v] || 0,
+        weighted: weighted[v] || 0
+      })).sort((a, b) => b.weighted - a.weighted);
+
+      if (entries.every(e => e.raw === 0 && e.weighted === 0)) {
+        rankingEl.textContent = "No scores yet.";
+      } else {
+        rankingEl.innerHTML = entries.map((e, idx) =>
+          `<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(2)}, Weighted ${e.weighted.toFixed(2)}</div>`
+        ).join("");
       }
     }
 
@@ -531,7 +606,7 @@
       const { raw, weighted } = calculateTotals();
       const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
 
-      updateDashboard(weighted, weightTotal);
+      updateDashboard(raw, weighted, weightTotal);
 
       table.innerHTML = "";
 
@@ -540,16 +615,14 @@
       header.innerHTML = `
         <th class="cell-label">RFx Evaluation Section</th>
         <th>Weight %</th>
-        ${vendors
-          .map(
-            v => `
+        ${vendors.map(
+          v => `
           <th>
-            ${v}
+            <input class="vendor-name-input" value="${v}" data-vendor="${v}" />
             <button class="remove-btn" onclick="removeVendor('${v}')"
               style="margin-left:6px; padding:2px 6px; font-size:11px;">×</button>
           </th>`
-          )
-          .join("")}
+        ).join("")}
         <th>Remove</th>
       `;
       table.appendChild(header);
@@ -585,7 +658,7 @@
         table.appendChild(row);
       });
 
-      /* MAX POSSIBLE SCORES (dynamic, number only) */
+      /* MAX POSSIBLE SCORES */
       const maxRaw = criteria.length * 3;
       const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
 
@@ -603,9 +676,8 @@
       const rawRow = document.createElement("tr");
       rawRow.className = "totals-row";
       rawRow.innerHTML = `
-        <td class="cell-label">
-          Total Vendor Score
-          <span style="color:#16a34a;">(${maxRaw})</span>
+        <td class="cell-label total-label">
+          Total Vendor Score <span style="color:#16a34a;">(${maxRaw})</span>
         </td>
         <td></td>
         ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
@@ -613,20 +685,16 @@
       `;
       table.appendChild(rawRow);
 
-      /* WEIGHTED TOTAL ROW + SUMMARY */
+      /* WEIGHTED TOTAL ROW */
       const weightedRow = document.createElement("tr");
       weightedRow.className = "totals-row";
-      const summary = vendors
-        .map(v => `${v} (Score ${raw[v].toFixed(1)}, Weighted ${weighted[v].toFixed(2)})`)
-        .join(" | ");
       weightedRow.innerHTML = `
-        <td class="cell-label">
-          Total Weighted Score
-          <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
+        <td class="cell-label total-label">
+          Total Weighted Score <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
         </td>
         <td></td>
         ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
-        <td>${summary}</td>
+        <td></td>
       `;
       table.appendChild(weightedRow);
 
@@ -648,6 +716,28 @@
           renderTable();
         };
       });
+
+      /* VENDOR NAME EDITING */
+      document.querySelectorAll(".vendor-name-input").forEach(input => {
+        input.onchange = () => {
+          const oldName = input.dataset.vendor;
+          const newName = input.value.trim();
+          if (!newName || vendors.includes(newName) && newName !== oldName) {
+            input.value = oldName;
+            return;
+          }
+          renameVendor(oldName, newName);
+        };
+      });
+    }
+
+    function renameVendor(oldName, newName) {
+      vendors = vendors.map(v => (v === oldName ? newName : v));
+      Object.keys(scores).forEach(cid => {
+        scores[cid][newName] = scores[cid][oldName];
+        delete scores[cid][oldName];
+      });
+      renderTable();
     }
 
     function removeCriterion(id) {
