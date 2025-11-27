@@ -119,10 +119,16 @@
     .top-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
       margin-bottom: 10px;
       gap: 16px;
       flex-wrap: wrap;
+    }
+
+    .top-inputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .project-input label {
@@ -144,6 +150,7 @@
       gap: 8px;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
     }
 
     .btn-ghost {
@@ -164,6 +171,41 @@
       color: #ffffff;
       font-size: 12px;
       cursor: pointer;
+    }
+
+    /* Export dropdown */
+    .export-group {
+      position: relative;
+      display: inline-block;
+    }
+
+    .export-menu {
+      position: absolute;
+      right: 0;
+      top: 110%;
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      box-shadow: var(--shadow-soft);
+      min-width: 160px;
+      padding: 4px 0;
+      display: none;
+      z-index: 20;
+    }
+
+    .export-option {
+      width: 100%;
+      text-align: left;
+      padding: 8px 12px;
+      border: none;
+      background: transparent;
+      font-size: 12px;
+      cursor: pointer;
+      color: #111827;
+    }
+
+    .export-option:hover {
+      background: #eef2ff;
     }
 
     /* DASHBOARD KPI ROW */
@@ -231,7 +273,7 @@
       margin-bottom: 2px;
     }
 
-    /* INSTRUCTIONS CARD */
+    /* INSTRUCTIONS + PROGRESS */
     .instructions-card {
       margin-bottom: 12px;
       padding: 10px 12px;
@@ -241,13 +283,11 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 24px;
     }
 
     .instructions-left {
-      flex: 1 1 220px;
-      min-width: 200px;
+      flex: 2;
     }
 
     .instructions-title {
@@ -266,46 +306,40 @@
     }
 
     .instructions-right {
-      flex: 0 0 260px;
-      min-width: 220px;
-      font-size: 11px;
-      color: #4b5563;
-    }
-
-    .instructions-progress-label {
-      font-weight: 600;
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #6b7280;
+      flex: 1.3;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
     }
 
     .progress-bar-outer {
       width: 100%;
-      height: 8px;
+      height: 10px;
       border-radius: 999px;
-      background: #e5edff;
+      background: #e5e7eb;
       overflow: hidden;
-      margin-bottom: 4px;
     }
 
     .progress-bar-inner {
       height: 100%;
-      width: 0%;
+      width: 0;
       background: #22c55e;
       transition: width 0.25s ease-out;
     }
 
-    .instructions-progress-meta {
+    .progress-meta {
+      font-size: 11px;
+      color: #374151;
       display: flex;
       justify-content: space-between;
-      gap: 6px;
-      align-items: baseline;
+      width: 100%;
+      margin-top: 2px;
     }
 
-    .instructions-progress-meta span:first-child {
-      font-weight: 700;
+    .progress-percent {
       color: #16a34a;
+      font-weight: 700;
     }
 
     /* ADD CRITERION BAR */
@@ -443,27 +477,27 @@
       border-bottom: 1px solid #0c3c78;
     }
 
-    /* DECISION RATIONALE CARD */
-    .decision-card {
-      margin-top: 14px;
+    /* NOTES / DECISION RATIONALE */
+    .notes-card {
+      margin-top: 12px;
       padding: 10px 12px 12px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       background: #f9fafb;
     }
 
-    .decision-title {
+    .notes-title {
       font-size: 12px;
       font-weight: 600;
       margin-bottom: 6px;
       color: #111827;
     }
 
-    .decision-card textarea {
+    #decisionNotes {
       width: 100%;
       min-height: 80px;
       border-radius: 8px;
-      border: 1px solid #cbd5e1;
+      border: 1px solid #d1d5db;
       padding: 8px 10px;
       font-size: 12px;
       resize: vertical;
@@ -479,14 +513,6 @@
     @media (max-width: 640px) {
       .kpi-row {
         grid-template-columns: minmax(0, 1fr);
-      }
-
-      .instructions-card {
-        flex-direction: column;
-      }
-
-      .instructions-right {
-        width: 100%;
       }
     }
   </style>
@@ -509,7 +535,7 @@
       <div class="header-right">
         <div class="pill">
           <span class="pill-dot"></span>
-          Live scoring • Excel export ready
+          Live scoring • PDF &amp; Excel export ready
         </div>
       </div>
     </header>
@@ -519,16 +545,28 @@
 
       <!-- TOP CONTROLS -->
       <div class="top-row">
-        <div class="project-input">
-          <label>Project / RFx Name</label><br />
-          <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
+        <div class="top-inputs">
+          <div class="project-input">
+            <label>Project / RFx Name</label><br />
+            <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
+          </div>
+          <div class="project-input">
+            <label>Evaluator's Name</label><br />
+            <input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
+          </div>
         </div>
 
         <div class="top-actions">
           <button id="addCriterionBtn" class="btn-ghost">+ Add Criterion</button>
           <button id="addVendorBtn" class="btn-ghost">+ Add Vendor</button>
-          <button id="exportPdfBtn" class="btn-ghost">⬇ Export PDF</button>
-          <button id="exportExcelBtn" class="btn-primary">⬇ Export Scorecard</button>
+
+          <div class="export-group">
+            <button id="exportBtn" class="btn-primary">⬇ Export Scorecard</button>
+            <div id="exportMenu" class="export-menu">
+              <button class="export-option" data-type="excel">Export to Excel</button>
+              <button class="export-option" data-type="pdf">Export to PDF</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -570,14 +608,15 @@
             3 – If Solution exceeds needs (without adding unnecessary cost)
           </div>
         </div>
+
         <div class="instructions-right">
-          <div class="instructions-progress-label">Scoring Progress</div>
+          <div class="instructions-title">Scoring Progress</div>
           <div class="progress-bar-outer">
-            <div class="progress-bar-inner" id="scoreProgressBar"></div>
+            <div id="progressBarFill" class="progress-bar-inner"></div>
           </div>
-          <div class="instructions-progress-meta">
-            <span id="scoreProgressPercent">0%</span>
-            <span id="scoreProgressDetail">0 / 0 scores captured</span>
+          <div class="progress-meta">
+            <span id="progressPercent" class="progress-percent">0%</span>
+            <span id="progressCounts">0 / 0 scores captured</span>
           </div>
         </div>
       </div>
@@ -598,10 +637,10 @@
       </div>
 
       <!-- DECISION RATIONALE / NOTES -->
-      <div class="decision-card">
-        <div class="decision-title">Decision Rationale / Notes</div>
-        <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, and approvals…"></textarea>
-      </div>
+      <section class="notes-card">
+        <div class="notes-title">Decision Rationale / Notes</div>
+        <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
+      </section>
 
     </main>
   </div>
@@ -646,6 +685,28 @@
       });
 
       return { raw, weighted };
+    }
+
+    function updateScoringProgress() {
+      const totalCells = criteria.length * vendors.length;
+      let scored = 0;
+
+      criteria.forEach(c => {
+        vendors.forEach(v => {
+          const val = scores[c.id] ? scores[c.id][v] : "";
+          if (val !== "" && val !== undefined) scored++;
+        });
+      });
+
+      const percent = totalCells === 0 ? 0 : Math.round((scored / totalCells) * 100);
+
+      const bar = document.getElementById("progressBarFill");
+      const pctEl = document.getElementById("progressPercent");
+      const countEl = document.getElementById("progressCounts");
+
+      if (bar) bar.style.width = percent + "%";
+      if (pctEl) pctEl.textContent = percent + "%";
+      if (countEl) countEl.textContent = `${scored} / ${totalCells} scores captured`;
     }
 
     function updateDashboard(raw, weighted, weightTotal) {
@@ -704,28 +765,9 @@
           `<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(2)}, Weighted ${e.weighted.toFixed(2)}</div>`
         ).join("");
       }
-    }
 
-    function updateProgressBar() {
-      const bar = document.getElementById("scoreProgressBar");
-      const percentEl = document.getElementById("scoreProgressPercent");
-      const detailEl = document.getElementById("scoreProgressDetail");
-      if (!bar || !percentEl || !detailEl) return;
-
-      const totalCells = criteria.length * vendors.length;
-      let filledCells = 0;
-
-      criteria.forEach(c => {
-        vendors.forEach(v => {
-          const val = scores[c.id] ? scores[c.id][v] : "";
-          if (val !== "" && val !== undefined) filledCells++;
-        });
-      });
-
-      const percent = totalCells ? Math.round((filledCells / totalCells) * 100) : 0;
-      bar.style.width = `${percent}%`;
-      percentEl.textContent = `${percent}%`;
-      detailEl.textContent = `${filledCells} / ${totalCells} scores captured`;
+      // Update scoring progress bar
+      updateScoringProgress();
     }
 
     function renderTable() {
@@ -736,7 +778,6 @@
       const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
 
       updateDashboard(raw, weighted, weightTotal);
-      updateProgressBar();
 
       table.innerHTML = "";
 
@@ -947,7 +988,9 @@
       renderTable();
     };
 
-    document.getElementById("exportExcelBtn").onclick = () => {
+    /* Export helpers */
+
+    function exportToExcel() {
       const wb = XLSX.utils.book_new();
       const data = [["Criterion", "Weight", ...vendors]];
 
@@ -960,12 +1003,34 @@
       const ws = XLSX.utils.aoa_to_sheet(data);
       XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
       XLSX.writeFile(wb, "Scorecard.xlsx");
-    };
+    }
 
-    document.getElementById("exportPdfBtn").onclick = () => {
-      // Uses the browser's print-to-PDF capability
+    function exportToPDF() {
+      // Simple approach: use browser print-to-PDF
       window.print();
-    };
+    }
+
+    // Export dropdown logic
+    const exportBtn = document.getElementById("exportBtn");
+    const exportMenu = document.getElementById("exportMenu");
+
+    exportBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      exportMenu.style.display = exportMenu.style.display === "block" ? "none" : "block";
+    });
+
+    document.querySelectorAll(".export-option").forEach(opt => {
+      opt.addEventListener("click", (e) => {
+        const type = e.target.dataset.type;
+        exportMenu.style.display = "none";
+        if (type === "excel") exportToExcel();
+        if (type === "pdf") exportToPDF();
+      });
+    });
+
+    document.addEventListener("click", () => {
+      exportMenu.style.display = "none";
+    });
 
     /* INIT */
     populateDropdown();
