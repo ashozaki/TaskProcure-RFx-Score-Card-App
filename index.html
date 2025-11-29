@@ -37,15 +37,15 @@
 
     /* HEADER */
     .app-header {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 12px 20px;          /* slightly more vertical padding */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid #e5e7eb;
-  margin-bottom: 20px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5e7eb;
+      margin-bottom: 20px;
     }
 
     .brand-left {
@@ -54,14 +54,12 @@
       gap: 103px;
     }
 
-   .brand-logo-hero {
-  height: 50px;        /* Bigger logo (adjust until perfect) */
-  width: auto;
-  display: block;
-  transform: scale(1.35);   /* Scales the visual size */
-  transform-origin: left center; /* Keep it aligned */
-}
-
+    .brand-logo-hero {
+      height: 50px;
+      width: auto;
+      display: block;
+      transform: scale(1.35);
+      transform-origin: left center;
     }
 
     .brand-title {
@@ -70,19 +68,19 @@
     }
 
     .brand-tagline {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #6b7280;
-  font-weight: 600;
-  line-height: 1.4;            /* prevents the R from being cut off */
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6b7280;
+      font-weight: 600;
+      line-height: 1.4;
     }
 
     .brand-heading {
-  font-size: 18px;             /* smaller so it doesn’t dominate */
-  font-weight: 700;
-  color: #0c3c78;              /* same dark blue as your logo */
-  letter-spacing: 0.02em;
+      font-size: 18px;
+      font-weight: 700;
+      color: #0c3c78;
+      letter-spacing: 0.02em;
     }
 
     .header-right {
@@ -114,27 +112,23 @@
 
     /* MAIN CARD */
     .card {
-     /* MAIN CARD */
-.card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 14px 18px 18px;
-  border: 1px solid var(--tp-border);
-  box-shadow: var(--shadow-soft);
-  position: relative;            /* allow absolute positioning inside */
-}
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 14px 18px 18px;
+      border: 1px solid var(--tp-border);
+      box-shadow: var(--shadow-soft);
+      position: relative;          /* allows watermark positioning */
+    }
 
-/* Watermark */
-.card-watermark {
-  position: absolute;
-  right: 25px;                   /* bottom-right anchor */
-  bottom: 25px;
-  width: 260px;                  /* tweak size if needed */
-  opacity: 0.10;                 /* subtle engraved effect */
-  pointer-events: none;          /* don’t block clicks */
-  user-select: none;
-}
-
+    /* Watermark */
+    .card-watermark {
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      width: 260px;
+      opacity: 0.10;               /* engraved look */
+      pointer-events: none;
+      user-select: none;
     }
 
     /* TOP CONTROLS */
@@ -581,9 +575,6 @@
       font-family: inherit;
     }
 
-    
-    }
-
     @media (max-width: 900px) {
       .kpi-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -604,6 +595,7 @@
       .instructions-right {
         align-items: flex-start;
       }
+    }
 
     @media (max-width: 640px) {
       .kpi-row {
@@ -621,7 +613,7 @@
     <!-- HEADER -->
     <header class="app-header">
       <div class="brand-left">
-       <img src="Logo%20resized.png" class="brand-logo-hero" alt="TaskProcure logo" />
+        <img src="Logo resized.png" class="brand-logo-hero" alt="TaskProcure logo" />
         <div class="brand-title">
           <span class="brand-tagline">RFX Evaluation Dashboard</span>
           <span class="brand-heading">Score Card &amp; Vendor Ranking</span>
@@ -754,14 +746,13 @@
         <div class="notes-title">Decision Rationale / Notes</div>
         <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
       </section>
+
       <!-- WATERMARK -->
       <img
-        src="Engraved%20Logo.png"
+        src="Engraved Logo.png"
         alt="TaskProcure Watermark"
         class="card-watermark"
       />
-
-    </main>
 
     </main>
   </div>
