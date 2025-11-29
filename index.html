@@ -7,694 +7,513 @@
 
 <style>
 :root {
-  --tp-primary: #0c3c78;
-  --tp-primary-soft: #e7f0fb;
-  --tp-accent: #00b894;
-  --tp-bg: #f3f5f9;
-  --tp-card-bg: #ffffff;
-  --tp-border: #d9e2ef;
-  --tp-text-main: #1f2933;
-  --tp-text-muted: #64748b;
-  --radius-lg: 14px;
-  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+--tp-primary: #0c3c78;
+--tp-primary-soft: #e7f0fb;
+--tp-accent: #00b894;
+--tp-bg: #f3f5f9;
+--tp-card-bg: #ffffff;
+--tp-border: #d9e2ef;
+--tp-text-main: #1f2933;
+--tp-text-muted: #64748b;
+--radius-lg: 14px;
+--shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
 }
 
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top left, #e3f2ff 0, #f3f5f9 40%, #eef2ff 100%);
-  color: var(--tp-text-main);
+margin: 0;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+background: radial-gradient(circle at top left, #e3f2ff 0, #f3f5f9 40%, #eef2ff 100%);
+color: var(--tp-text-main);
 }
 
 .app-shell {
-  max-width: 1180px;
-  margin: 20px auto;
-  padding: 12px 16px 24px;
-  border-radius: 24px;
-  border: 1px solid #d1d5e5;
-  background: transparent;
+max-width: 1180px;
+margin: 20px auto;
+padding: 12px 16px 24px;
+border-radius: 24px;
+border: 1px solid #d1d5e5;
+background: transparent;
 }
 
 /* HEADER */
 .app-header {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 4px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid #e5e7eb;
-  margin-bottom: 20px;
+background: #ffffff;
+border-radius: 18px;
+padding: 4px 24px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+box-shadow: var(--shadow-soft);
+border: 1px solid #e5e7eb;
+margin-bottom: 20px;
 }
 
 .brand-left {
-  display: flex;
-  align-items: center;
-  gap: 18px;
+display: flex;
+align-items: center;
+gap: 18px;
 }
 
 .brand-logo-hero {
-  height: 72px;
-  width: auto;
-  display: block;
-  /* visually enlarge logo without changing header height */
-  transform: scale(1.25);
-  transform-origin: left center;
+height: 72px;
+width: auto;
+display: block;
 }
 
 .brand-title {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .brand-tagline {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #6b7280;
-  font-weight: 600;
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 0.15em;
+color: #6b7280;
+font-weight: 600;
 }
 
 .brand-heading {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--tp-primary);
+font-size: 22px;
+font-weight: 700;
+color: var(--tp-primary);
 }
 
 .header-right {
-  font-size: 11px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  color: #4b5563;
+font-size: 11px;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 4px;
+color: #4b5563;
 }
 
 .pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--tp-primary-soft);
-  color: var(--tp-primary);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-weight: 600;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background: var(--tp-primary-soft);
+color: var(--tp-primary);
+padding: 4px 12px;
+border-radius: 999px;
+font-weight: 600;
 }
 
 .pill-dot {
-  width: 7px;
-  height: 7px;
-  background: #22c55e;
-  border-radius: 999px;
+width: 7px;
+height: 7px;
+background: #22c55e;
+border-radius: 999px;
 }
 
 /* MAIN CARD */
 .card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 14px 18px 18px;
-  border: 1px solid var(--tp-border);
-  box-shadow: var(--shadow-soft);
+background: #ffffff;
+border-radius: 14px;
+padding: 14px 18px 18px;
+border: 1px solid var(--tp-border);
+box-shadow: var(--shadow-soft);
 }
 
 /* TOP CONTROLS */
 .top-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 10px;
-  gap: 16px;
-  flex-wrap: wrap;
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 10px;
+gap: 16px;
+flex-wrap: wrap;
 }
 
 .top-inputs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
 }
 
 .project-input label {
-  font-size: 12px;
-  font-weight: 600;
+font-size: 12px;
+font-weight: 600;
 }
 
 .project-input input {
-  margin-top: 4px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid #cbd5e1;
-  min-width: 260px;
-  font-size: 13px;
+margin-top: 4px;
+padding: 6px 12px;
+border-radius: 999px;
+border: 1px solid #cbd5e1;
+min-width: 260px;
+font-size: 13px;
 }
 
 .top-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
+display: flex;
+gap: 8px;
+flex-wrap: wrap;
+justify-content: flex-end;
+align-items: center;
 }
 
 .btn-ghost {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid #0c3c78;
-  color: #0c3c78;
-  background: #ffffff;
-  font-size: 12px;
-  cursor: pointer;
+padding: 8px 14px;
+border-radius: 999px;
+border: 1px solid #0c3c78;
+color: #0c3c78;
+background: #ffffff;
+font-size: 12px;
+cursor: pointer;
 }
 
 .btn-primary {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: none;
-  background: #0c3c78;
-  color: #ffffff;
-  font-size: 12px;
-  cursor: pointer;
+padding: 8px 14px;
+border-radius: 999px;
+border: none;
+background: #0c3c78;
+color: #ffffff;
+font-size: 12px;
+cursor: pointer;
 }
 
 /* Export dropdown */
 .export-group {
-  position: relative;
-  display: inline-block;
+position: relative;
+display: inline-block;
 }
 
 .export-menu {
-  position: absolute;
-  right: 0;
-  top: 110%;
-  background: #ffffff;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  box-shadow: var(--shadow-soft);
-  min-width: 160px;
-  padding: 4px 0;
-  display: none;
-  z-index: 20;
+position: absolute;
+right: 0;
+top: 110%;
+background: #ffffff;
+border-radius: 10px;
+border: 1px solid #d1d5db;
+box-shadow: var(--shadow-soft);
+min-width: 160px;
+padding: 4px 0;
+display: none;
+z-index: 20;
 }
 
 .export-option {
-  width: 100%;
-  text-align: left;
-  padding: 8px 12px;
-  border: none;
-  background: transparent;
-  font-size: 12px;
-  cursor: pointer;
-  color: #111827;
+width: 100%;
+text-align: left;
+padding: 8px 12px;
+border: none;
+background: transparent;
+font-size: 12px;
+cursor: pointer;
+color: #111827;
 }
 
 .export-option:hover {
-  background: #eef2ff;
+background: #eef2ff;
 }
 
 /* DASHBOARD KPI ROW */
 .kpi-row {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 10px;
+display: grid;
+grid-template-columns: repeat(4, minmax(0, 1fr));
+gap: 10px;
+margin-bottom: 10px;
 }
 
 .kpi-card {
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 10px 12px;
-  border: 1px solid #e5e7eb;
+background: #f9fafb;
+border-radius: 12px;
+padding: 10px 12px;
+border: 1px solid #e5e7eb;
 }
 
 .kpi-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #6b7280;
-  margin-bottom: 4px;
-  font-weight: 600;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.12em;
+color: #6b7280;
+margin-bottom: 4px;
+font-weight: 600;
 }
 
 .kpi-value {
-  font-size: 22px;
-  font-weight: 700;
-  color: #0c3c78;
-  margin-bottom: 2px;
+font-size: 22px;
+font-weight: 700;
+color: #0c3c78;
+margin-bottom: 2px;
 }
 
 .kpi-caption {
-  font-size: 11px;
-  color: #6b7280;
+font-size: 11px;
+color: #6b7280;
 }
 
 .kpi-card.leader .kpi-value {
-  color: #00b894;
+color: #00b894;
 }
 
 .kpi-meta-ok {
-  color: #16a34a;
-  font-size: 11px;
+color: #16a34a;
+font-size: 11px;
 }
 
 .kpi-meta-warn {
-  color: #b45309;
-  font-size: 11px;
+color: #b45309;
+font-size: 11px;
 }
 
 .kpi-score-line {
-  color: #16a34a;
-  font-size: 11px;
-  font-weight: 600;
+color: #16a34a;
+font-size: 11px;
+font-weight: 600;
 }
 
 .kpi-ranking {
-  font-size: 11px;
-  color: #374151;
+font-size: 11px;
+color: #374151;
 }
 
 .kpi-ranking div {
-  margin-bottom: 2px;
+margin-bottom: 2px;
 }
 
-/* INSTRUCTIONS + CONFIDENCE + PROGRESS */
+/* INSTRUCTIONS + PROGRESS */
 .instructions-card {
-  margin-bottom: 12px;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
-  background: #f3f6ff;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
+margin-bottom: 12px;
+padding: 10px 12px;
+border-radius: 10px;
+border: 1px solid #e5e7eb;
+background: #f3f6ff;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 24px;
 }
 
 .instructions-left {
-  flex: 1.8;
+flex: 2;
 }
 
 .instructions-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #6b7280;
-  margin-bottom: 4px;
-  font-weight: 600;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.12em;
+color: #6b7280;
+margin-bottom: 4px;
+font-weight: 600;
 }
 
 .instructions-body {
-  font-size: 11px;
-  color: #4b5563;
-  line-height: 1.4;
+font-size: 11px;
+color: #4b5563;
+line-height: 1.4;
 }
 
-/* center column: donut + top insights */
-.instructions-center {
-  flex: 1.3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.confidence-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.confidence-donut {
-  --confidence: 0%;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: conic-gradient(#ef4444 var(--confidence), #fee2e2 0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.confidence-inner {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #f9fafb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-size: 11px;
-  color: #b91c1c;
-  font-weight: 700;
-}
-
-.confidence-label-sm {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #9ca3af;
-  margin-top: -2px;
-}
-
-.confidence-caption {
-  font-size: 10px;
-  color: #6b7280;
-  text-align: center;
-}
-
-/* Top Insights */
-.top-insights {
-  margin-top: 4px;
-  width: 100%;
-}
-
-.insights-title {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #6b7280;
-  margin-bottom: 2px;
-}
-
-#insightsList {
-  list-style: disc;
-  padding-left: 14px;
-  margin: 0;
-  font-size: 10px;
-  color: #4b5563;
-}
-
-/* Right side progress */
 .instructions-right {
-  flex: 1.4;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
+flex: 1.3;
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+gap: 4px;
 }
 
 .progress-bar-outer {
-  width: 100%;
-  height: 10px;
-  border-radius: 999px;
-  background: #e5e7eb;
-  overflow: hidden;
+width: 100%;
+height: 10px;
+border-radius: 999px;
+background: #e5e7eb;
+overflow: hidden;
 }
 
 .progress-bar-inner {
-  height: 100%;
-  width: 0;
-  background: #22c55e;
-  transition: width 0.25s ease-out;
+height: 100%;
+width: 0;
+background: #22c55e;
+transition: width 0.25s ease-out;
 }
 
 .progress-meta {
-  font-size: 11px;
-  color: #374151;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 2px;
+font-size: 11px;
+color: #374151;
+display: flex;
+justify-content: space-between;
+width: 100%;
+margin-top: 2px;
 }
 
 .progress-percent {
-  color: #16a34a;
-  font-weight: 700;
+color: #16a34a;
+font-weight: 700;
 }
 
 /* ADD CRITERION BAR */
 #addCriterionBar {
-  margin-bottom: 12px;
-  padding: 10px;
-  border: 1px dashed #94a3b8;
-  border-radius: 10px;
-  background: #f8fafc;
-  display: none;
-  gap: 6px;
+margin-bottom: 12px;
+padding: 10px;
+border: 1px dashed #94a3b8;
+border-radius: 10px;
+background: #f8fafc;
+display: none;
+gap: 6px;
 }
 
 #addCriterionBar select,
 #addCriterionBar input {
-  padding: 5px 8px;
-  border-radius: 6px;
-  border: 1px solid #cbd5e1;
-  font-size: 12px;
+padding: 5px 8px;
+border-radius: 6px;
+border: 1px solid #cbd5e1;
+font-size: 12px;
 }
 
 #addCriterionBar select {
-  min-width: 230px;
+min-width: 230px;
 }
 
 #addCriterionBar input[type="number"] {
-  width: 70px;
+width: 70px;
 }
 
 /* TABLE */
 .table-wrap {
-  border-radius: 12px;
-  border: 1px solid var(--tp-border);
-  overflow: auto;
-  background: #ffffff;
-  position: relative;
+border-radius: 12px;
+border: 1px solid var(--tp-border);
+overflow: auto;
+background: #ffffff;
 }
 
 table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 680px;
-  font-size: 13px;
+border-collapse: collapse;
+width: 100%;
+min-width: 680px;
+font-size: 13px;
 }
 
 th,
 td {
-  border-bottom: 1px solid #e5e7eb;
-  padding: 10px;
-  text-align: center;
+border-bottom: 1px solid #e5e7eb;
+padding: 10px;
+text-align: center;
 }
 
 th {
-  background: #eef2ff !important;
-  font-size: 15px !important;
-  font-weight: 800 !important;
-  color: #0f172a !important;
+background: #eef2ff !important;
+font-size: 15px !important;
+font-weight: 800 !important;
+color: #0f172a !important;
 }
 
 td {
-  background: #ffffff;
+background: #ffffff;
 }
 
 tr:nth-child(even) td {
-  background: #f8fbff;
+background: #f8fbff;
 }
 
 .cell-label {
-  text-align: left;
-  font-weight: 600;
-  font-size: 13px;
-  color: #111827;
-}
-
-/* editable criterion input */
-.criterion-input {
-  border: none;
-  background: transparent;
-  width: 100%;
-  font-size: 13px;
-  font-weight: 600;
-  color: #111827;
-}
-
-.criterion-input:focus {
-  outline: none;
-  border-bottom: 1px solid #0c3c78;
-}
-
-/* watermark / engraving */
-.table-watermark {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  opacity: 0.04;
-  z-index: 1;
-}
-
-.table-watermark img {
-  max-width: 260px;
-  height: auto;
-  filter: grayscale(1);
+text-align: left;
+font-weight: 600;
+font-size: 13px;
+color: #111827;
 }
 
 /* TOTALS ROWS */
 .totals-row {
-  background: #dce9ff !important;
-  color: #0f172a !important;
-  font-weight: 800 !important;
-  font-size: 14px !important;
-  position: relative;
-  z-index: 2;
+background: #dce9ff !important;
+color: #0f172a !important;
+font-weight: 800 !important;
+font-size: 14px !important;
 }
 
 .totals-row td {
-  background: #dce9ff !important;
-  color: #0f172a !important;
-  padding: 12px 8px;
-  border-bottom: none;
+background: #dce9ff !important;
+color: #0f172a !important;
+padding: 12px 8px;
+border-bottom: none;
 }
 
 .totals-row .cell-label {
-  color: #0f172a !important;
-  font-weight: 900 !important;
-  text-align: left;
+color: #0f172a !important;
+font-weight: 900 !important;
+text-align: left;
 }
 
 .total-label {
-  white-space: nowrap;
+white-space: nowrap;
 }
 
 .score-cell {
-  padding: 4px;
-  border-radius: 6px;
-  width: 55px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
+padding: 4px;
+border-radius: 6px;
+width: 55px;
+text-align: center;
 }
 
 .weight-input {
-  width: 60px;
-  padding: 4px;
-  border-radius: 6px;
-  text-align: center;
-  border: 1px solid #d1d5db;
-  position: relative;
-  z-index: 2;
+width: 60px;
+padding: 4px;
+border-radius: 6px;
+text-align: center;
+border: 1px solid #d1d5db;
 }
 
 .remove-btn {
-  background: #fee2e2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
-  padding: 4px 10px;
-  border-radius: 20px;
-  cursor: pointer;
-  position: relative;
-  z-index: 2;
+background: #fee2e2;
+border: 1px solid #fecaca;
+color: #b91c1c;
+padding: 4px 10px;
+border-radius: 20px;
+cursor: pointer;
 }
 
 .vendor-name-input {
-  border: none;
-  background: transparent;
-  text-align: center;
-  font-weight: 700;
-  font-size: 13px;
-  width: 90px;
-  outline: none;
-  color: #0f172a;
+border: none;
+background: transparent;
+text-align: center;
+font-weight: 700;
+font-size: 13px;
+width: 90px;
+outline: none;
+color: #0f172a;
 }
 
 .vendor-name-input:focus {
-  border-bottom: 1px solid #0c3c78;
-}
-
-/* info tooltip */
-.info-tooltip {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-}
-
-.info-icon {
-  margin-left: 4px;
-  font-size: 11px;
-  color: #6b7280;
-  cursor: pointer;
-}
-
-.tooltip-bubble {
-  position: absolute;
-  bottom: 125%;
-  left: 0;
-  transform: translateX(-10%);
-  background: #0f172a;
-  color: #f9fafb;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 11px;
-  max-width: 260px;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.35);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
-  z-index: 30;
-}
-
-.tooltip-bubble::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 16px;
-  border-width: 6px;
-  border-style: solid;
-  border-color: #0f172a transparent transparent transparent;
-}
-
-.info-tooltip:hover .tooltip-bubble {
-  opacity: 1;
-  transform: translateX(-10%) translateY(-2px);
+border-bottom: 1px solid #0c3c78;
 }
 
 /* NOTES / DECISION RATIONALE */
 .notes-card {
-  margin-top: 12px;
-  padding: 10px 12px 12px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
+margin-top: 12px;
+padding: 10px 12px 12px;
+border-radius: 12px;
+border: 1px solid #e5e7eb;
+background: #f9fafb;
 }
 
 .notes-title {
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: #111827;
+font-size: 12px;
+font-weight: 600;
+margin-bottom: 6px;
+color: #111827;
 }
 
 #decisionNotes {
-  width: 100%;
-  min-height: 80px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  padding: 8px 10px;
-  font-size: 12px;
-  resize: vertical;
-  font-family: inherit;
+width: 100%;
+min-height: 80px;
+border-radius: 8px;
+border: 1px solid #d1d5db;
+padding: 8px 10px;
+font-size: 12px;
+resize: vertical;
+font-family: inherit;
 }
 
 @media (max-width: 900px) {
-  .kpi-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .instructions-card {
-    flex-direction: column;
-  }
-  .instructions-left,
-  .instructions-center,
-  .instructions-right {
-    align-items: flex-start;
-  }
-  .instructions-right {
-    align-items: stretch;
-  }
+.kpi-row {
+grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 }
 
 @media (max-width: 640px) {
-  .kpi-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.kpi-row {
+grid-template-columns: minmax(0, 1fr);
+}
 }
 </style>
 
@@ -706,146 +525,122 @@ tr:nth-child(even) td {
 
 <!-- HEADER -->
 <header class="app-header">
-  <div class="brand-left">
-    <img src="Taskprocure%20Logo.png" class="brand-logo-hero" alt="TaskProcure logo" />
-    <div class="brand-title">
-      <span class="brand-tagline">RFx Evaluation Dashboard</span>
-      <span class="brand-heading">Score Card &amp; Vendor Ranking</span>
-    </div>
-  </div>
-  <div class="header-right">
-    <div class="pill">
-      <span class="pill-dot"></span>
-      Live scoring • PDF &amp; Excel export ready
-    </div>
-  </div>
+<div class="brand-left">
+<img src="Taskprocure%20Logo.png" class="brand-logo-hero" alt="TaskProcure logo" />
+<div class="brand-title">
+<span class="brand-tagline">RFx Evaluation Dashboard</span>
+<span class="brand-heading">Score Card &amp; Vendor Ranking</span>
+</div>
+</div>
+<div class="header-right">
+<div class="pill">
+<span class="pill-dot"></span>
+Live scoring • PDF &amp; Excel export ready
+</div>
+</div>
 </header>
 
 <!-- MAIN CONTENT -->
 <main class="card">
 
-  <!-- TOP CONTROLS -->
-  <div class="top-row">
-    <div class="top-inputs">
-      <div class="project-input">
-        <label>Project / RFx Name</label><br />
-        <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
-      </div>
-      <div class="project-input">
-        <label>Evaluator's Name</label><br />
-        <input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
-      </div>
-    </div>
+<!-- TOP CONTROLS -->
+<div class="top-row">
+<div class="top-inputs">
+<div class="project-input">
+<label>Project / RFx Name</label><br />
+<input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
+</div>
+<div class="project-input">
+<label>Evaluator's Name</label><br />
+<input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
+</div>
+</div>
 
-    <div class="top-actions">
-      <button id="addCriterionBtn" class="btn-ghost">+ Add Criterion</button>
-      <button id="addVendorBtn" class="btn-ghost">+ Add Vendor</button>
+<div class="top-actions">
+<button id="addCriterionBtn" class="btn-ghost">+ Add Criterion</button>
+<button id="addVendorBtn" class="btn-ghost">+ Add Vendor</button>
 
-      <div class="export-group">
-        <button id="exportBtn" class="btn-primary">⬇ Export Scorecard</button>
-        <div id="exportMenu" class="export-menu">
-          <button class="export-option" data-type="excel">Export to Excel</button>
-          <button class="export-option" data-type="pdf">Export to PDF</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="export-group">
+<button id="exportBtn" class="btn-primary">⬇ Export Scorecard</button>
+<div id="exportMenu" class="export-menu">
+<button class="export-option" data-type="excel">Export to Excel</button>
+<button class="export-option" data-type="pdf">Export to PDF</button>
+</div>
+</div>
+</div>
+</div>
 
-  <!-- DASHBOARD KPI TILES -->
-  <div class="kpi-row">
-    <div class="kpi-card">
-      <div class="kpi-label">Vendors in Scope</div>
-      <div class="kpi-value" id="vendorsInScopeCount">0</div>
-      <div class="kpi-caption">Vendors currently being scored.</div>
-    </div>
+<!-- DASHBOARD KPI TILES -->
+<div class="kpi-row">
+<div class="kpi-card">
+<div class="kpi-label">Vendors in Scope</div>
+<div class="kpi-value" id="vendorsInScopeCount">0</div>
+<div class="kpi-caption">Vendors currently being scored.</div>
+</div>
 
-    <div class="kpi-card">
-      <div class="kpi-label">RFx Evaluation Sections</div>
-      <div class="kpi-value" id="criteriaCount">0</div>
-      <div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
-    </div>
+<div class="kpi-card">
+<div class="kpi-label">RFx Evaluation Sections</div>
+<div class="kpi-value" id="criteriaCount">0</div>
+<div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
+</div>
 
-    <div class="kpi-card leader">
-      <div class="kpi-label">Leading Vendor (Live)</div>
-      <div class="kpi-value" id="leadingVendorName">—</div>
-      <div class="kpi-score-line" id="leadingVendorScore"></div>
-      <div class="kpi-caption" id="leadingVendorMeta">Awaiting scores.</div>
-    </div>
+<div class="kpi-card leader">
+<div class="kpi-label">Leading Vendor (Live)</div>
+<div class="kpi-value" id="leadingVendorName">—</div>
+<div class="kpi-score-line" id="leadingVendorScore"></div>
+<div class="kpi-caption" id="leadingVendorMeta">Awaiting scores.</div>
+</div>
 
-    <div class="kpi-card">
-      <div class="kpi-label">Vendor Ranking</div>
-      <div id="rankingList" class="kpi-ranking">No scores yet.</div>
-    </div>
-  </div>
+<div class="kpi-card">
+<div class="kpi-label">Vendor Ranking</div>
+<div id="rankingList" class="kpi-ranking">No scores yet.</div>
+</div>
+</div>
 
-  <!-- SCORE CARD INSTRUCTIONS + CONFIDENCE + PROGRESS -->
-  <div class="instructions-card">
-    <div class="instructions-left">
-      <div class="instructions-title">Score Card Instructions</div>
-      <div class="instructions-body">
-        0 – If Solution does not meet needs<br />
-        1 – If Solution only partially meets needs<br />
-        2 – If Solution fully meets needs<br />
-        3 – If Solution exceeds needs (without adding unnecessary cost)
-      </div>
-    </div>
+<!-- SCORE CARD INSTRUCTIONS + PROGRESS -->
+<div class="instructions-card">
+<div class="instructions-left">
+<div class="instructions-title">Score Card Instructions</div>
+<div class="instructions-body">
+0 – If Solution does not meet needs<br />
+1 – If Solution only partially meets needs<br />
+2 – If Solution fully meets needs<br />
+3 – If Solution exceeds needs (without adding unnecessary cost)
+</div>
+</div>
 
-    <div class="instructions-center">
-      <div class="instructions-title">Decision Confidence</div>
-      <div class="confidence-wrapper">
-        <div id="confidenceDonut" class="confidence-donut">
-          <div class="confidence-inner">
-            <span id="confidencePercent">0%</span>
-            <span class="confidence-label-sm">confidence</span>
-          </div>
-        </div>
-        <div class="confidence-caption">
-          Based on scoring completeness and separation.
-        </div>
-      </div>
-      <div class="top-insights">
-        <div class="insights-title">Top Insights</div>
-        <ul id="insightsList">
-          <li>Awaiting scores…</li>
-        </ul>
-      </div>
-    </div>
+<div class="instructions-right">
+<div class="instructions-title">Scoring Progress</div>
+<div class="progress-bar-outer">
+<div id="progressBarFill" class="progress-bar-inner"></div>
+</div>
+<div class="progress-meta">
+<span id="progressPercent" class="progress-percent">0%</span>
+<span id="progressCounts">0 / 0 scores captured</span>
+</div>
+</div>
+</div>
 
-    <div class="instructions-right">
-      <div class="instructions-title">Scoring Progress</div>
-      <div class="progress-bar-outer">
-        <div id="progressBarFill" class="progress-bar-inner"></div>
-      </div>
-      <div class="progress-meta">
-        <span id="progressPercent" class="progress-percent">0%</span>
-        <span id="progressCounts">0 / 0 scores captured</span>
-      </div>
-    </div>
-  </div>
+<!-- ADD CRITERION BAR -->
+<div id="addCriterionBar">
+<select id="criterionLibrarySelect">
+<option value="">-- Select RFx Evaluation Section --</option>
+</select>
+<input id="customCriterionName" placeholder="Custom evaluation section name" />
+<input id="newCriterionWeight" type="number" value="10" />
+<button id="confirmAddCriterion" class="btn-primary" style="padding:6px 16px;">Add</button>
+</div>
 
-  <!-- ADD CRITERION BAR -->
-  <div id="addCriterionBar">
-    <select id="criterionLibrarySelect">
-      <option value="">-- Select RFx Evaluation Section --</option>
-    </select>
-    <input id="customCriterionName" placeholder="Custom evaluation section name" />
-    <input id="newCriterionWeight" type="number" value="10" />
-    <button id="confirmAddCriterion" class="btn-primary" style="padding:6px 16px;">Add</button>
-  </div>
+<!-- SCORE TABLE -->
+<div class="table-wrap">
+<table id="scorecardTable"></table>
+</div>
 
-  <!-- SCORE TABLE -->
-  <div class="table-wrap">
-    <div class="table-watermark">
-      <img src="Taskprocure%20Logo.png" alt="TaskProcure watermark" />
-    </div>
-    <table id="scorecardTable"></table>
-  </div>
-
-  <!-- DECISION RATIONALE / NOTES -->
-  <section class="notes-card">
-    <div class="notes-title">Decision Rationale / Notes</div>
-    <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
-  </section>
+<!-- DECISION RATIONALE / NOTES -->
+<section class="notes-card">
+<div class="notes-title">Decision Rationale / Notes</div>
+<textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
+</section>
 
 </main>
 </div>
@@ -853,15 +648,15 @@ tr:nth-child(even) td {
 <script>
 /* CRITERIA LIBRARY – extend this with all RFx Toolkit sections */
 const criteriaLibrary = [
-  { id: 1, name: "Alignment with Organizational Goals", weight: 12 },
-  { id: 2, name: "API Availability and Functionality", weight: 13 },
-  { id: 3, name: "Automation and AI Features", weight: 12 },
-  { id: 4, name: "Cloud Capabilities", weight: 13 },
-  { id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
-  { id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
-  { id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
-  { id: 8, name: "Reporting and Analytics", weight: 10 }
-  // Add more sections here as needed…
+{ id: 1, name: "Alignment with Organizational Goals", weight: 12 },
+{ id: 2, name: "API Availability and Functionality", weight: 13 },
+{ id: 3, name: "Automation and AI Features", weight: 12 },
+{ id: 4, name: "Cloud Capabilities", weight: 13 },
+{ id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
+{ id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
+{ id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
+{ id: 8, name: "Reporting and Analytics", weight: 10 }
+// Add more sections here as needed…
 ];
 
 let criteria = [...criteriaLibrary];
@@ -869,483 +664,350 @@ let vendors = ["Vendor A", "Vendor B"];
 let scores = {};
 
 function ensureScores() {
-  criteria.forEach(c => {
-    if (!scores[c.id]) scores[c.id] = {};
-    vendors.forEach(v => {
-      if (scores[c.id][v] === undefined) scores[c.id][v] = "";
-    });
-  });
+criteria.forEach(c => {
+if (!scores[c.id]) scores[c.id] = {};
+vendors.forEach(v => {
+if (scores[c.id][v] === undefined) scores[c.id][v] = "";
+});
+});
 }
 
 function calculateTotals() {
-  let raw = {}, weighted = {};
-  vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
+let raw = {}, weighted = {};
+vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
 
-  criteria.forEach(c => {
-    vendors.forEach(v => {
-      const s = Number(scores[c.id][v]) || 0;
-      raw[v] += s;
-      weighted[v] += (c.weight / 100) * s;
-    });
-  });
+criteria.forEach(c => {
+vendors.forEach(v => {
+const s = Number(scores[c.id][v]) || 0;
+raw[v] += s;
+weighted[v] += (c.weight / 100) * s;
+});
+});
 
-  return { raw, weighted };
+return { raw, weighted };
 }
 
-function updateScoringProgressAndConfidence() {
-  const totalCells = criteria.length * vendors.length;
-  let scored = 0;
+function updateScoringProgress() {
+const totalCells = criteria.length * vendors.length;
+let scored = 0;
 
-  criteria.forEach(c => {
-    vendors.forEach(v => {
-      const val = scores[c.id] ? scores[c.id][v] : "";
-      if (val !== "" && val !== undefined) scored++;
-    });
-  });
+criteria.forEach(c => {
+vendors.forEach(v => {
+const val = scores[c.id] ? scores[c.id][v] : "";
+if (val !== "" && val !== undefined) scored++;
+});
+});
 
-  const percent = totalCells === 0 ? 0 : Math.round((scored / totalCells) * 100);
+const percent = totalCells === 0 ? 0 : Math.round((scored / totalCells) * 100);
 
-  const bar = document.getElementById("progressBarFill");
-  const pctEl = document.getElementById("progressPercent");
-  const countEl = document.getElementById("progressCounts");
+const bar = document.getElementById("progressBarFill");
+const pctEl = document.getElementById("progressPercent");
+const countEl = document.getElementById("progressCounts");
 
-  if (bar) bar.style.width = percent + "%";
-  if (pctEl) pctEl.textContent = percent + "%";
-  if (countEl) countEl.textContent = `${scored} / ${totalCells} scores captured`;
-
-  // Update donut confidence
-  const donut = document.getElementById("confidenceDonut");
-  const confEl = document.getElementById("confidencePercent");
-  if (donut && confEl) {
-    donut.style.setProperty("--confidence", percent + "%");
-    confEl.textContent = percent + "%";
-  }
-
-  return { percent, scored, totalCells };
-}
-
-/* compute top insights:
-   1) Largest scoring gap (by section)
-   2) Lowest-scoring section (avg)
-   3) Highest-impact section (by weight)
-*/
-function computeInsights() {
-  if (!criteria.length || !vendors.length) return null;
-
-  let largestGap = { section: null, gap: 0 };
-  let lowestAvg = { section: null, avg: Infinity };
-  let highestImpact = { section: null, weight: 0 };
-
-  criteria.forEach(c => {
-    let max = -Infinity, min = Infinity, sum = 0;
-    vendors.forEach(v => {
-      const s = Number(scores[c.id][v]) || 0;
-      if (s > max) max = s;
-      if (s < min) min = s;
-      sum += s;
-    });
-    const avg = vendors.length ? sum / vendors.length : 0;
-    const gap = max - min;
-
-    if (gap > largestGap.gap) {
-      largestGap = { section: c.name, gap };
-    }
-    if (avg < lowestAvg.avg) {
-      lowestAvg = { section: c.name, avg };
-    }
-    if (c.weight > highestImpact.weight) {
-      highestImpact = { section: c.name, weight: c.weight };
-    }
-  });
-
-  return { largestGap, lowestAvg, highestImpact };
-}
-
-function renderTopInsights(insights, progressInfo) {
-  const list = document.getElementById("insightsList");
-  if (!list) return;
-
-  const items = [];
-
-  const anyScores =
-    progressInfo &&
-    progressInfo.totalCells > 0 &&
-    progressInfo.scored > 0;
-
-  if (!anyScores || !insights) {
-    list.innerHTML = `<li>Awaiting scores…</li>`;
-    return;
-  }
-
-  const { largestGap, lowestAvg, highestImpact } = insights;
-
-  if (largestGap.section && largestGap.gap > 0) {
-    items.push(
-      `Largest scoring gap: <strong>${largestGap.section}</strong> (${largestGap.gap.toFixed(
-        2
-      )} pts difference).`
-    );
-  }
-
-  if (lowestAvg.section && isFinite(lowestAvg.avg)) {
-    items.push(
-      `Lowest scoring section: <strong>${lowestAvg.section}</strong> (avg ${lowestAvg.avg.toFixed(
-        2
-      )} / 3).`
-    );
-  }
-
-  if (highestImpact.section && highestImpact.weight > 0) {
-    items.push(
-      `Highest-impact section: <strong>${highestImpact.section}</strong> (${highestImpact.weight}% weight).`
-    );
-  }
-
-  if (!items.length) {
-    list.innerHTML = `<li>Insights will appear once scoring starts.</li>`;
-  } else {
-    list.innerHTML = items.map(text => `<li>${text}</li>`).join("");
-  }
+if (bar) bar.style.width = percent + "%";
+if (pctEl) pctEl.textContent = percent + "%";
+if (countEl) countEl.textContent = `${scored} / ${totalCells} scores captured`;
 }
 
 function updateDashboard(raw, weighted, weightTotal) {
-  const vendorsInScope = vendors.length;
-  const criteriaCount = criteria.length;
+const vendorsInScope = vendors.length;
+const criteriaCount = criteria.length;
 
-  document.getElementById("vendorsInScopeCount").textContent = vendorsInScope;
-  document.getElementById("criteriaCount").textContent = criteriaCount;
+document.getElementById("vendorsInScopeCount").textContent = vendorsInScope;
+document.getElementById("criteriaCount").textContent = criteriaCount;
 
-  const leadingNameEl = document.getElementById("leadingVendorName");
-  const leadingScoreEl = document.getElementById("leadingVendorScore");
-  const leadingMetaEl = document.getElementById("leadingVendorMeta");
-  const rankingEl = document.getElementById("rankingList");
+const leadingNameEl = document.getElementById("leadingVendorName");
+const leadingScoreEl = document.getElementById("leadingVendorScore");
+const leadingMetaEl = document.getElementById("leadingVendorMeta");
+const rankingEl = document.getElementById("rankingList");
 
-  let bestVendor = null;
-  let bestScoreWeighted = -1;
-  let bestScoreRaw = 0;
+let bestVendor = null;
+let bestScoreWeighted = -1;
+let bestScoreRaw = 0;
 
-  vendors.forEach(v => {
-    const sw = weighted[v] || 0;
-    if (sw > bestScoreWeighted) {
-      bestScoreWeighted = sw;
-      bestVendor = v;
-      bestScoreRaw = raw[v] || 0;
-    }
-  });
+vendors.forEach(v => {
+const sw = weighted[v] || 0;
+if (sw > bestScoreWeighted) {
+bestScoreWeighted = sw;
+bestVendor = v;
+bestScoreRaw = raw[v] || 0;
+}
+});
 
-  if (bestVendor && bestScoreWeighted > 0) {
-    leadingNameEl.textContent = bestVendor;
-    leadingScoreEl.textContent =
-      `Score ${bestScoreRaw.toFixed(2)} • Weighted ${bestScoreWeighted.toFixed(2)}`;
-  } else {
-    leadingNameEl.textContent = "No scores yet";
-    leadingScoreEl.textContent = "";
-  }
+if (bestVendor && bestScoreWeighted > 0) {
+leadingNameEl.textContent = bestVendor;
+leadingScoreEl.textContent =
+`Score ${bestScoreRaw.toFixed(2)} • Weighted ${bestScoreWeighted.toFixed(2)}`;
+} else {
+leadingNameEl.textContent = "No scores yet";
+leadingScoreEl.textContent = "";
+}
 
-  if (weightTotal === 100) {
-    leadingMetaEl.className = "kpi-caption kpi-meta-ok";
-    leadingMetaEl.textContent = `Weight total: 100% • Perfectly normalised to 100%.`;
-  } else {
-    leadingMetaEl.className = "kpi-caption kpi-meta-warn";
-    leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Must be normalised to 100%.`;
-  }
+if (weightTotal === 100) {
+leadingMetaEl.className = "kpi-caption kpi-meta-ok";
+leadingMetaEl.textContent = `Weight total: 100% • Perfectly normalised to 100%.`;
+} else {
+leadingMetaEl.className = "kpi-caption kpi-meta-warn";
+leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Must be normalised to 100%.`;
+}
 
-  // Build ranking list (highest weighted score first)
-  const entries = vendors
-    .map(v => ({
-      name: v,
-      raw: raw[v] || 0,
-      weighted: weighted[v] || 0
-    }))
-    .sort((a, b) => b.weighted - a.weighted);
+// Build ranking list (highest weighted score first)
+const entries = vendors.map(v => ({
+name: v,
+raw: raw[v] || 0,
+weighted: weighted[v] || 0
+})).sort((a, b) => b.weighted - a.weighted);
 
-  if (entries.every(e => e.raw === 0 && e.weighted === 0)) {
-    rankingEl.textContent = "No scores yet.";
-  } else {
-    rankingEl.innerHTML = entries
-      .map(
-        (e, idx) =>
-          `<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(
-            2
-          )}, Weighted ${e.weighted.toFixed(2)}</div>`
-      )
-      .join("");
-  }
+if (entries.every(e => e.raw === 0 && e.weighted === 0)) {
+rankingEl.textContent = "No scores yet.";
+} else {
+rankingEl.innerHTML = entries.map((e, idx) =>
+`<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(2)}, Weighted ${e.weighted.toFixed(2)}</div>`
+).join("");
+}
 
-  // Progress + donut
-  const progressInfo = updateScoringProgressAndConfidence();
-  // Top insights (largest gap, lowest avg, highest impact)
-  const insights = computeInsights();
-  renderTopInsights(insights, progressInfo);
+// Update scoring progress bar
+updateScoringProgress();
 }
 
 function renderTable() {
-  ensureScores();
-  const table = document.getElementById("scorecardTable");
+ensureScores();
+const table = document.getElementById("scorecardTable");
 
-  const { raw, weighted } = calculateTotals();
-  const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
+const { raw, weighted } = calculateTotals();
+const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
 
-  updateDashboard(raw, weighted, weightTotal);
+updateDashboard(raw, weighted, weightTotal);
 
-  table.innerHTML = "";
+table.innerHTML = "";
 
-  /* HEADERS */
-  const header = document.createElement("tr");
-  header.innerHTML = `
-    <th class="cell-label">RFx Evaluation Section</th>
-    <th>Weight %</th>
-    ${vendors
-      .map(
-        v => `
-      <th>
-        <input class="vendor-name-input" value="${v}" data-vendor="${v}" />
-        <button class="remove-btn" onclick="removeVendor('${v}')"
-          style="margin-left:6px; padding:2px 6px; font-size:11px;">×</button>
-      </th>`
-      )
-      .join("")}
-    <th>Remove</th>
-  `;
-  table.appendChild(header);
+/* HEADERS */
+const header = document.createElement("tr");
+header.innerHTML = `
+<th class="cell-label">RFx Evaluation Section</th>
+<th>Weight %</th>
+${vendors.map(
+v => `
+<th>
+<input class="vendor-name-input" value="${v}" data-vendor="${v}" />
+<button class="remove-btn" onclick="removeVendor('${v}')"
+style="margin-left:6px; padding:2px 6px; font-size:11px;">×</button>
+</th>`
+).join("")}
+<th>Remove</th>
+`;
+table.appendChild(header);
 
-  /* CRITERIA ROWS */
-  criteria.forEach((c, idx) => {
-    const row = document.createElement("tr");
+/* CRITERIA ROWS */
+criteria.forEach((c, idx) => {
+const row = document.createElement("tr");
 
-    let html = `
-      <td class="cell-label">
-        <input class="criterion-input" data-id="${c.id}" value="${c.name}" />
-      </td>
-      <td><input type="number" value="${c.weight}" class="weight-input" data-index="${idx}" /></td>
-    `;
+let html = `
+<td class="cell-label">${c.name}</td>
+<td><input type="number" value="${c.weight}" class="weight-input" data-index="${idx}" /></td>
+`;
 
-    vendors.forEach(v => {
-      html += `
-        <td>
-          <select data-id="${c.id}" data-vendor="${v}" class="score-cell">
-            <option value="">-</option>
-            <option value="0" ${scores[c.id][v] == 0 ? "selected" : ""}>0</option>
-            <option value="1" ${scores[c.id][v] == 1 ? "selected" : ""}>1</option>
-            <option value="2" ${scores[c.id][v] == 2 ? "selected" : ""}>2</option>
-            <option value="3" ${scores[c.id][v] == 3 ? "selected" : ""}>3</option>
-          </select>
-        </td>
-      `;
-    });
+vendors.forEach(v => {
+html += `
+<td>
+<select data-id="${c.id}" data-vendor="${v}" class="score-cell">
+<option value="">-</option>
+<option value="0" ${scores[c.id][v] == 0 ? "selected" : ""}>0</option>
+<option value="1" ${scores[c.id][v] == 1 ? "selected" : ""}>1</option>
+<option value="2" ${scores[c.id][v] == 2 ? "selected" : ""}>2</option>
+<option value="3" ${scores[c.id][v] == 3 ? "selected" : ""}>3</option>
+</select>
+</td>
+`;
+});
 
-    html += `
-      <td><button class="remove-btn" onclick="removeCriterion(${c.id})">🗑</button></td>
-    `;
+html += `
+<td><button class="remove-btn" onclick="removeCriterion(${c.id})">🗑</button></td>
+`;
 
-    row.innerHTML = html;
-    table.appendChild(row);
-  });
+row.innerHTML = html;
+table.appendChild(row);
+});
 
-  /* MAX POSSIBLE SCORES */
-  const maxRaw = criteria.length * 3;
-  const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
+/* MAX POSSIBLE SCORES */
+const maxRaw = criteria.length * 3;
+const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
 
-  /* TOTAL WEIGHT ROW */
-  const weightRow = document.createElement("tr");
-  weightRow.innerHTML = `
-    <td class="cell-label"><b>Total Weight %</b></td>
-    <td><b style="color:${weightTotal === 100 ? "#16a34a" : "#b91c1c"};">${weightTotal}%</b></td>
-    ${vendors.map(() => "<td></td>").join("")}
-    <td></td>
-  `;
-  table.appendChild(weightRow);
+/* TOTAL WEIGHT ROW */
+const weightRow = document.createElement("tr");
+weightRow.innerHTML = `
+<td class="cell-label"><b>Total Weight %</b></td>
+<td><b style="color:${weightTotal === 100 ? "#16a34a" : "#b91c1c"};">${weightTotal}%</b></td>
+${vendors.map(() => "<td></td>").join("")}
+<td></td>
+`;
+table.appendChild(weightRow);
 
-  /* RAW TOTAL ROW */
-  const rawRow = document.createElement("tr");
-  rawRow.className = "totals-row";
-  rawRow.innerHTML = `
-    <td class="cell-label total-label">
-      Total Vendor Score <span style="color:#16a34a;">(${maxRaw})</span>
-    </td>
-    <td></td>
-    ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
-    <td></td>
-  `;
-  table.appendChild(rawRow);
+/* RAW TOTAL ROW */
+const rawRow = document.createElement("tr");
+rawRow.className = "totals-row";
+rawRow.innerHTML = `
+<td class="cell-label total-label">
+Total Vendor Score <span style="color:#16a34a;">(${maxRaw})</span>
+</td>
+<td></td>
+${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
+<td></td>
+`;
+table.appendChild(rawRow);
 
-  /* WEIGHTED TOTAL ROW */
-  const weightedRow = document.createElement("tr");
-  weightedRow.className = "totals-row";
-  weightedRow.innerHTML = `
-    <td class="cell-label total-label">
-      Total Weighted Score
-      <span class="info-tooltip">
-        <span class="info-icon">ⓘ</span>
-        <span class="tooltip-bubble">
-          Weighted score is normalized to a 0–3 scale based on weight distribution.
-          This ensures fairness even when criteria weights differ.
-        </span>
-      </span>
-      <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
-    </td>
-    <td></td>
-    ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
-    <td></td>
-  `;
-  table.appendChild(weightedRow);
+/* WEIGHTED TOTAL ROW */
+const weightedRow = document.createElement("tr");
+weightedRow.className = "totals-row";
+weightedRow.innerHTML = `
+<td class="cell-label total-label">
+Total Weighted Score <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
+</td>
+<td></td>
+${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
+<td></td>
+`;
+table.appendChild(weightedRow);
 
-  /* SCORE CHANGE LISTENERS */
-  document.querySelectorAll(".score-cell").forEach(sel => {
-    sel.onchange = () => {
-      const id = Number(sel.dataset.id);
-      const v = sel.dataset.vendor;
-      scores[id][v] = sel.value;
-      renderTable();
-    };
-  });
+/* SCORE CHANGE LISTENERS */
+document.querySelectorAll(".score-cell").forEach(sel => {
+sel.onchange = () => {
+const id = Number(sel.dataset.id);
+const v = sel.dataset.vendor;
+scores[id][v] = sel.value;
+renderTable();
+};
+});
 
-  /* WEIGHT CHANGE LISTENERS */
-  document.querySelectorAll(".weight-input").forEach(inp => {
-    inp.oninput = () => {
-      const index = Number(inp.dataset.index);
-      criteria[index].weight = Number(inp.value);
-      renderTable();
-    };
-  });
+/* WEIGHT CHANGE LISTENERS */
+document.querySelectorAll(".weight-input").forEach(inp => {
+inp.oninput = () => {
+const index = Number(inp.dataset.index);
+criteria[index].weight = Number(inp.value);
+renderTable();
+};
+});
 
-  /* VENDOR NAME EDITING */
-  document.querySelectorAll(".vendor-name-input").forEach(input => {
-    input.onchange = () => {
-      const oldName = input.dataset.vendor;
-      const newName = input.value.trim();
-      if (!newName || (vendors.includes(newName) && newName !== oldName)) {
-        input.value = oldName;
-        return;
-      }
-      renameVendor(oldName, newName);
-    };
-  });
-
-  /* CRITERION NAME EDITING */
-  document.querySelectorAll(".criterion-input").forEach(input => {
-    input.onchange = () => {
-      const id = Number(input.dataset.id);
-      const newName = input.value.trim();
-      if (!newName) {
-        // revert if empty
-        const c = criteria.find(x => x.id === id);
-        if (c) input.value = c.name;
-        return;
-      }
-      const c = criteria.find(x => x.id === id);
-      if (c) c.name = newName;
-    };
-  });
+/* VENDOR NAME EDITING */
+document.querySelectorAll(".vendor-name-input").forEach(input => {
+input.onchange = () => {
+const oldName = input.dataset.vendor;
+const newName = input.value.trim();
+if (!newName || (vendors.includes(newName) && newName !== oldName)) {
+input.value = oldName;
+return;
+}
+renameVendor(oldName, newName);
+};
+});
 }
 
 function renameVendor(oldName, newName) {
-  vendors = vendors.map(v => (v === oldName ? newName : v));
-  Object.keys(scores).forEach(cid => {
-    scores[cid][newName] = scores[cid][oldName];
-    delete scores[cid][oldName];
-  });
-  renderTable();
+vendors = vendors.map(v => (v === oldName ? newName : v));
+Object.keys(scores).forEach(cid => {
+scores[cid][newName] = scores[cid][oldName];
+delete scores[cid][oldName];
+});
+renderTable();
 }
 
 function removeCriterion(id) {
-  criteria = criteria.filter(c => c.id !== id);
-  delete scores[id];
-  renderTable();
-  populateDropdown();
+criteria = criteria.filter(c => c.id !== id);
+delete scores[id];
+renderTable();
+populateDropdown();
 }
 
 function removeVendor(vendorName) {
-  if (!confirm(`Remove ${vendorName} from the scorecard?`)) return;
+if (!confirm(`Remove ${vendorName} from the scorecard?`)) return;
 
-  vendors = vendors.filter(v => v !== vendorName);
-  Object.keys(scores).forEach(cid => {
-    delete scores[cid][vendorName];
-  });
-  renderTable();
+vendors = vendors.filter(v => v !== vendorName);
+Object.keys(scores).forEach(cid => {
+delete scores[cid][vendorName];
+});
+renderTable();
 }
 
 document.getElementById("addVendorBtn").onclick = () => {
-  const name = prompt("Vendor name?");
-  if (name) {
-    const trimmed = name.trim();
-    if (trimmed && !vendors.includes(trimmed)) {
-      vendors.push(trimmed);
-      renderTable();
-    }
-  }
+const name = prompt("Vendor name?");
+if (name) {
+const trimmed = name.trim();
+if (trimmed && !vendors.includes(trimmed)) {
+vendors.push(trimmed);
+renderTable();
+}
+}
 };
 
 document.getElementById("addCriterionBtn").onclick = () => {
-  const bar = document.getElementById("addCriterionBar");
-  bar.style.display =
-    bar.style.display === "none" || bar.style.display === "" ? "flex" : "none";
+const bar = document.getElementById("addCriterionBar");
+bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "flex" : "none";
 };
 
 function populateDropdown() {
-  const s = document.getElementById("criterionLibrarySelect");
-  s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
-  criteriaLibrary.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c.id;
-    opt.textContent = c.name;
-    s.appendChild(opt);
-  });
+const s = document.getElementById("criterionLibrarySelect");
+s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
+criteriaLibrary.forEach(c => {
+const opt = document.createElement("option");
+opt.value = c.id;
+opt.textContent = c.name;
+s.appendChild(opt);
+});
 }
 
 document.getElementById("confirmAddCriterion").onclick = () => {
-  const libSel = document.getElementById("criterionLibrarySelect").value;
-  const custom = document.getElementById("customCriterionName").value.trim();
-  const weight = Number(document.getElementById("newCriterionWeight").value);
+const libSel = document.getElementById("criterionLibrarySelect").value;
+const custom = document.getElementById("customCriterionName").value.trim();
+const weight = Number(document.getElementById("newCriterionWeight").value);
 
-  if (!libSel && !custom) {
-    alert("Select a library item or enter a custom name.");
-    return;
-  }
+if (!libSel && !custom) {
+alert("Select a library item or enter a custom name.");
+return;
+}
 
-  let newName, newId;
-  if (libSel) {
-    const libItem = criteriaLibrary.find(c => c.id == libSel);
-    newName = libItem.name;
-    newId = libItem.id;
-  } else {
-    newName = custom;
-    newId = Date.now();
-  }
+let newName, newId;
+if (libSel) {
+const libItem = criteriaLibrary.find(c => c.id == libSel);
+newName = libItem.name;
+newId = libItem.id;
+} else {
+newName = custom;
+newId = Date.now();
+}
 
-  criteria.push({ id: newId, name: newName, weight });
-  scores[newId] = {};
-  vendors.forEach(v => {
-    scores[newId][v] = "";
-  });
+criteria.push({ id: newId, name: newName, weight });
+scores[newId] = {};
+vendors.forEach(v => {
+scores[newId][v] = "";
+});
 
-  document.getElementById("criterionLibrarySelect").value = "";
-  document.getElementById("customCriterionName").value = "";
-  document.getElementById("addCriterionBar").style.display = "none";
+document.getElementById("criterionLibrarySelect").value = "";
+document.getElementById("customCriterionName").value = "";
+document.getElementById("addCriterionBar").style.display = "none";
 
-  renderTable();
+renderTable();
 };
 
 /* Export helpers */
 
 function exportToExcel() {
-  const wb = XLSX.utils.book_new();
-  const data = [["Criterion", "Weight", ...vendors]];
+const wb = XLSX.utils.book_new();
+const data = [["Criterion", "Weight", ...vendors]];
 
-  criteria.forEach(c => {
-    const row = [c.name, c.weight];
-    vendors.forEach(v => row.push(scores[c.id][v] || ""));
-    data.push(row);
-  });
+criteria.forEach(c => {
+const row = [c.name, c.weight];
+vendors.forEach(v => row.push(scores[c.id][v] || ""));
+data.push(row);
+});
 
-  const ws = XLSX.utils.aoa_to_sheet(data);
-  XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
-  XLSX.writeFile(wb, "Scorecard.xlsx");
+const ws = XLSX.utils.aoa_to_sheet(data);
+XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
+XLSX.writeFile(wb, "Scorecard.xlsx");
 }
 
 function exportToPDF() {
-  // Simple approach: use browser print-to-PDF
-  window.print();
+// Simple approach: use browser print-to-PDF
+window.print();
 }
 
 // Export dropdown logic
@@ -1353,22 +1015,21 @@ const exportBtn = document.getElementById("exportBtn");
 const exportMenu = document.getElementById("exportMenu");
 
 exportBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  exportMenu.style.display =
-    exportMenu.style.display === "block" ? "none" : "block";
+e.stopPropagation();
+exportMenu.style.display = exportMenu.style.display === "block" ? "none" : "block";
 });
 
 document.querySelectorAll(".export-option").forEach(opt => {
-  opt.addEventListener("click", (e) => {
-    const type = e.target.dataset.type;
-    exportMenu.style.display = "none";
-    if (type === "excel") exportToExcel();
-    if (type === "pdf") exportToPDF();
-  });
+opt.addEventListener("click", (e) => {
+const type = e.target.dataset.type;
+exportMenu.style.display = "none";
+if (type === "excel") exportToExcel();
+if (type === "pdf") exportToPDF();
+});
 });
 
 document.addEventListener("click", () => {
-  exportMenu.style.display = "none";
+exportMenu.style.display = "none";
 });
 
 /* INIT */
