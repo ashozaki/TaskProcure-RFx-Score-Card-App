@@ -535,7 +535,7 @@
 
     .notes-card {
       margin-top: 12px;
-      padding: 10px 12px 12px;
+      padding: 10px 12px 14px;
       border-radius: 12px;
       border: 1px solid #e5e7eb;
       background: #f9fafb;
@@ -559,17 +559,29 @@
       font-family: inherit;
     }
 
-    /* Engraved logo under notes */
+    /* Engraved logo under notes – sleeker badge */
     .engraving-wrap {
       margin-top: 12px;
       display: flex;
       justify-content: center;
     }
 
+    .engraving-inner {
+      padding: 4px 20px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #d3d7de 0%, #e3e7ee 50%, #d3d7de 100%);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.15);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .engraving-logo {
-      height: 48px;
-      opacity: 0.95;
-      filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.25));
+      height: 32px;
+      max-width: 420px;
+      width: auto;
+      display: block;
     }
 
     @media (max-width: 900px) {
@@ -591,6 +603,15 @@
 
       .instructions-right {
         align-items: flex-start;
+      }
+
+      .engraving-inner {
+        padding: 4px 14px;
+      }
+
+      .engraving-logo {
+        height: 28px;
+        max-width: 300px;
       }
     }
 
@@ -744,7 +765,9 @@
         <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
         <!-- Engraved logo placement -->
         <div class="engraving-wrap">
-          <img src="Engraved%20Logo.png" alt="TaskProcure engraved logo" class="engraving-logo" />
+          <div class="engraving-inner">
+            <img src="Engraved%20Logo.png" alt="TaskProcure engraved logo" class="engraving-logo" />
+          </div>
         </div>
       </section>
 
