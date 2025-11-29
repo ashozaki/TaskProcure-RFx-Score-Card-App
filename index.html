@@ -114,11 +114,27 @@
 
     /* MAIN CARD */
     .card {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 14px 18px 18px;
-      border: 1px solid var(--tp-border);
-      box-shadow: var(--shadow-soft);
+     /* MAIN CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 18px 18px;
+  border: 1px solid var(--tp-border);
+  box-shadow: var(--shadow-soft);
+  position: relative;            /* allow absolute positioning inside */
+}
+
+/* Watermark */
+.card-watermark {
+  position: absolute;
+  right: 25px;                   /* bottom-right anchor */
+  bottom: 25px;
+  width: 260px;                  /* tweak size if needed */
+  opacity: 0.10;                 /* subtle engraved effect */
+  pointer-events: none;          /* don’t block clicks */
+  user-select: none;
+}
+
     }
 
     /* TOP CONTROLS */
@@ -737,9 +753,15 @@
       <section class="notes-card">
         <div class="notes-title">Decision Rationale / Notes</div>
         <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
-        </div>
-        </div>
       </section>
+      <!-- WATERMARK -->
+      <img
+        src="Engraved%20Logo.png"
+        alt="TaskProcure Watermark"
+        class="card-watermark"
+      />
+
+    </main>
 
     </main>
   </div>
