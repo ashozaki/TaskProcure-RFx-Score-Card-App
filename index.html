@@ -418,20 +418,6 @@
       background: #ffffff;
     }
 
-    .table-wrap::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 360px;
-      height: 140px;
-      background: url("Taskprocure%20Logo.png") center/contain no-repeat;
-      opacity: 0.06;
-      pointer-events: none;
-      z-index: 0;
-    }
-
     table {
       border-collapse: collapse;
       width: 100%;
@@ -571,6 +557,19 @@
       font-size: 12px;
       resize: vertical;
       font-family: inherit;
+    }
+
+    /* NEW: engraved logo under notes */
+    .engraving-wrap {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .engraving-logo {
+      height: 42px;
+      opacity: 0.9;
+      filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.25));
     }
 
     @media (max-width: 900px) {
@@ -743,9 +742,12 @@
       <section class="notes-card">
         <div class="notes-title">Decision Rationale / Notes</div>
         <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
+        <!-- Engraved logo placement -->
+        <div class="engraving-wrap">
+          <!-- Update the src to the actual filename of your engraved image -->
+          <img src="Taskprocure-Engraved.png" alt="TaskProcure engraved logo" class="engraving-logo" />
+        </div>
       </section>
-<!-- TASKPROCURE ENGRAVING UNDER NOTES -->
-<div class="engraving-footer"></div>
 
     </main>
   </div>
