@@ -273,7 +273,7 @@
       margin-bottom: 2px;
     }
 
-    /* INSTRUCTIONS + PROGRESS + INSIGHTS */
+    /* INSTRUCTIONS + INSIGHTS + PROGRESS */
     .instructions-card {
       margin-bottom: 12px;
       padding: 10px 12px;
@@ -409,7 +409,7 @@
       width: 70px;
     }
 
-    /* TABLE + WATERMARK */
+    /* TABLE + LOGO ENGRAVING */
     .table-wrap {
       position: relative;
       border-radius: 12px;
@@ -419,18 +419,16 @@
     }
 
     .table-wrap::before {
-      content: "TASKPROCURE";
+      content: "";
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 72px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      color: #0c3c78;
-      opacity: 0.04;
+      width: 360px;
+      height: 140px;
+      background: url("Taskprocure%20Logo.png") center/contain no-repeat;
+      opacity: 0.06;
       pointer-events: none;
-      white-space: nowrap;
       z-index: 0;
     }
 
@@ -573,63 +571,6 @@
       font-size: 12px;
       resize: vertical;
       font-family: inherit;
-    }
-
-    /* Tooltip */
-    .tooltip-wrapper {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .info-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      border: 1px solid #9ca3af;
-      font-size: 11px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      background: #f9fafb;
-      cursor: default;
-    }
-
-    .tooltip-bubble {
-      position: absolute;
-      left: 0;
-      bottom: 125%;
-      transform: translateY(-4px);
-      background: #0f172a;
-      color: #f9fafb;
-      padding: 8px 10px;
-      border-radius: 8px;
-      font-size: 11px;
-      max-width: 260px;          /* NEW: wider bubble */
-      white-space: normal;        /* NEW: allow wrapping */
-      line-height: 1.4;
-      opacity: 0;
-      pointer-events: none;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-      z-index: 30;
-    }
-
-    .tooltip-bubble::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 14px;
-      border-width: 6px;
-      border-style: solid;
-      border-color: #0f172a transparent transparent transparent;
-    }
-
-    .tooltip-wrapper:hover .tooltip-bubble {
-      opacity: 1;
-      transform: translateY(-6px);
     }
 
     @media (max-width: 900px) {
@@ -1070,14 +1011,7 @@
       weightedRow.className = "totals-row";
       weightedRow.innerHTML = `
         <td class="cell-label total-label">
-          <span class="tooltip-wrapper">
-            Total Weighted Score
-            <span class="info-icon">i</span>
-            <span class="tooltip-bubble">
-              Weighted score is normalized to a 0–3 scale so scoring stays fair even when criteria weights differ.
-            </span>
-          </span>
-          <span style="color:#16a34a;"> (${maxWeighted.toFixed(2)})</span>
+          Total Weighted Score <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
         </td>
         <td></td>
         ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
