@@ -114,21 +114,38 @@
     .card {
       background: #ffffff;
       border-radius: 14px;
-      padding: 14px 18px 18px;
+      padding: 16px 18px 20px;
       border: 1px solid var(--tp-border);
       box-shadow: var(--shadow-soft);
-      position: relative;          /* allows watermark positioning */
+      position: relative;
     }
 
-    /* Watermark – smaller, tucked in corner */
+    /* Watermark */
     .card-watermark {
       position: absolute;
       right: 18px;
       bottom: 10px;
       width: 170px;
-      opacity: 0.06;               /* extra subtle */
+      opacity: 0.06;
       pointer-events: none;
       user-select: none;
+    }
+
+    /* SECTION TITLES */
+    .section-heading {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .section-heading span.icon {
+      font-size: 14px;
     }
 
     /* TOP CONTROLS */
@@ -136,7 +153,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       gap: 16px;
       flex-wrap: wrap;
     }
@@ -150,15 +167,32 @@
     .project-input label {
       font-size: 12px;
       font-weight: 600;
+      color: #4b5563;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-input label .icon {
+      font-size: 14px;
     }
 
     .project-input input {
       margin-top: 4px;
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: 999px;
       border: 1px solid #cbd5e1;
       min-width: 260px;
       font-size: 13px;
+      background: #f9fafb;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .project-input input:focus {
+      outline: none;
+      border-color: var(--tp-primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(12, 60, 120, 0.15);
     }
 
     .top-actions {
@@ -169,24 +203,51 @@
       align-items: center;
     }
 
-    .btn-ghost {
-      padding: 8px 14px;
+    .btn-ghost,
+    .btn-primary {
+      padding: 8px 16px;
       border-radius: 999px;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease, color 0.12s ease;
+      white-space: nowrap;
+    }
+
+    .btn-ghost {
       border: 1px solid #0c3c78;
       color: #0c3c78;
       background: #ffffff;
-      font-size: 12px;
-      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      background: #0c3c78;
+      color: #ffffff;
+      box-shadow: 0 6px 14px rgba(12, 60, 120, 0.18);
+      transform: translateY(-1px);
     }
 
     .btn-primary {
-      padding: 8px 14px;
-      border-radius: 999px;
       border: none;
       background: #0c3c78;
       color: #ffffff;
-      font-size: 12px;
-      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(12, 60, 120, 0.24);
+    }
+
+    .btn-primary:hover {
+      background: #082749;
+      box-shadow: 0 8px 18px rgba(12, 60, 120, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Export dropdown */
@@ -218,6 +279,9 @@
       font-size: 12px;
       cursor: pointer;
       color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .export-option:hover {
@@ -229,7 +293,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .kpi-card {
@@ -237,6 +301,20 @@
       border-radius: 12px;
       padding: 10px 12px;
       border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .kpi-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .kpi-icon {
+      font-size: 16px;
     }
 
     .kpi-label {
@@ -244,7 +322,6 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #6b7280;
-      margin-bottom: 4px;
       font-weight: 600;
     }
 
@@ -260,18 +337,29 @@
       color: #6b7280;
     }
 
-    .kpi-card.leader .kpi-value {
-      color: #00b894;
+    .kpi-card.leader-active {
+      background: #ecfdf3;
+      border-color: #bbf7d0;
+    }
+
+    .kpi-card.leader-empty .kpi-value {
+      color: #6b7280;
+    }
+
+    .kpi-card.leader-active .kpi-value {
+      color: var(--tp-accent);
     }
 
     .kpi-meta-ok {
       color: #16a34a;
       font-size: 11px;
+      font-weight: 600;
     }
 
     .kpi-meta-warn {
       color: #b45309;
       font-size: 11px;
+      font-weight: 600;
     }
 
     .kpi-score-line {
@@ -289,11 +377,16 @@
       margin-bottom: 2px;
     }
 
+    .kpi-ranking-empty {
+      color: #9ca3af;
+      font-style: italic;
+    }
+
     /* INSTRUCTIONS + INSIGHTS + PROGRESS */
     .instructions-card {
       margin-bottom: 12px;
-      padding: 10px 12px;
-      border-radius: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
       border: 1px solid #e5e7eb;
       background: #f3f6ff;
       display: flex;
@@ -307,18 +400,25 @@
     }
 
     .instructions-title {
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #6b7280;
       margin-bottom: 4px;
-      font-weight: 600;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .instructions-title .icon {
+      font-size: 15px;
     }
 
     .instructions-body {
       font-size: 11px;
       color: #4b5563;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .instructions-middle {
@@ -332,12 +432,19 @@
     }
 
     .insights-title {
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: #6b7280;
       margin-bottom: 4px;
-      font-weight: 600;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .insights-title .icon {
+      font-size: 15px;
     }
 
     .insights-list {
@@ -366,21 +473,52 @@
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      gap: 4px;
+      gap: 6px;
+    }
+
+    .progress-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #6b7280;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .progress-title .icon {
+      font-size: 15px;
     }
 
     .progress-bar-outer {
       width: 100%;
-      height: 10px;
+      height: 12px;
       border-radius: 999px;
       background: #e5e7eb;
       overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.12);
+    }
+
+    /* subtle segments */
+    .progress-bar-outer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.4) 1px,
+        transparent 1px
+      );
+      background-size: 8% 100%;
+      pointer-events: none;
     }
 
     .progress-bar-inner {
       height: 100%;
       width: 0;
-      background: #22c55e;
+      background: linear-gradient(90deg, #22c55e, #16a34a);
       transition: width 0.25s ease-out;
     }
 
@@ -390,7 +528,7 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .progress-percent {
@@ -407,14 +545,17 @@
       background: #f8fafc;
       display: none;
       gap: 6px;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     #addCriterionBar select,
     #addCriterionBar input {
-      padding: 5px 8px;
+      padding: 6px 8px;
       border-radius: 6px;
       border: 1px solid #cbd5e1;
       font-size: 12px;
+      background: #ffffff;
     }
 
     #addCriterionBar select {
@@ -423,6 +564,7 @@
 
     #addCriterionBar input[type="number"] {
       width: 70px;
+      text-align: center;
     }
 
     /* TABLE */
@@ -532,6 +674,7 @@
       padding: 4px 10px;
       border-radius: 20px;
       cursor: pointer;
+      font-size: 11px;
     }
 
     .vendor-name-input {
@@ -562,6 +705,13 @@
       font-weight: 600;
       margin-bottom: 6px;
       color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notes-title .icon {
+      font-size: 15px;
     }
 
     #decisionNotes {
@@ -573,6 +723,13 @@
       font-size: 12px;
       resize: vertical;
       font-family: inherit;
+      background: #ffffff;
+    }
+
+    #decisionNotes:focus {
+      outline: none;
+      border-color: var(--tp-primary);
+      box-shadow: 0 0 0 2px rgba(12, 60, 120, 0.1);
     }
 
     @media (max-width: 900px) {
@@ -600,6 +757,14 @@
     @media (max-width: 640px) {
       .kpi-row {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .top-row {
+        align-items: flex-start;
+      }
+
+      .top-actions {
+        justify-content: flex-start;
       }
     }
   </style>
@@ -630,28 +795,47 @@
     <!-- MAIN CONTENT -->
     <main class="card">
 
+      <!-- PROJECT DETAILS TITLE -->
+      <div class="section-heading">
+        <span class="icon">📁</span>
+        <span>Project Details</span>
+      </div>
+
       <!-- TOP CONTROLS -->
       <div class="top-row">
         <div class="top-inputs">
           <div class="project-input">
-            <label>Project / RFx Name</label><br />
+            <label><span class="icon">📌</span>Project / RFx Name</label><br />
             <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
           </div>
           <div class="project-input">
-            <label>Evaluator's Name</label><br />
+            <label><span class="icon">👤</span>Evaluator's Name</label><br />
             <input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
           </div>
         </div>
 
         <div class="top-actions">
-          <button id="addCriterionBtn" class="btn-ghost">+ Add Criterion</button>
-          <button id="addVendorBtn" class="btn-ghost">+ Add Vendor</button>
+          <button id="addCriterionBtn" class="btn-ghost">
+            <span class="btn-icon">➕</span>
+            <span>Add Criterion</span>
+          </button>
+          <button id="addVendorBtn" class="btn-ghost">
+            <span class="btn-icon">👥</span>
+            <span>Add Vendor</span>
+          </button>
 
           <div class="export-group">
-            <button id="exportBtn" class="btn-primary">⬇ Export Scorecard</button>
+            <button id="exportBtn" class="btn-primary">
+              <span class="btn-icon">⬇️</span>
+              <span>Export Scorecard</span>
+            </button>
             <div id="exportMenu" class="export-menu">
-              <button class="export-option" data-type="excel">Export to Excel</button>
-              <button class="export-option" data-type="pdf">Export to PDF</button>
+              <button class="export-option" data-type="excel">
+                <span>📊</span><span>Export to Excel</span>
+              </button>
+              <button class="export-option" data-type="pdf">
+                <span>📄</span><span>Export to PDF</span>
+              </button>
             </div>
           </div>
         </div>
@@ -660,34 +844,53 @@
       <!-- DASHBOARD KPI TILES -->
       <div class="kpi-row">
         <div class="kpi-card">
-          <div class="kpi-label">Vendors in Scope</div>
+          <div class="kpi-header">
+            <span class="kpi-icon">👥</span>
+            <div class="kpi-label">Vendors in Scope</div>
+          </div>
           <div class="kpi-value" id="vendorsInScopeCount">0</div>
           <div class="kpi-caption">Vendors currently being scored.</div>
         </div>
 
         <div class="kpi-card">
-          <div class="kpi-label">RFx Evaluation Sections</div>
+          <div class="kpi-header">
+            <span class="kpi-icon">📊</span>
+            <div class="kpi-label">RFx Evaluation Sections</div>
+          </div>
           <div class="kpi-value" id="criteriaCount">0</div>
           <div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
         </div>
 
-        <div class="kpi-card leader">
-          <div class="kpi-label">Leading Vendor (Live)</div>
-          <div class="kpi-value" id="leadingVendorName">—</div>
+        <div class="kpi-card leader-empty" id="leadingVendorCard">
+          <div class="kpi-header">
+            <span class="kpi-icon">🥇</span>
+            <div class="kpi-label">Leading Vendor (Live)</div>
+          </div>
+          <div class="kpi-value" id="leadingVendorName">No scores yet</div>
           <div class="kpi-score-line" id="leadingVendorScore"></div>
-          <div class="kpi-caption" id="leadingVendorMeta">Awaiting scores.</div>
+          <div class="kpi-caption" id="leadingVendorMeta">
+            Start scoring to identify the leading vendor.
+          </div>
         </div>
 
         <div class="kpi-card">
-          <div class="kpi-label">Vendor Ranking</div>
-          <div id="rankingList" class="kpi-ranking">No scores yet.</div>
+          <div class="kpi-header">
+            <span class="kpi-icon">📈</span>
+            <div class="kpi-label">Vendor Ranking</div>
+          </div>
+          <div id="rankingList" class="kpi-ranking kpi-ranking-empty">
+            Start scoring to see vendor rankings here.
+          </div>
         </div>
       </div>
 
       <!-- SCORE CARD INSTRUCTIONS + INSIGHTS + PROGRESS -->
       <div class="instructions-card">
         <div class="instructions-left">
-          <div class="instructions-title">Score Card Instructions</div>
+          <div class="instructions-title">
+            <span class="icon">🧾</span>
+            <span>Score Card Instructions</span>
+          </div>
           <div class="instructions-body">
             0 – If Solution does not meet needs<br />
             1 – If Solution only partially meets needs<br />
@@ -697,25 +900,31 @@
         </div>
 
         <div class="instructions-middle">
-          <div class="insights-title">Top Insights</div>
+          <div class="insights-title">
+            <span class="icon">💡</span>
+            <span>Top Insights</span>
+          </div>
           <ul class="insights-list">
             <li>
               <span class="insight-label">Largest vendor gap:</span>
-              <span id="insightGap" class="insight-value">—</span>
+              <span id="insightGap" class="insight-value">Not enough scored data yet</span>
             </li>
             <li>
               <span class="insight-label">Lowest-scoring section:</span>
-              <span id="insightLowest" class="insight-value">—</span>
+              <span id="insightLowest" class="insight-value">No scored sections yet</span>
             </li>
             <li>
               <span class="insight-label">Highest-impact section:</span>
-              <span id="insightImpact" class="insight-value">—</span>
+              <span id="insightImpact" class="insight-value">Commercial Evaluation (Pricing Model, TCO, Payment terms etc.) (15% weight)</span>
             </li>
           </ul>
         </div>
 
         <div class="instructions-right">
-          <div class="instructions-title">Scoring Progress</div>
+          <div class="progress-title">
+            <span class="icon">📊</span>
+            <span>Scoring Progress</span>
+          </div>
           <div class="progress-bar-outer">
             <div id="progressBarFill" class="progress-bar-inner"></div>
           </div>
@@ -733,7 +942,10 @@
         </select>
         <input id="customCriterionName" placeholder="Custom evaluation section name" />
         <input id="newCriterionWeight" type="number" value="10" />
-        <button id="confirmAddCriterion" class="btn-primary" style="padding:6px 16px;">Add</button>
+        <button id="confirmAddCriterion" class="btn-primary" style="padding:6px 14px;">
+          <span class="btn-icon">➕</span>
+          <span>Add</span>
+        </button>
       </div>
 
       <!-- SCORE TABLE -->
@@ -743,7 +955,10 @@
 
       <!-- DECISION RATIONALE / NOTES -->
       <section class="notes-card">
-        <div class="notes-title">Decision Rationale / Notes</div>
+        <div class="notes-title">
+          <span class="icon">📝</span>
+          <span>Decision Rationale / Notes</span>
+        </div>
         <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
       </section>
 
@@ -884,6 +1099,7 @@
       const leadingScoreEl = document.getElementById("leadingVendorScore");
       const leadingMetaEl = document.getElementById("leadingVendorMeta");
       const rankingEl = document.getElementById("rankingList");
+      const leadingCardEl = document.getElementById("leadingVendorCard");
 
       let bestVendor = null;
       let bestScoreWeighted = -1;
@@ -899,10 +1115,14 @@
       });
 
       if (bestVendor && bestScoreWeighted > 0) {
+        leadingCardEl.classList.remove("leader-empty");
+        leadingCardEl.classList.add("leader-active");
         leadingNameEl.textContent = bestVendor;
         leadingScoreEl.textContent =
           `Score ${bestScoreRaw.toFixed(2)} • Weighted ${bestScoreWeighted.toFixed(2)}`;
       } else {
+        leadingCardEl.classList.remove("leader-active");
+        leadingCardEl.classList.add("leader-empty");
         leadingNameEl.textContent = "No scores yet";
         leadingScoreEl.textContent = "";
       }
@@ -922,8 +1142,10 @@
       })).sort((a, b) => b.weighted - a.weighted);
 
       if (entries.every(e => e.raw === 0 && e.weighted === 0)) {
-        rankingEl.textContent = "No scores yet.";
+        rankingEl.classList.add("kpi-ranking-empty");
+        rankingEl.textContent = "Start scoring to see vendor rankings here.";
       } else {
+        rankingEl.classList.remove("kpi-ranking-empty");
         rankingEl.innerHTML = entries.map((e, idx) =>
           `<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(2)}, Weighted ${e.weighted.toFixed(2)}</div>`
         ).join("");
@@ -953,7 +1175,7 @@
           <th>
             <input class="vendor-name-input" value="${v}" data-vendor="${v}" />
             <button class="remove-btn" onclick="removeVendor('${v}')"
-              style="margin-left:6px; padding:2px 6px; font-size:11px;">×</button>
+              style="margin-left:6px;">×</button>
           </th>`
         ).join("")}
         <th>Remove</th>
@@ -1189,7 +1411,7 @@
 
     document.querySelectorAll(".export-option").forEach(opt => {
       opt.addEventListener("click", (e) => {
-        const type = e.target.dataset.type;
+        const type = e.currentTarget.dataset.type;
         exportMenu.style.display = "none";
         if (type === "excel") exportToExcel();
         if (type === "pdf") exportToPDF();
