@@ -131,6 +131,76 @@
       user-select: none;
     }
 
+    /* GENERIC ICON STYLES */
+    .section-icon,
+    .label-icon,
+    .title-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .section-icon svg,
+    .label-icon svg,
+    .title-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: #64748b;
+      stroke-width: 1.7;
+      fill: none;
+    }
+
+    .title-icon svg {
+      stroke: #0f172a;
+    }
+
+    /* Badge icons for KPI tiles */
+    .icon-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #e5f0ff 45%, #dbeafe 100%);
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.16);
+    }
+
+    .icon-badge svg {
+      width: 16px;
+      height: 16px;
+      stroke-width: 1.9;
+      fill: none;
+    }
+
+    .icon-badge.blue svg {
+      stroke: #0c3c78;
+    }
+
+    .icon-badge.green {
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #dcfce7 40%, #bbf7d0 100%);
+    }
+
+    .icon-badge.green svg {
+      stroke: #047857;
+    }
+
+    .icon-badge.purple {
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #ede9fe 40%, #ddd6fe 100%);
+    }
+
+    .icon-badge.purple svg {
+      stroke: #6d28d9;
+    }
+
+    .icon-badge.amber {
+      background: radial-gradient(circle at 30% 0, #ffffff 0, #fef3c7 40%, #fde68a 100%);
+    }
+
+    .icon-badge.amber svg {
+      stroke: #b45309;
+    }
+
     /* SECTION TITLES */
     .section-heading {
       font-size: 12px;
@@ -142,10 +212,6 @@
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .section-heading span.icon {
-      font-size: 14px;
     }
 
     /* TOP CONTROLS */
@@ -171,10 +237,6 @@
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .project-input label .icon {
-      font-size: 14px;
     }
 
     .project-input input {
@@ -244,10 +306,17 @@
     }
 
     .btn-icon {
-      font-size: 13px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .btn-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
     }
 
     /* Export dropdown */
@@ -264,7 +333,7 @@
       border-radius: 10px;
       border: 1px solid #d1d5db;
       box-shadow: var(--shadow-soft);
-      min-width: 160px;
+      min-width: 170px;
       padding: 4px 0;
       display: none;
       z-index: 20;
@@ -281,7 +350,15 @@
       color: #111827;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+    }
+
+    .export-option svg {
+      width: 14px;
+      height: 14px;
+      stroke: #0c3c78;
+      stroke-width: 1.8;
+      fill: none;
     }
 
     .export-option:hover {
@@ -309,12 +386,8 @@
     .kpi-header {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 2px;
-    }
-
-    .kpi-icon {
-      font-size: 16px;
     }
 
     .kpi-label {
@@ -411,10 +484,6 @@
       gap: 6px;
     }
 
-    .instructions-title .icon {
-      font-size: 15px;
-    }
-
     .instructions-body {
       font-size: 11px;
       color: #4b5563;
@@ -441,10 +510,6 @@
       display: flex;
       align-items: center;
       gap: 6px;
-    }
-
-    .insights-title .icon {
-      font-size: 15px;
     }
 
     .insights-list {
@@ -487,10 +552,6 @@
       gap: 6px;
     }
 
-    .progress-title .icon {
-      font-size: 15px;
-    }
-
     .progress-bar-outer {
       width: 100%;
       height: 12px;
@@ -501,7 +562,6 @@
       box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.12);
     }
 
-    /* subtle segments */
     .progress-bar-outer::before {
       content: "";
       position: absolute;
@@ -710,8 +770,8 @@
       gap: 6px;
     }
 
-    .notes-title .icon {
-      font-size: 15px;
+    .notes-title .title-icon svg {
+      stroke: #0c3c78;
     }
 
     #decisionNotes {
@@ -797,7 +857,13 @@
 
       <!-- PROJECT DETAILS TITLE -->
       <div class="section-heading">
-        <span class="icon">📁</span>
+        <span class="section-icon">
+          <!-- folder icon -->
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 5.5A1.5 1.5 0 014.5 4h3l1.5 2h6A1.5 1.5 0 0116.5 7h-13V5.5z" />
+            <rect x="3" y="7" width="14" height="9" rx="1.4" />
+          </svg>
+        </span>
         <span>Project Details</span>
       </div>
 
@@ -805,36 +871,90 @@
       <div class="top-row">
         <div class="top-inputs">
           <div class="project-input">
-            <label><span class="icon">📌</span>Project / RFx Name</label><br />
+            <label>
+              <span class="label-icon">
+                <!-- RFx / doc icon -->
+                <svg viewBox="0 0 20 20">
+                  <path d="M6 3.5A1.5 1.5 0 017.5 2h5.3L16 5.2V15A1.5 1.5 0 0114.5 16h-7A1.5 1.5 0 016 14.5v-11z" />
+                  <path d="M11.5 2v3.3c0 .4.3.7.7.7H16" />
+                  <path d="M7.5 9h5" />
+                  <path d="M7.5 11.7h3.5" />
+                </svg>
+              </span>
+              Project / RFx Name
+            </label><br />
             <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
           </div>
           <div class="project-input">
-            <label><span class="icon">👤</span>Evaluator's Name</label><br />
+            <label>
+              <span class="label-icon">
+                <!-- user icon -->
+                <svg viewBox="0 0 20 20">
+                  <path d="M10 10.25a3 3 0 100-6 3 3 0 000 6z" />
+                  <path d="M4.5 15.5a5.5 5.5 0 0111 0v.5h-11v-.5z" />
+                </svg>
+              </span>
+              Evaluator's Name
+            </label><br />
             <input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
           </div>
         </div>
 
         <div class="top-actions">
           <button id="addCriterionBtn" class="btn-ghost">
-            <span class="btn-icon">➕</span>
+            <span class="btn-icon">
+              <!-- plus icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M10 4v12" />
+                <path d="M4 10h12" />
+              </svg>
+            </span>
             <span>Add Criterion</span>
           </button>
           <button id="addVendorBtn" class="btn-ghost">
-            <span class="btn-icon">👥</span>
+            <span class="btn-icon">
+              <!-- users icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M8 10a2.75 2.75 0 100-5.5A2.75 2.75 0 008 10z" />
+                <path d="M13.5 9.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" />
+                <path d="M3.75 15.5A3.75 3.75 0 0111 14.1" />
+                <path d="M11.5 15.5h4.75a3 3 0 00-4.1-2.8" />
+              </svg>
+            </span>
             <span>Add Vendor</span>
           </button>
 
           <div class="export-group">
             <button id="exportBtn" class="btn-primary">
-              <span class="btn-icon">⬇️</span>
+              <span class="btn-icon">
+                <!-- download icon -->
+                <svg viewBox="0 0 20 20">
+                  <path d="M10 3.5v9" />
+                  <path d="M6.5 9.5L10 13l3.5-3.5" />
+                  <path d="M4.5 15.5h11" />
+                </svg>
+              </span>
               <span>Export Scorecard</span>
             </button>
             <div id="exportMenu" class="export-menu">
               <button class="export-option" data-type="excel">
-                <span>📊</span><span>Export to Excel</span>
+                <!-- table icon -->
+                <svg viewBox="0 0 20 20">
+                  <rect x="3" y="4" width="14" height="12" rx="1.4" />
+                  <path d="M3 8h14" />
+                  <path d="M9 4v12" />
+                </svg>
+                <span>Export to Excel</span>
               </button>
               <button class="export-option" data-type="pdf">
-                <span>📄</span><span>Export to PDF</span>
+                <!-- file-text icon -->
+                <svg viewBox="0 0 20 20">
+                  <path d="M6 3.5A1.5 1.5 0 017.5 2h5.3L16 5.2V15A1.5 1.5 0 0114.5 16h-7A1.5 1.5 0 016 14.5v-11z" />
+                  <path d="M11.5 2v3.3c0 .4.3.7.7.7H16" />
+                  <path d="M8 9h4" />
+                  <path d="M8 11.5h3" />
+                </svg>
+                <span>Export to PDF</span>
               </button>
             </div>
           </div>
@@ -845,7 +965,13 @@
       <div class="kpi-row">
         <div class="kpi-card">
           <div class="kpi-header">
-            <span class="kpi-icon">👥</span>
+            <div class="icon-badge blue">
+              <!-- people icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5z" />
+                <path d="M4.5 15.5A4.25 4.25 0 0114 14" />
+              </svg>
+            </div>
             <div class="kpi-label">Vendors in Scope</div>
           </div>
           <div class="kpi-value" id="vendorsInScopeCount">0</div>
@@ -854,7 +980,15 @@
 
         <div class="kpi-card">
           <div class="kpi-header">
-            <span class="kpi-icon">📊</span>
+            <div class="icon-badge purple">
+              <!-- bar chart icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M4.5 15.5v-6" />
+                <path d="M9 15.5v-9" />
+                <path d="M13.5 15.5v-4" />
+                <path d="M3 15.5h14" />
+              </svg>
+            </div>
             <div class="kpi-label">RFx Evaluation Sections</div>
           </div>
           <div class="kpi-value" id="criteriaCount">0</div>
@@ -863,7 +997,16 @@
 
         <div class="kpi-card leader-empty" id="leadingVendorCard">
           <div class="kpi-header">
-            <span class="kpi-icon">🥇</span>
+            <div class="icon-badge green">
+              <!-- trophy icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M6 4h8v1.5a3 3 0 01-3 3h-2a3 3 0 01-3-3V4z" />
+                <path d="M6 5H4.5A1.5 1.5 0 006 8" />
+                <path d="M14 5h1.5A1.5 1.5 0 0114 8" />
+                <path d="M9 9.5v1.5a2 2 0 002 2v0" />
+                <path d="M8 15h4" />
+              </svg>
+            </div>
             <div class="kpi-label">Leading Vendor (Live)</div>
           </div>
           <div class="kpi-value" id="leadingVendorName">No scores yet</div>
@@ -875,7 +1018,16 @@
 
         <div class="kpi-card">
           <div class="kpi-header">
-            <span class="kpi-icon">📈</span>
+            <div class="icon-badge amber">
+              <!-- ranking / list icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M7.5 6h9" />
+                <path d="M7.5 10h9" />
+                <path d="M7.5 14h9" />
+                <path d="M3.2 5.3l.8-.3v3h-1" />
+                <path d="M3 9.5h1.3L3 12h1.5" />
+              </svg>
+            </div>
             <div class="kpi-label">Vendor Ranking</div>
           </div>
           <div id="rankingList" class="kpi-ranking kpi-ranking-empty">
@@ -888,7 +1040,15 @@
       <div class="instructions-card">
         <div class="instructions-left">
           <div class="instructions-title">
-            <span class="icon">🧾</span>
+            <span class="title-icon">
+              <!-- clipboard icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M7.5 4.5h5" />
+                <path d="M8 3h4a1.5 1.5 0 011.5 1.5V16A1.5 1.5 0 0112 17.5H8A1.5 1.5 0 016.5 16V4.5A1.5 1.5 0 018 3z" />
+                <path d="M9 7.5h2" />
+                <path d="M9 10h3" />
+              </svg>
+            </span>
             <span>Score Card Instructions</span>
           </div>
           <div class="instructions-body">
@@ -901,7 +1061,14 @@
 
         <div class="instructions-middle">
           <div class="insights-title">
-            <span class="icon">💡</span>
+            <span class="title-icon">
+              <!-- lightbulb icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M10 3.5a4 4 0 00-2.4 7.2c.3.2.4.6.4.9v.4h4v-.4c0-.3.1-.7.4-.9A4 4 0 0010 3.5z" />
+                <path d="M8.5 15h3" />
+                <path d="M8.8 17h2.4" />
+              </svg>
+            </span>
             <span>Top Insights</span>
           </div>
           <ul class="insights-list">
@@ -915,14 +1082,23 @@
             </li>
             <li>
               <span class="insight-label">Highest-impact section:</span>
-              <span id="insightImpact" class="insight-value">Commercial Evaluation (Pricing Model, TCO, Payment terms etc.) (15% weight)</span>
+              <span id="insightImpact" class="insight-value">
+                Commercial Evaluation (Pricing Model, TCO, Payment terms etc.) (15% weight)
+              </span>
             </li>
           </ul>
         </div>
 
         <div class="instructions-right">
           <div class="progress-title">
-            <span class="icon">📊</span>
+            <span class="title-icon">
+              <!-- progress / gauge icon -->
+              <svg viewBox="0 0 20 20">
+                <path d="M4 13.5a6 6 0 1112 0" />
+                <path d="M10 9l2.2 2.2" />
+                <path d="M5.5 13.5h9" />
+              </svg>
+            </span>
             <span>Scoring Progress</span>
           </div>
           <div class="progress-bar-outer">
@@ -943,7 +1119,12 @@
         <input id="customCriterionName" placeholder="Custom evaluation section name" />
         <input id="newCriterionWeight" type="number" value="10" />
         <button id="confirmAddCriterion" class="btn-primary" style="padding:6px 14px;">
-          <span class="btn-icon">➕</span>
+          <span class="btn-icon">
+            <svg viewBox="0 0 20 20">
+              <path d="M10 4v12" />
+              <path d="M4 10h12" />
+            </svg>
+          </span>
           <span>Add</span>
         </button>
       </div>
@@ -956,7 +1137,14 @@
       <!-- DECISION RATIONALE / NOTES -->
       <section class="notes-card">
         <div class="notes-title">
-          <span class="icon">📝</span>
+          <span class="title-icon">
+            <!-- note icon -->
+            <svg viewBox="0 0 20 20">
+              <path d="M6 4.5A1.5 1.5 0 017.5 3h5A1.5 1.5 0 0114 4.5V15A1.5 1.5 0 0112.5 16h-5A1.5 1.5 0 016 14.5v-10z" />
+              <path d="M8.5 7.5h3" />
+              <path d="M8.5 10h2.5" />
+            </svg>
+          </span>
           <span>Decision Rationale / Notes</span>
         </div>
         <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
