@@ -148,15 +148,13 @@
       stroke: #64748b;
       stroke-width: 1.7;
       fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
     .title-icon svg {
       stroke: #0f172a;
     }
 
-    /* Badge icons for KPI tiles – TaskProcure navy + teal theme */
+    /* Badge icons for KPI tiles – flatter, TaskProcure-themed */
     .icon-badge {
       width: 26px;
       height: 26px;
@@ -164,65 +162,36 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.18);
-    }
-
-    .icon-badge::before {
-      content: "";
-      position: absolute;
-      inset: 2px;
-      border-radius: inherit;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 0)
-      );
-      opacity: 0.9;
-      pointer-events: none;
+      background: #e5edff;
+      border: 1px solid #c7d2fe;
     }
 
     .icon-badge svg {
-      position: relative;
       width: 16px;
       height: 16px;
-      stroke-width: 1.9;
+      stroke-width: 2;
       fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
-    /* primary navy chip */
-    .icon-badge.blue {
-      background: radial-gradient(circle at 20% 0, #ffffff 0, #e0efff 35%, #0c3c78 100%);
-    }
     .icon-badge.blue svg {
-      stroke: #ffffff;
+      stroke: #0c3c78;
     }
 
-    /* teal accent chip */
-    .icon-badge.green {
-      background: radial-gradient(circle at 20% 0, #ffffff 0, #c7f9ec 35%, #00b894 100%);
-    }
-    .icon-badge.green svg {
-      stroke: #ffffff;
-    }
-
-    /* blended navy/teal chip */
-    .icon-badge.purple {
-      background: radial-gradient(circle at 20% 0, #ffffff 0, #dbeafe 30%, #0c3c78 65%, #00b894 100%);
-    }
     .icon-badge.purple svg {
-      stroke: #ffffff;
+      stroke: #334155;
     }
 
-    /* neutral slate chip (still blue-ish) */
-    .icon-badge.amber {
-      background: radial-gradient(circle at 20% 0, #ffffff 0, #e5edf7 40%, #1f2937 100%);
+    .icon-badge.green svg {
+      stroke: #00b894;
     }
+
+    .icon-badge.amber {
+      background: #e5e7eb;
+      border-color: #d1d5db;
+    }
+
     .icon-badge.amber svg {
-      stroke: #ffffff;
+      stroke: #4b5563;
     }
 
     /* SECTION TITLES */
@@ -341,8 +310,6 @@
       stroke: currentColor;
       stroke-width: 1.8;
       fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
     /* Export dropdown */
@@ -385,8 +352,6 @@
       stroke: #0c3c78;
       stroke-width: 1.8;
       fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
     .export-option:hover {
@@ -512,6 +477,10 @@
       gap: 6px;
     }
 
+    .instructions-title .title-icon svg {
+      stroke: #0c3c78;
+    }
+
     .instructions-body {
       font-size: 11px;
       color: #4b5563;
@@ -538,6 +507,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+
+    .insights-title .title-icon svg {
+      stroke: #00b894;
     }
 
     .insights-list {
@@ -578,6 +551,10 @@
       display: flex;
       align-items: center;
       gap: 6px;
+    }
+
+    .progress-title .title-icon svg {
+      stroke: #0c3c78;
     }
 
     .progress-bar-outer {
@@ -700,7 +677,6 @@
       font-weight: 600;
       font-size: 13px;
       color: #111827;
-      min-width: 260px; /* wider Evaluation Section column */
     }
 
     .criterion-name-input {
@@ -756,28 +732,29 @@
       border: 1px solid #d1d5db;
     }
 
+    /* Delete buttons – larger icon, no red pill background */
     .remove-btn {
-      background: #fee2e2;
-      border: 1px solid #fecaca;
+      background: transparent;
+      border: none;
       color: #b91c1c;
-      padding: 4px 10px;
-      border-radius: 20px;
+      padding: 4px;
       cursor: pointer;
-      font-size: 11px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
     }
 
     .remove-btn-icon svg {
-      width: 11px;
-      height: 11px;
+      width: 17px;
+      height: 17px;
       stroke: #b91c1c;
-      stroke-width: 1.8;
+      stroke-width: 2;
       fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    }
+
+    .remove-btn:hover .remove-btn-icon svg {
+      stroke: #7f1d1d;
+      transform: translateY(-0.5px);
     }
 
     .vendor-name-input {
@@ -1046,7 +1023,7 @@
                 <path d="M6 4h8v1.5a3 3 0 01-3 3h-2a3 3 0 01-3-3V4z" />
                 <path d="M6 5H4.5A1.5 1.5 0 006 8" />
                 <path d="M14 5h1.5A1.5 1.5 0 0114 8" />
-                <path d="M9 9.5v1.5a2 2 0 002 2v0" />
+                <path d="M9 9.5v1.5a2 2 0 002 2" />
                 <path d="M8 15h4" />
               </svg>
             </div>
@@ -1181,11 +1158,11 @@
       <section class="notes-card">
         <div class="notes-title">
           <span class="title-icon">
-            <!-- note icon -->
+            <!-- fancy pen icon -->
             <svg viewBox="0 0 20 20">
-              <path d="M6 4.5A1.5 1.5 0 017.5 3h5A1.5 1.5 0 0114 4.5V15A1.5 1.5 0 0112.5 16h-5A1.5 1.5 0 016 14.5v-10z" />
-              <path d="M8.5 7.5h3" />
-              <path d="M8.5 10h2.5" />
+              <path d="M4 14.5l2.2-.6L14.5 5.6a1.2 1.2 0 000-1.7l-.4-.4a1.2 1.2 0 00-1.7 0L4.1 11.8 4 14.5z" />
+              <path d="M9.2 6.8l3 3" />
+              <path d="M4 16h12" />
             </svg>
           </span>
           <span>Decision Rationale / Notes</span>
