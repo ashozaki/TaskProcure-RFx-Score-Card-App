@@ -474,7 +474,11 @@
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+    }
+
+    .instructions-title .title-icon svg {
+      stroke: #0c3c78;
     }
 
     .instructions-body {
@@ -502,7 +506,11 @@
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+    }
+
+    .insights-title .title-icon svg {
+      stroke: #00b894;
     }
 
     .insights-list {
@@ -542,7 +550,11 @@
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+    }
+
+    .progress-title .title-icon svg {
+      stroke: #0c3c78;
     }
 
     .progress-bar-outer {
@@ -641,8 +653,14 @@
     th,
     td {
       border-bottom: 1px solid #e5e7eb;
-      padding: 10px;
+      padding: 10px 14px; /* more horizontal breathing room */
       text-align: center;
+    }
+
+    /* subtle vertical dividers between vendor columns */
+    th:not(:first-child):not(.remove-col),
+    td:not(:first-child):not(.remove-col) {
+      border-left: 1px solid rgba(15, 23, 42, 0.04);
     }
 
     th {
@@ -720,28 +738,43 @@
       border: 1px solid #d1d5db;
     }
 
-    /* Delete buttons – larger icon, no red pill background */
+    /* highlight best score cells per row */
+    .best-score-cell {
+      background: #f0fdfa !important;
+    }
+
+    .best-score-cell select {
+      font-weight: 600;
+    }
+
+    /* Delete buttons – larger icon, grey by default, red on hover */
     .remove-btn {
       background: transparent;
       border: none;
-      color: #b91c1c;
+      color: #9ca3af;
       padding: 4px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      margin-left: 4px;
     }
 
     .remove-btn-icon svg {
       width: 17px;
       height: 17px;
-      stroke: #b91c1c;
+      stroke: #9ca3af;
       stroke-width: 2;
       fill: none;
+      transition: stroke 0.12s ease, transform 0.1s ease;
+    }
+
+    .remove-btn:hover {
+      color: #b91c1c;
     }
 
     .remove-btn:hover .remove-btn-icon svg {
-      stroke: #7f1d1d;
+      stroke: #b91c1c;
       transform: translateY(-0.5px);
     }
 
@@ -1048,7 +1081,7 @@
       <div class="instructions-card">
         <div class="instructions-left">
           <div class="instructions-title">
-            <span class="icon-badge blue">
+            <span class="title-icon">
               <!-- clipboard icon -->
               <svg viewBox="0 0 20 20">
                 <path d="M7.5 4.5h5" />
@@ -1069,7 +1102,7 @@
 
         <div class="instructions-middle">
           <div class="insights-title">
-            <span class="icon-badge green">
+            <span class="title-icon">
               <!-- lightbulb icon -->
               <svg viewBox="0 0 20 20">
                 <path d="M10 3.5a4 4 0 00-2.4 7.2c.3.2.4.6.4.9v.4h4v-.4c0-.3.1-.7.4-.9A4 4 0 0010 3.5z" />
@@ -1099,7 +1132,7 @@
 
         <div class="instructions-right">
           <div class="progress-title">
-            <span class="icon-badge blue">
+            <span class="title-icon">
               <!-- progress / gauge icon -->
               <svg viewBox="0 0 20 20">
                 <path d="M4 13.5a6 6 0 1112 0" />
@@ -1384,12 +1417,26 @@
             </button>
           </th>`
         ).join("")}
-        <th>Remove</th>
+        <th class="remove-col">Remove</th>
       `;
       table.appendChild(header);
 
       criteria.forEach((c, idx) => {
         const row = document.createElement("tr");
+
+        // determine best score for this criterion (for highlighting)
+        let bestScore = -1;
+        let hasScore = false;
+        vendors.forEach(v => {
+          const valRaw = scores[c.id][v];
+          if (valRaw !== "" && valRaw !== undefined) {
+            const valNum = Number(valRaw);
+            if (!isNaN(valNum)) {
+              hasScore = true;
+              if (valNum > bestScore) bestScore = valNum;
+            }
+          }
+        });
 
         let html = `
           <td class="cell-label">
@@ -1399,21 +1446,24 @@
         `;
 
         vendors.forEach(v => {
+          const val = scores[c.id][v];
+          const isBest = hasScore && Number(val) === bestScore && bestScore > 0;
+          const bestClass = isBest ? "best-score-cell" : "";
           html += `
-            <td>
+            <td class="${bestClass}">
               <select data-id="${c.id}" data-vendor="${v}" class="score-cell">
                 <option value="">-</option>
-                <option value="0" ${scores[c.id][v] == 0 ? "selected" : ""}>0</option>
-                <option value="1" ${scores[c.id][v] == 1 ? "selected" : ""}>1</option>
-                <option value="2" ${scores[c.id][v] == 2 ? "selected" : ""}>2</option>
-                <option value="3" ${scores[c.id][v] == 3 ? "selected" : ""}>3</option>
+                <option value="0" ${val == 0 ? "selected" : ""}>0</option>
+                <option value="1" ${val == 1 ? "selected" : ""}>1</option>
+                <option value="2" ${val == 2 ? "selected" : ""}>2</option>
+                <option value="3" ${val == 3 ? "selected" : ""}>3</option>
               </select>
             </td>
           `;
         });
 
         html += `
-          <td>
+          <td class="remove-col">
             <button class="remove-btn" onclick="removeCriterion(${c.id})">
               <span class="remove-btn-icon">
                 <svg viewBox="0 0 20 20">
@@ -1441,7 +1491,7 @@
         <td class="cell-label"><b>Total Weight %</b></td>
         <td><b style="color:${weightTotal === 100 ? "#16a34a" : "#b91c1c"};">${weightTotal}%</b></td>
         ${vendors.map(() => "<td></td>").join("")}
-        <td></td>
+        <td class="remove-col"></td>
       `;
       table.appendChild(weightRow);
 
@@ -1453,7 +1503,7 @@
         </td>
         <td></td>
         ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
-        <td></td>
+        <td class="remove-col"></td>
       `;
       table.appendChild(rawRow);
 
@@ -1465,7 +1515,7 @@
         </td>
         <td></td>
         ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
-        <td></td>
+        <td class="remove-col"></td>
       `;
       table.appendChild(weightedRow);
 
