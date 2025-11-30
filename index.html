@@ -7,833 +7,833 @@
 
 <style>
 :root {
---tp-primary: #0c3c78;
---tp-primary-soft: #e7f0fb;
---tp-accent: #00b894;
---tp-bg: #f3f5f9;
---tp-card-bg: #ffffff;
---tp-border: #d9e2ef;
---tp-text-main: #1f2933;
---tp-text-muted: #64748b;
---radius-lg: 14px;
---shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+  --tp-primary: #0c3c78;
+  --tp-primary-soft: #e7f0fb;
+  --tp-accent: #00b894;
+  --tp-bg: #f3f5f9;
+  --tp-card-bg: #ffffff;
+  --tp-border: #d9e2ef;
+  --tp-text-main: #1f2933;
+  --tp-text-muted: #64748b;
+  --radius-lg: 14px;
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
 }
 
 body {
-margin: 0;
-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-background: radial-gradient(circle at top left, #e3f2ff 0, #f3f5f9 40%, #eef2ff 100%);
-color: var(--tp-text-main);
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #e3f2ff 0, #f3f5f9 40%, #eef2ff 100%);
+  color: var(--tp-text-main);
 }
 
 .app-shell {
-max-width: 1180px;
-margin: 20px auto;
-padding: 12px 16px 24px;
-border-radius: 24px;
-border: 1px solid #d1d5e5;
-background: transparent;
+  max-width: 1180px;
+  margin: 20px auto;
+  padding: 12px 16px 24px;
+  border-radius: 24px;
+  border: 1px solid #d1d5e5;
+  background: transparent;
 }
 
 /* HEADER */
 .app-header {
-background: #ffffff;
-border-radius: 18px;
-padding: 12px 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-box-shadow: var(--shadow-soft);
-border: 1px solid #e5e7eb;
-margin-bottom: 20px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
 }
 
 .brand-left {
-display: flex;
-align-items: center;
-gap: 103px;
+  display: flex;
+  align-items: center;
+  gap: 103px;
 }
 
 .brand-logo-hero {
-height: 50px;
-width: auto;
-display: block;
-transform: scale(1.35);
-transform-origin: left center;
+  height: 50px;
+  width: auto;
+  display: block;
+  transform: scale(1.35);
+  transform-origin: left center;
 }
 
 .brand-title {
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-tagline {
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 0.16em;
-color: #6b7280;
-font-weight: 600;
-line-height: 1.4;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #6b7280;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .brand-heading {
-font-size: 18px;
-font-weight: 700;
-color: #0c3c78;
-letter-spacing: 0.02em;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0c3c78;
+  letter-spacing: 0.02em;
 }
 
 .header-right {
-font-size: 11px;
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-gap: 4px;
-color: #4b5563;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  color: #4b5563;
 }
 
 .pill {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-background: var(--tp-primary-soft);
-color: var(--tp-primary);
-padding: 4px 12px;
-border-radius: 999px;
-font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--tp-primary-soft);
+  color: var(--tp-primary);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
 .pill-dot {
-width: 7px;
-height: 7px;
-background: #22c55e;
-border-radius: 999px;
+  width: 7px;
+  height: 7px;
+  background: #22c55e;
+  border-radius: 999px;
 }
 
 /* MAIN CARD */
 .card {
-background: #ffffff;
-border-radius: 14px;
-padding: 16px 18px 20px;
-border: 1px solid var(--tp-border);
-box-shadow: var(--shadow-soft);
-position: relative;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px 18px 20px;
+  border: 1px solid var(--tp-border);
+  box-shadow: var(--shadow-soft);
+  position: relative;
 }
 
 /* Watermark */
 .card-watermark {
-position: absolute;
-right: 18px;
-bottom: 10px;
-width: 170px;
-opacity: 0.06;
-pointer-events: none;
-user-select: none;
+  position: absolute;
+  right: 18px;
+  bottom: 10px;
+  width: 170px;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* GENERIC ICON STYLES */
 .section-icon,
 .label-icon,
 .title-icon {
-display: inline-flex;
-align-items: center;
-justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .section-icon svg,
 .label-icon svg,
 .title-icon svg {
-width: 16px;
-height: 16px;
-stroke: #64748b;
-stroke-width: 1.7;
-fill: none;
+  width: 16px;
+  height: 16px;
+  stroke: #64748b;
+  stroke-width: 1.7;
+  fill: none;
 }
 
 .title-icon svg {
-stroke: #0f172a;
+  stroke: #0f172a;
 }
 
 /* Badge icons for KPI tiles – flatter, TaskProcure-themed */
 .icon-badge {
-width: 26px;
-height: 26px;
-border-radius: 999px;
-display: flex;
-align-items: center;
-justify-content: center;
-background: #e5edff;
-border: 1px solid #c7d2fe;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5edff;
+  border: 1px solid #c7d2fe;
 }
 
 .icon-badge svg {
-width: 16px;
-height: 16px;
-stroke-width: 2;
-fill: none;
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+  fill: none;
 }
 
 .icon-badge.blue svg {
-stroke: #0c3c78;
+  stroke: #0c3c78;
 }
 
 .icon-badge.purple svg {
-stroke: #334155;
+  stroke: #334155;
 }
 
 .icon-badge.green svg {
-stroke: #00b894;
+  stroke: #00b894;
 }
 
 .icon-badge.amber {
-background: #e5e7eb;
-border-color: #d1d5db;
+  background: #e5e7eb;
+  border-color: #d1d5db;
 }
 
 .icon-badge.amber svg {
-stroke: #4b5563;
+  stroke: #4b5563;
 }
 
 /* SECTION TITLES */
 .section-heading {
-font-size: 12px;
-font-weight: 700;
-letter-spacing: 0.14em;
-text-transform: uppercase;
-color: #9ca3af;
-margin-bottom: 8px;
-display: flex;
-align-items: center;
-gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* TOP CONTROLS */
 .top-row {
-display: flex;
-justify-content: space-between;
-align-items: flex-end;
-margin-bottom: 14px;
-gap: 16px;
-flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 14px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 .top-inputs {
-display: flex;
-flex-wrap: wrap;
-gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .project-input label {
-font-size: 12px;
-font-weight: 600;
-color: #4b5563;
-display: flex;
-align-items: center;
-gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .project-input input {
-margin-top: 4px;
-padding: 7px 14px;
-border-radius: 999px;
-border: 1px solid #cbd5e1;
-min-width: 260px;
-font-size: 13px;
-background: #f9fafb;
-transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  margin-top: 4px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  min-width: 260px;
+  font-size: 13px;
+  background: #f9fafb;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .project-input input:focus {
-outline: none;
-border-color: var(--tp-primary);
-background: #ffffff;
-box-shadow: 0 0 0 2px rgba(12, 60, 120, 0.15);
+  outline: none;
+  border-color: var(--tp-primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(12, 60, 120, 0.15);
 }
 
 .top-actions {
-display: flex;
-gap: 8px;
-flex-wrap: wrap;
-justify-content: flex-end;
-align-items: center;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .btn-ghost,
 .btn-primary {
-padding: 8px 16px;
-border-radius: 999px;
-font-size: 12px;
-cursor: pointer;
-display: inline-flex;
-align-items: center;
-gap: 6px;
-font-weight: 600;
-transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease, color 0.12s ease;
-white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.12s ease, color 0.12s ease;
+  white-space: nowrap;
 }
 
 .btn-ghost {
-border: 1px solid #0c3c78;
-color: #0c3c78;
-background: #ffffff;
+  border: 1px solid #0c3c78;
+  color: #0c3c78;
+  background: #ffffff;
 }
 
 .btn-ghost:hover {
-background: #0c3c78;
-color: #ffffff;
-box-shadow: 0 6px 14px rgba(12, 60, 120, 0.18);
-transform: translateY(-1px);
+  background: #0c3c78;
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(12, 60, 120, 0.18);
+  transform: translateY(-1px);
 }
 
 .btn-primary {
-border: none;
-background: #0c3c78;
-color: #ffffff;
-box-shadow: 0 6px 14px rgba(12, 60, 120, 0.24);
+  border: none;
+  background: #0c3c78;
+  color: #ffffff;
+  box-shadow: 0 6px 14px rgba(12, 60, 120, 0.24);
 }
 
 .btn-primary:hover {
-background: #082749;
-box-shadow: 0 8px 18px rgba(12, 60, 120, 0.3);
-transform: translateY(-1px);
+  background: #082749;
+  box-shadow: 0 8px 18px rgba(12, 60, 120, 0.3);
+  transform: translateY(-1px);
 }
 
 .btn-icon {
-display: inline-flex;
-align-items: center;
-justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-icon svg {
-width: 14px;
-height: 14px;
-stroke: currentColor;
-stroke-width: 1.8;
-fill: none;
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
 }
 
 /* Export dropdown */
 .export-group {
-position: relative;
-display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .export-menu {
-position: absolute;
-right: 0;
-top: 110%;
-background: #ffffff;
-border-radius: 10px;
-border: 1px solid #d1d5db;
-box-shadow: var(--shadow-soft);
-min-width: 170px;
-padding: 4px 0;
-display: none;
-z-index: 20;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  box-shadow: var(--shadow-soft);
+  min-width: 170px;
+  padding: 4px 0;
+  display: none;
+  z-index: 20;
 }
 
 .export-option {
-width: 100%;
-text-align: left;
-padding: 8px 12px;
-border: none;
-background: transparent;
-font-size: 12px;
-cursor: pointer;
-color: #111827;
-display: flex;
-align-items: center;
-gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .export-option svg {
-width: 14px;
-height: 14px;
-stroke: #0c3c78;
-stroke-width: 1.8;
-fill: none;
+  width: 14px;
+  height: 14px;
+  stroke: #0c3c78;
+  stroke-width: 1.8;
+  fill: none;
 }
 
 .export-option:hover {
-background: #eef2ff;
+  background: #eef2ff;
 }
 
 /* DASHBOARD KPI ROW */
 .kpi-row {
-display: grid;
-grid-template-columns: repeat(4, minmax(0, 1fr));
-gap: 10px;
-margin-bottom: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
 }
 
 .kpi-card {
-background: #f9fafb;
-border-radius: 12px;
-padding: 10px 12px;
-border: 1px solid #e5e7eb;
-display: flex;
-flex-direction: column;
-gap: 2px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .kpi-header {
-display: flex;
-align-items: center;
-gap: 8px;
-margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
 }
 
 .kpi-label {
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 0.12em;
-color: #6b7280;
-font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  font-weight: 600;
 }
 
 .kpi-value {
-font-size: 22px;
-font-weight: 700;
-color: #0c3c78;
-margin-bottom: 2px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0c3c78;
+  margin-bottom: 2px;
 }
 
 .kpi-caption {
-font-size: 11px;
-color: #6b7280;
+  font-size: 11px;
+  color: #6b7280;
 }
 
 .kpi-card.leader-active {
-background: #ecfdf3;
-border-color: #bbf7d0;
+  background: #ecfdf3;
+  border-color: #bbf7d0;
 }
 
 .kpi-card.leader-empty .kpi-value {
-color: #6b7280;
+  color: #6b7280;
 }
 
 .kpi-card.leader-active .kpi-value {
-color: var(--tp-accent);
+  color: var(--tp-accent);
 }
 
 .kpi-meta-ok {
-color: #16a34a;
-font-size: 11px;
-font-weight: 600;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .kpi-meta-warn {
-color: #b45309;
-font-size: 11px;
-font-weight: 600;
+  color: #b45309;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .kpi-score-line {
-color: #16a34a;
-font-size: 11px;
-font-weight: 600;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 600;
 }
 
 .kpi-ranking {
-font-size: 11px;
-color: #374151;
+  font-size: 11px;
+  color: #374151;
 }
 
 .kpi-ranking div {
-margin-bottom: 2px;
+  margin-bottom: 2px;
 }
 
 .kpi-ranking-empty {
-color: #9ca3af;
-font-style: italic;
+  color: #9ca3af;
+  font-style: italic;
 }
 
 /* INSTRUCTIONS + INSIGHTS + PROGRESS */
 .instructions-card {
-margin-bottom: 12px;
-padding: 12px 14px;
-border-radius: 12px;
-border: 1px solid #e5e7eb;
-background: #f3f6ff;
-display: flex;
-justify-content: space-between;
-align-items: stretch;
-gap: 24px;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f3f6ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 24px;
 }
 
 .instructions-left {
-flex: 2;
+  flex: 2;
 }
 
 .instructions-title {
-font-size: 12px;
-text-transform: uppercase;
-letter-spacing: 0.12em;
-color: #6b7280;
-margin-bottom: 4px;
-font-weight: 700;
-display: flex;
-align-items: center;
-gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  margin-bottom: 4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .instructions-body {
-font-size: 11px;
-color: #4b5563;
-line-height: 1.5;
+  font-size: 11px;
+  color: #4b5563;
+  line-height: 1.5;
 }
 
 .instructions-middle {
-flex: 1.5;
-border-left: 1px dashed #dde1ee;
-border-right: 1px dashed #dde1ee;
-padding: 0 16px;
-display: flex;
-flex-direction: column;
-justify-content: center;
+  flex: 1.5;
+  border-left: 1px dashed #dde1ee;
+  border-right: 1px dashed #dde1ee;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .insights-title {
-font-size: 12px;
-text-transform: uppercase;
-letter-spacing: 0.12em;
-color: #6b7280;
-margin-bottom: 4px;
-font-weight: 700;
-display: flex;
-align-items: center;
-gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  margin-bottom: 4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .insights-list {
-list-style: none;
-margin: 0;
-padding: 0;
-font-size: 11px;
-color: #374151;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  color: #374151;
 }
 
 .insights-list li + li {
-margin-top: 2px;
+  margin-top: 2px;
 }
 
 .insight-label {
-color: #6b7280;
+  color: #6b7280;
 }
 
 .insight-value {
-font-weight: 600;
-color: #111827;
+  font-weight: 600;
+  color: #111827;
 }
 
 .instructions-right {
-flex: 1.3;
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-gap: 6px;
+  flex: 1.3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
 }
 
 .progress-title {
-font-size: 12px;
-text-transform: uppercase;
-letter-spacing: 0.12em;
-color: #6b7280;
-font-weight: 700;
-display: flex;
-align-items: center;
-gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .progress-bar-outer {
-width: 100%;
-height: 12px;
-border-radius: 999px;
-background: #e5e7eb;
-overflow: hidden;
-position: relative;
-box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.12);
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.12);
 }
 
 .progress-bar-outer::before {
-content: "";
-position: absolute;
-inset: 0;
-background-image: linear-gradient(
-to right,
-rgba(255, 255, 255, 0.4) 1px,
-transparent 1px
-);
-background-size: 8% 100%;
-pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.4) 1px,
+    transparent 1px
+  );
+  background-size: 8% 100%;
+  pointer-events: none;
 }
 
 .progress-bar-inner {
-height: 100%;
-width: 0;
-background: linear-gradient(90deg, #22c55e, #16a34a);
-transition: width 0.25s ease-out;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.25s ease-out;
 }
 
 .progress-meta {
-font-size: 11px;
-color: #374151;
-display: flex;
-justify-content: space-between;
-width: 100%;
-margin-top: 3px;
+  font-size: 11px;
+  color: #374151;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 3px;
 }
 
 .progress-percent {
-color: #16a34a;
-font-weight: 700;
+  color: #16a34a;
+  font-weight: 700;
 }
 
 /* ADD CRITERION BAR */
 #addCriterionBar {
-margin-bottom: 12px;
-padding: 10px;
-border: 1px dashed #94a3b8;
-border-radius: 10px;
-background: #f8fafc;
-display: none;
-gap: 6px;
-align-items: center;
-flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px dashed #94a3b8;
+  border-radius: 10px;
+  background: #f8fafc;
+  display: none;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 #addCriterionBar select,
 #addCriterionBar input {
-padding: 6px 8px;
-border-radius: 6px;
-border: 1px solid #cbd5e1;
-font-size: 12px;
-background: #ffffff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 12px;
+  background: #ffffff;
 }
 
 #addCriterionBar select {
-min-width: 230px;
+  min-width: 230px;
 }
 
 #addCriterionBar input[type="number"] {
-width: 70px;
-text-align: center;
+  width: 70px;
+  text-align: center;
 }
 
 /* TABLE */
 .table-wrap {
-position: relative;
-border-radius: 12px;
-border: 1px solid var(--tp-border);
-overflow: auto;
-background: #ffffff;
+  position: relative;
+  border-radius: 12px;
+  border: 1px solid var(--tp-border);
+  overflow: auto;
+  background: #ffffff;
 }
 
 table {
-border-collapse: collapse;
-width: 100%;
-min-width: 680px;
-font-size: 13px;
-position: relative;
-z-index: 1;
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+  font-size: 13px;
+  position: relative;
+  z-index: 1;
 }
 
 th,
 td {
-border-bottom: 1px solid #e5e7eb;
-padding: 10px;
-text-align: center;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: center;
 }
 
 th {
-background: #eef2ff !important;
-font-size: 15px !important;
-font-weight: 800 !important;
-color: #0f172a !important;
+  background: #eef2ff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #0f172a !important;
 }
 
 td {
-background: #ffffff;
+  background: #ffffff;
 }
 
 tr:nth-child(even) td {
-background: #f8fbff;
+  background: #f8fbff;
 }
 
 .cell-label {
-text-align: left;
-font-weight: 600;
-font-size: 13px;
-color: #111827;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: #111827;
 }
 
 .criterion-name-input {
-border: none;
-background: transparent;
-width: 100%;
-font-weight: 600;
-font-size: 13px;
-color: #111827;
-outline: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-weight: 600;
+  font-size: 13px;
+  color: #111827;
+  outline: none;
 }
 
 .criterion-name-input:focus {
-border-bottom: 1px solid #0c3c78;
+  border-bottom: 1px solid #0c3c78;
 }
 
 .totals-row {
-background: #dce9ff !important;
-color: #0f172a !important;
-font-weight: 800 !important;
-font-size: 14px !important;
+  background: #dce9ff !important;
+  color: #0f172a !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
 }
 
 .totals-row td {
-background: #dce9ff !important;
-color: #0f172a !important;
-padding: 12px 8px;
-border-bottom: none;
+  background: #dce9ff !important;
+  color: #0f172a !important;
+  padding: 12px 8px;
+  border-bottom: none;
 }
 
 .totals-row .cell-label {
-color: #0f172a !important;
-font-weight: 900 !important;
-text-align: left;
+  color: #0f172a !important;
+  font-weight: 900 !important;
+  text-align: left;
 }
 
 .total-label {
-white-space: nowrap;
+  white-space: nowrap;
 }
 
 .score-cell {
-padding: 4px;
-border-radius: 6px;
-width: 55px;
-text-align: center;
+  padding: 4px;
+  border-radius: 6px;
+  width: 55px;
+  text-align: center;
 }
 
 .weight-input {
-width: 60px;
-padding: 4px;
-border-radius: 6px;
-text-align: center;
-border: 1px solid #d1d5db;
+  width: 60px;
+  padding: 4px;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid #d1d5db;
 }
 
-/* Delete buttons – larger icon, no red pill background */
+/* Delete buttons – grey by default, red on hover */
 .remove-btn {
-background: transparent;
-border: none;
-color: #b91c1c;
-padding: 4px;
-cursor: pointer;
-display: inline-flex;
-align-items: center;
-justify-content: center;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .remove-btn-icon svg {
-width: 17px;
-height: 17px;
-stroke: #b91c1c;
-stroke-width: 2;
-fill: none;
+  width: 17px;
+  height: 17px;
+  stroke: #9ca3af;              /* neutral grey */
+  stroke-width: 2;
+  fill: none;
+  transition: stroke 0.15s ease, transform 0.08s ease;
 }
 
 .remove-btn:hover .remove-btn-icon svg {
-stroke: #7f1d1d;
-transform: translateY(-0.5px);
+  stroke: #b91c1c;              /* red on hover */
+  transform: translateY(-0.5px);
 }
 
 .vendor-name-input {
-border: none;
-background: transparent;
-text-align: center;
-font-weight: 700;
-font-size: 13px;
-width: 90px;
-outline: none;
-color: #0f172a;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+  width: 90px;
+  outline: none;
+  color: #0f172a;
 }
 
 .vendor-name-input:focus {
-border-bottom: 1px solid #0c3c78;
+  border-bottom: 1px solid #0c3c78;
 }
 
 .notes-card {
-margin-top: 12px;
-padding: 10px 12px 14px;
-border-radius: 12px;
-border: 1px solid #e5e7eb;
-background: #f9fafb;
+  margin-top: 12px;
+  padding: 10px 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
 }
 
 .notes-title {
-font-size: 12px;
-font-weight: 600;
-margin-bottom: 6px;
-color: #111827;
-display: flex;
-align-items: center;
-gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .notes-title .title-icon svg {
-stroke: #0c3c78;
+  stroke: #0c3c78;
 }
 
 #decisionNotes {
-width: 100%;
-min-height: 80px;
-border-radius: 8px;
-border: 1px solid #d1d5db;
-padding: 8px 10px;
-font-size: 12px;
-resize: vertical;
-font-family: inherit;
-background: #ffffff;
+  width: 100%;
+  min-height: 80px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 8px 10px;
+  font-size: 12px;
+  resize: vertical;
+  font-family: inherit;
+  background: #ffffff;
 }
 
 #decisionNotes:focus {
-outline: none;
-border-color: var(--tp-primary);
-box-shadow: 0 0 0 2px rgba(12, 60, 120, 0.1);
+  outline: none;
+  border-color: var(--tp-primary);
+  box-shadow: 0 0 0 2px rgba(12, 60, 120, 0.1);
 }
 
 @media (max-width: 900px) {
-.kpi-row {
-grid-template-columns: repeat(2, minmax(0, 1fr));
-}
+  .kpi-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-.instructions-card {
-flex-direction: column;
-}
+  .instructions-card {
+    flex-direction: column;
+  }
 
-.instructions-middle {
-border-left: none;
-border-right: none;
-border-top: 1px dashed #dde1ee;
-border-bottom: 1px dashed #dde1ee;
-padding: 8px 0;
-}
+  .instructions-middle {
+    border-left: none;
+    border-right: none;
+    border-top: 1px dashed #dde1ee;
+    border-bottom: 1px dashed #dde1ee;
+    padding: 8px 0;
+  }
 
-.instructions-right {
-align-items: flex-start;
-}
+  .instructions-right {
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
-.kpi-row {
-grid-template-columns: minmax(0, 1fr);
-}
+  .kpi-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
-.top-row {
-align-items: flex-start;
-}
+  .top-row {
+    align-items: flex-start;
+  }
 
-.top-actions {
-justify-content: flex-start;
-}
+  .top-actions {
+    justify-content: flex-start;
+  }
 }
 </style>
 
@@ -845,339 +845,339 @@ justify-content: flex-start;
 
 <!-- HEADER -->
 <header class="app-header">
-<div class="brand-left">
-<img src="Logo resized.png" class="brand-logo-hero" alt="TaskProcure logo" />
-<div class="brand-title">
-<span class="brand-tagline">RFX Evaluation Dashboard</span>
-<span class="brand-heading">Score Card &amp; Vendor Ranking</span>
-</div>
-</div>
-<div class="header-right">
-<div class="pill">
-<span class="pill-dot"></span>
-Live scoring • PDF &amp; Excel export ready
-</div>
-</div>
+  <div class="brand-left">
+    <img src="Logo resized.png" class="brand-logo-hero" alt="TaskProcure logo" />
+    <div class="brand-title">
+      <span class="brand-tagline">RFX Evaluation Dashboard</span>
+      <span class="brand-heading">Score Card &amp; Vendor Ranking</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="pill">
+      <span class="pill-dot"></span>
+      Live scoring • PDF &amp; Excel export ready
+    </div>
+  </div>
 </header>
 
 <!-- MAIN CONTENT -->
 <main class="card">
 
-<!-- PROJECT DETAILS TITLE -->
-<div class="section-heading">
-<span class="section-icon">
-<!-- folder icon -->
-<svg viewBox="0 0 20 20">
-<path d="M3 5.5A1.5 1.5 0 014.5 4h3l1.5 2h6A1.5 1.5 0 0116.5 7h-13V5.5z" />
-<rect x="3" y="7" width="14" height="9" rx="1.4" />
-</svg>
-</span>
-<span>Project Details</span>
-</div>
+  <!-- PROJECT DETAILS TITLE -->
+  <div class="section-heading">
+    <span class="section-icon">
+      <!-- folder icon -->
+      <svg viewBox="0 0 20 20">
+        <path d="M3 5.5A1.5 1.5 0 014.5 4h3l1.5 2h6A1.5 1.5 0 0116.5 7h-13V5.5z" />
+        <rect x="3" y="7" width="14" height="9" rx="1.4" />
+      </svg>
+    </span>
+    <span>Project Details</span>
+  </div>
 
-<!-- TOP CONTROLS -->
-<div class="top-row">
-<div class="top-inputs">
-<div class="project-input">
-<label>
-<span class="label-icon">
-<!-- RFx / doc icon -->
-<svg viewBox="0 0 20 20">
-<path d="M6 3.5A1.5 1.5 0 017.5 2h5.3L16 5.2V15A1.5 1.5 0 0114.5 16h-7A1.5 1.5 0 016 14.5v-11z" />
-<path d="M11.5 2v3.3c0 .4.3.7.7.7H16" />
-<path d="M7.5 9h5" />
-<path d="M7.5 11.7h3.5" />
-</svg>
-</span>
-Project / RFx Name
-</label><br />
-<input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
-</div>
-<div class="project-input">
-<label>
-<span class="label-icon">
-<!-- user icon -->
-<svg viewBox="0 0 20 20">
-<path d="M10 10.25a3 3 0 100-6 3 3 0 000 6z" />
-<path d="M4.5 15.5a5.5 5.5 0 0111 0v.5h-11v-.5z" />
-</svg>
-</span>
-Evaluator's Name
-</label><br />
-<input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
-</div>
-</div>
+  <!-- TOP CONTROLS -->
+  <div class="top-row">
+    <div class="top-inputs">
+      <div class="project-input">
+        <label>
+          <span class="label-icon">
+            <!-- RFx / doc icon -->
+            <svg viewBox="0 0 20 20">
+              <path d="M6 3.5A1.5 1.5 0 017.5 2h5.3L16 5.2V15A1.5 1.5 0 0114.5 16h-7A1.5 1.5 0 016 14.5v-11z" />
+              <path d="M11.5 2v3.3c0 .4.3.7.7.7H16" />
+              <path d="M7.5 9h5" />
+              <path d="M7.5 11.7h3.5" />
+            </svg>
+          </span>
+          Project / RFx Name
+        </label><br />
+        <input id="projectName" placeholder="e.g. Digital Identity &amp; PKI RFx 2026" />
+      </div>
+      <div class="project-input">
+        <label>
+          <span class="label-icon">
+            <!-- user icon -->
+            <svg viewBox="0 0 20 20">
+              <path d="M10 10.25a3 3 0 100-6 3 3 0 000 6z" />
+              <path d="M4.5 15.5a5.5 5.5 0 0111 0v.5h-11v-.5z" />
+            </svg>
+          </span>
+          Evaluator's Name
+        </label><br />
+        <input id="evaluatorName" placeholder="e.g. Ashraf Mousa" />
+      </div>
+    </div>
 
-<div class="top-actions">
-<button id="addCriterionBtn" class="btn-ghost">
-<span class="btn-icon">
-<!-- plus icon -->
-<svg viewBox="0 0 20 20">
-<path d="M10 4v12" />
-<path d="M4 10h12" />
-</svg>
-</span>
-<span>Add Criterion</span>
-</button>
-<button id="addVendorBtn" class="btn-ghost">
-<span class="btn-icon">
-<!-- users icon -->
-<svg viewBox="0 0 20 20">
-<path d="M8 10a2.75 2.75 0 100-5.5A2.75 2.75 0 008 10z" />
-<path d="M13.5 9.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" />
-<path d="M3.75 15.5A3.75 3.75 0 0111 14.1" />
-<path d="M11.5 15.5h4.75a3 3 0 00-4.1-2.8" />
-</svg>
-</span>
-<span>Add Vendor</span>
-</button>
+    <div class="top-actions">
+      <button id="addCriterionBtn" class="btn-ghost">
+        <span class="btn-icon">
+          <!-- plus icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M10 4v12" />
+            <path d="M4 10h12" />
+          </svg>
+        </span>
+        <span>Add Criterion</span>
+      </button>
+      <button id="addVendorBtn" class="btn-ghost">
+        <span class="btn-icon">
+          <!-- users icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M8 10a2.75 2.75 0 100-5.5A2.75 2.75 0 008 10z" />
+            <path d="M13.5 9.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z" />
+            <path d="M3.75 15.5A3.75 3.75 0 0111 14.1" />
+            <path d="M11.5 15.5h4.75a3 3 0 00-4.1-2.8" />
+          </svg>
+        </span>
+        <span>Add Vendor</span>
+      </button>
 
-<div class="export-group">
-<button id="exportBtn" class="btn-primary">
-<span class="btn-icon">
-<!-- download icon -->
-<svg viewBox="0 0 20 20">
-<path d="M10 3.5v9" />
-<path d="M6.5 9.5L10 13l3.5-3.5" />
-<path d="M4.5 15.5h11" />
-</svg>
-</span>
-<span>Export Scorecard</span>
-</button>
-<div id="exportMenu" class="export-menu">
-<button class="export-option" data-type="excel">
-<!-- table icon -->
-<svg viewBox="0 0 20 20">
-<rect x="3" y="4" width="14" height="12" rx="1.4" />
-<path d="M3 8h14" />
-<path d="M9 4v12" />
-</svg>
-<span>Export to Excel</span>
-</button>
-<button class="export-option" data-type="pdf">
-<!-- file-text icon -->
-<svg viewBox="0 0 20 20">
-<path d="M6 3.5A1.5 1.5 0 017.5 2h5.3L16 5.2V15A1.5 1.5 0 0114.5 16h-7A1.5 1.5 0 016 14.5v-11z" />
-<path d="M11.5 2v3.3c0 .4.3.7.7.7H16" />
-<path d="M8 9h4" />
-<path d="M8 11.5h3" />
-</svg>
-<span>Export to PDF</span>
-</button>
-</div>
-</div>
-</div>
-</div>
+      <div class="export-group">
+        <button id="exportBtn" class="btn-primary">
+          <span class="btn-icon">
+            <!-- download icon -->
+            <svg viewBox="0 0 20 20">
+              <path d="M10 3.5v9" />
+              <path d="M6.5 9.5L10 13l3.5-3.5" />
+              <path d="M4.5 15.5h11" />
+            </svg>
+          </span>
+          <span>Export Scorecard</span>
+        </button>
+        <div id="exportMenu" class="export-menu">
+          <button class="export-option" data-type="excel">
+            <!-- table icon -->
+            <svg viewBox="0 0 20 20">
+              <rect x="3" y="4" width="14" height="12" rx="1.4" />
+              <path d="M3 8h14" />
+              <path d="M9 4v12" />
+            </svg>
+            <span>Export to Excel</span>
+          </button>
+          <button class="export-option" data-type="pdf">
+            <!-- file-text icon -->
+            <svg viewBox="0 0 20 20">
+              <path d="M6 3.5A1.5 1.5 0 017.5 2h5.3L16 5.2V15A1.5 1.5 0 0114.5 16h-7A1.5 1.5 0 016 14.5v-11z" />
+              <path d="M11.5 2v3.3c0 .4.3.7.7.7H16" />
+              <path d="M8 9h4" />
+              <path d="M8 11.5h3" />
+            </svg>
+            <span>Export to PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<!-- DASHBOARD KPI TILES -->
-<div class="kpi-row">
-<div class="kpi-card">
-<div class="kpi-header">
-<div class="icon-badge blue">
-<!-- people icon -->
-<svg viewBox="0 0 20 20">
-<path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5z" />
-<path d="M4.5 15.5A4.25 4.25 0 0114 14" />
-</svg>
-</div>
-<div class="kpi-label">Vendors in Scope</div>
-</div>
-<div class="kpi-value" id="vendorsInScopeCount">0</div>
-<div class="kpi-caption">Vendors currently being scored.</div>
-</div>
+  <!-- DASHBOARD KPI TILES -->
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <div class="icon-badge blue">
+          <!-- people icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M10 9.25a2.75 2.75 0 100-5.5 2.75 2.75 0 000 5.5z" />
+            <path d="M4.5 15.5A4.25 4.25 0 0114 14" />
+          </svg>
+        </div>
+        <div class="kpi-label">Vendors in Scope</div>
+      </div>
+      <div class="kpi-value" id="vendorsInScopeCount">0</div>
+      <div class="kpi-caption">Vendors currently being scored.</div>
+    </div>
 
-<div class="kpi-card">
-<div class="kpi-header">
-<div class="icon-badge purple">
-<!-- bar chart icon -->
-<svg viewBox="0 0 20 20">
-<path d="M4.5 15.5v-6" />
-<path d="M9 15.5v-9" />
-<path d="M13.5 15.5v-4" />
-<path d="M3 15.5h14" />
-</svg>
-</div>
-<div class="kpi-label">RFx Evaluation Sections</div>
-</div>
-<div class="kpi-value" id="criteriaCount">0</div>
-<div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
-</div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <div class="icon-badge purple">
+          <!-- bar chart icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M4.5 15.5v-6" />
+            <path d="M9 15.5v-9" />
+            <path d="M13.5 15.5v-4" />
+            <path d="M3 15.5h14" />
+          </svg>
+        </div>
+        <div class="kpi-label">RFx Evaluation Sections</div>
+      </div>
+      <div class="kpi-value" id="criteriaCount">0</div>
+      <div class="kpi-caption">Active evaluation criteria in this scorecard.</div>
+    </div>
 
-<div class="kpi-card leader-empty" id="leadingVendorCard">
-<div class="kpi-header">
-<div class="icon-badge green">
-<!-- trophy icon -->
-<svg viewBox="0 0 20 20">
-<path d="M6 4h8v1.5a3 3 0 01-3 3h-2a3 3 0 01-3-3V4z" />
-<path d="M6 5H4.5A1.5 1.5 0 006 8" />
-<path d="M14 5h1.5A1.5 1.5 0 0114 8" />
-<path d="M9 9.5v1.5a2 2 0 002 2" />
-<path d="M8 15h4" />
-</svg>
-</div>
-<div class="kpi-label">Leading Vendor (Live)</div>
-</div>
-<div class="kpi-value" id="leadingVendorName">No scores yet</div>
-<div class="kpi-score-line" id="leadingVendorScore"></div>
-<div class="kpi-caption" id="leadingVendorMeta">
-Start scoring to identify the leading vendor.
-</div>
-</div>
+    <div class="kpi-card leader-empty" id="leadingVendorCard">
+      <div class="kpi-header">
+        <div class="icon-badge green">
+          <!-- trophy icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M6 4h8v1.5a3 3 0 01-3 3h-2a3 3 0 01-3-3V4z" />
+            <path d="M6 5H4.5A1.5 1.5 0 006 8" />
+            <path d="M14 5h1.5A1.5 1.5 0 0114 8" />
+            <path d="M9 9.5v1.5a2 2 0 002 2" />
+            <path d="M8 15h4" />
+          </svg>
+        </div>
+        <div class="kpi-label">Leading Vendor (Live)</div>
+      </div>
+      <div class="kpi-value" id="leadingVendorName">No scores yet</div>
+      <div class="kpi-score-line" id="leadingVendorScore"></div>
+      <div class="kpi-caption" id="leadingVendorMeta">
+        Start scoring to identify the leading vendor.
+      </div>
+    </div>
 
-<div class="kpi-card">
-<div class="kpi-header">
-<div class="icon-badge amber">
-<!-- ranking / list icon -->
-<svg viewBox="0 0 20 20">
-<path d="M7.5 6h9" />
-<path d="M7.5 10h9" />
-<path d="M7.5 14h9" />
-<path d="M3.2 5.3l.8-.3v3h-1" />
-<path d="M3 9.5h1.3L3 12h1.5" />
-</svg>
-</div>
-<div class="kpi-label">Vendor Ranking</div>
-</div>
-<div id="rankingList" class="kpi-ranking kpi-ranking-empty">
-Start scoring to see vendor rankings here.
-</div>
-</div>
-</div>
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <div class="icon-badge amber">
+          <!-- ranking / list icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M7.5 6h9" />
+            <path d="M7.5 10h9" />
+            <path d="M7.5 14h9" />
+            <path d="M3.2 5.3l.8-.3v3h-1" />
+            <path d="M3 9.5h1.3L3 12h1.5" />
+          </svg>
+        </div>
+        <div class="kpi-label">Vendor Ranking</div>
+      </div>
+      <div id="rankingList" class="kpi-ranking kpi-ranking-empty">
+        Start scoring to see vendor rankings here.
+      </div>
+    </div>
+  </div>
 
-<!-- SCORE CARD INSTRUCTIONS + INSIGHTS + PROGRESS -->
-<div class="instructions-card">
-<div class="instructions-left">
-<div class="instructions-title">
-<span class="icon-badge blue">
-<!-- clipboard icon -->
-<svg viewBox="0 0 20 20">
-<path d="M7.5 4.5h5" />
-<path d="M8 3h4a1.5 1.5 0 011.5 1.5V16A1.5 1.5 0 0112 17.5H8A1.5 1.5 0 016.5 16V4.5A1.5 1.5 0 018 3z" />
-<path d="M9 7.5h2" />
-<path d="M9 10h3" />
-</svg>
-</span>
-<span>Score Card Instructions</span>
-</div>
-<div class="instructions-body">
-0 – If Solution does not meet needs<br />
-1 – If Solution only partially meets needs<br />
-2 – If Solution fully meets needs<br />
-3 – If Solution exceeds needs (without adding unnecessary cost)
-</div>
-</div>
+  <!-- SCORE CARD INSTRUCTIONS + INSIGHTS + PROGRESS -->
+  <div class="instructions-card">
+    <div class="instructions-left">
+      <div class="instructions-title">
+        <span class="icon-badge blue">
+          <!-- clipboard icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M7.5 4.5h5" />
+            <path d="M8 3h4a1.5 1.5 0 011.5 1.5V16A1.5 1.5 0 0112 17.5H8A1.5 1.5 0 016.5 16V4.5A1.5 1.5 0 018 3z" />
+            <path d="M9 7.5h2" />
+            <path d="M9 10h3" />
+          </svg>
+        </span>
+        <span>Score Card Instructions</span>
+      </div>
+      <div class="instructions-body">
+        0 – If Solution does not meet needs<br />
+        1 – If Solution only partially meets needs<br />
+        2 – If Solution fully meets needs<br />
+        3 – If Solution exceeds needs (without adding unnecessary cost)
+      </div>
+    </div>
 
-<div class="instructions-middle">
-<div class="insights-title">
-<span class="icon-badge green">
-<!-- lightbulb icon -->
-<svg viewBox="0 0 20 20">
-<path d="M10 3.5a4 4 0 00-2.4 7.2c.3.2.4.6.4.9v.4h4v-.4c0-.3.1-.7.4-.9A4 4 0 0010 3.5z" />
-<path d="M8.5 15h3" />
-<path d="M8.8 17h2.4" />
-</svg>
-</span>
-<span>Top Insights</span>
-</div>
-<ul class="insights-list">
-<li>
-<span class="insight-label">Largest vendor gap:</span>
-<span id="insightGap" class="insight-value">Not enough scored data yet</span>
-</li>
-<li>
-<span class="insight-label">Lowest-scoring section:</span>
-<span id="insightLowest" class="insight-value">No scored sections yet</span>
-</li>
-<li>
-<span class="insight-label">Highest-impact section:</span>
-<span id="insightImpact" class="insight-value">
-Commercial Evaluation (Pricing Model, TCO, Payment terms etc.) (15% weight)
-</span>
-</li>
-</ul>
-</div>
+    <div class="instructions-middle">
+      <div class="insights-title">
+        <span class="icon-badge green">
+          <!-- lightbulb icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M10 3.5a4 4 0 00-2.4 7.2c.3.2.4.6.4.9v.4h4v-.4c0-.3.1-.7.4-.9A4 4 0 0010 3.5z" />
+            <path d="M8.5 15h3" />
+            <path d="M8.8 17h2.4" />
+          </svg>
+        </span>
+        <span>Top Insights</span>
+      </div>
+      <ul class="insights-list">
+        <li>
+          <span class="insight-label">Largest vendor gap:</span>
+          <span id="insightGap" class="insight-value">Not enough scored data yet</span>
+        </li>
+        <li>
+          <span class="insight-label">Lowest-scoring section:</span>
+          <span id="insightLowest" class="insight-value">No scored sections yet</span>
+        </li>
+        <li>
+          <span class="insight-label">Highest-impact section:</span>
+          <span id="insightImpact" class="insight-value">
+            Commercial Evaluation (Pricing Model, TCO, Payment terms etc.) (15% weight)
+          </span>
+        </li>
+      </ul>
+    </div>
 
-<div class="instructions-right">
-<div class="progress-title">
-<span class="icon-badge blue">
-<!-- progress / gauge icon -->
-<svg viewBox="0 0 20 20">
-<path d="M4 13.5a6 6 0 1112 0" />
-<path d="M10 9l2.2 2.2" />
-<path d="M5.5 13.5h9" />
-</svg>
-</span>
-<span>Scoring Progress</span>
-</div>
-<div class="progress-bar-outer">
-<div id="progressBarFill" class="progress-bar-inner"></div>
-</div>
-<div class="progress-meta">
-<span id="progressPercent" class="progress-percent">0%</span>
-<span id="progressCounts">0 / 0 scores captured</span>
-</div>
-</div>
-</div>
+    <div class="instructions-right">
+      <div class="progress-title">
+        <span class="icon-badge blue">
+          <!-- progress / gauge icon -->
+          <svg viewBox="0 0 20 20">
+            <path d="M4 13.5a6 6 0 1112 0" />
+            <path d="M10 9l2.2 2.2" />
+            <path d="M5.5 13.5h9" />
+          </svg>
+        </span>
+        <span>Scoring Progress</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div id="progressBarFill" class="progress-bar-inner"></div>
+      </div>
+      <div class="progress-meta">
+        <span id="progressPercent" class="progress-percent">0%</span>
+        <span id="progressCounts">0 / 0 scores captured</span>
+      </div>
+    </div>
+  </div>
 
-<!-- ADD CRITERION BAR -->
-<div id="addCriterionBar">
-<select id="criterionLibrarySelect">
-<option value="">-- Select RFx Evaluation Section --</option>
-</select>
-<input id="customCriterionName" placeholder="Custom evaluation section name" />
-<input id="newCriterionWeight" type="number" value="10" />
-<button id="confirmAddCriterion" class="btn-primary" style="padding:6px 14px;">
-<span class="btn-icon">
-<svg viewBox="0 0 20 20">
-<path d="M10 4v12" />
-<path d="M4 10h12" />
-</svg>
-</span>
-<span>Add</span>
-</button>
-</div>
+  <!-- ADD CRITERION BAR -->
+  <div id="addCriterionBar">
+    <select id="criterionLibrarySelect">
+      <option value="">-- Select RFx Evaluation Section --</option>
+    </select>
+    <input id="customCriterionName" placeholder="Custom evaluation section name" />
+    <input id="newCriterionWeight" type="number" value="10" />
+    <button id="confirmAddCriterion" class="btn-primary" style="padding:6px 14px;">
+      <span class="btn-icon">
+        <svg viewBox="0 0 20 20">
+          <path d="M10 4v12" />
+          <path d="M4 10h12" />
+        </svg>
+      </span>
+      <span>Add</span>
+    </button>
+  </div>
 
-<!-- SCORE TABLE -->
-<div class="table-wrap">
-<table id="scorecardTable"></table>
-</div>
+  <!-- SCORE TABLE -->
+  <div class="table-wrap">
+    <table id="scorecardTable"></table>
+  </div>
 
-<!-- DECISION RATIONALE / NOTES -->
-<section class="notes-card">
-<div class="notes-title">
-<span class="title-icon">
-<!-- fancy pen icon -->
-<svg viewBox="0 0 20 20">
-<path d="M4 14.5l2.2-.6L14.5 5.6a1.2 1.2 0 000-1.7l-.4-.4a1.2 1.2 0 00-1.7 0L4.1 11.8 4 14.5z" />
-<path d="M9.2 6.8l3 3" />
-<path d="M4 16h12" />
-</svg>
-</span>
-<span>Decision Rationale / Notes</span>
-</div>
-<textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
-</section>
+  <!-- DECISION RATIONALE / NOTES -->
+  <section class="notes-card">
+    <div class="notes-title">
+      <span class="title-icon">
+        <!-- fancy pen icon -->
+        <svg viewBox="0 0 20 20">
+          <path d="M4 14.5l2.2-.6L14.5 5.6a1.2 1.2 0 000-1.7l-.4-.4a1.2 1.2 0 00-1.7 0L4.1 11.8 4 14.5z" />
+          <path d="M9.2 6.8l3 3" />
+          <path d="M4 16h12" />
+        </svg>
+      </span>
+      <span>Decision Rationale / Notes</span>
+    </div>
+    <textarea id="decisionNotes" placeholder="Capture key decision points, trade-offs, risks and next steps..."></textarea>
+  </section>
 
-<!-- WATERMARK -->
-<img
-src="Engraved Logo.png"
-alt="TaskProcure Watermark"
-class="card-watermark"
-/>
+  <!-- WATERMARK -->
+  <img
+    src="Engraved Logo.png"
+    alt="TaskProcure Watermark"
+    class="card-watermark"
+  />
 
 </main>
 </div>
 
 <script>
 const criteriaLibrary = [
-{ id: 1, name: "Alignment with Organizational Goals", weight: 12 },
-{ id: 2, name: "API Availability and Functionality", weight: 13 },
-{ id: 3, name: "Automation and AI Features", weight: 12 },
-{ id: 4, name: "Cloud Capabilities", weight: 13 },
-{ id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
-{ id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
-{ id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
-{ id: 8, name: "Reporting and Analytics", weight: 10 }
+  { id: 1, name: "Alignment with Organizational Goals", weight: 12 },
+  { id: 2, name: "API Availability and Functionality", weight: 13 },
+  { id: 3, name: "Automation and AI Features", weight: 12 },
+  { id: 4, name: "Cloud Capabilities", weight: 13 },
+  { id: 5, name: "Commercial Evaluation (Pricing Model, TCO, Payment terms etc.)", weight: 15 },
+  { id: 6, name: "Compliance & Data Security (GDPR, HIPAA, CCPA etc.)", weight: 15 },
+  { id: 7, name: "Implementation, Configuration & Customizations", weight: 10 },
+  { id: 8, name: "Reporting and Analytics", weight: 10 }
 ];
 
 let criteria = [...criteriaLibrary];
@@ -1185,460 +1185,460 @@ let vendors = ["Vendor A", "Vendor B"];
 let scores = {};
 
 function ensureScores() {
-criteria.forEach(c => {
-if (!scores[c.id]) scores[c.id] = {};
-vendors.forEach(v => {
-if (scores[c.id][v] === undefined) scores[c.id][v] = "";
-});
-});
+  criteria.forEach(c => {
+    if (!scores[c.id]) scores[c.id] = {};
+    vendors.forEach(v => {
+      if (scores[c.id][v] === undefined) scores[c.id][v] = "";
+    });
+  });
 }
 
 function calculateTotals() {
-let raw = {}, weighted = {};
-vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
+  let raw = {}, weighted = {};
+  vendors.forEach(v => { raw[v] = 0; weighted[v] = 0; });
 
-criteria.forEach(c => {
-vendors.forEach(v => {
-const s = Number(scores[c.id][v]) || 0;
-raw[v] += s;
-weighted[v] += (c.weight / 100) * s;
-});
-});
+  criteria.forEach(c => {
+    vendors.forEach(v => {
+      const s = Number(scores[c.id][v]) || 0;
+      raw[v] += s;
+      weighted[v] += (c.weight / 100) * s;
+    });
+  });
 
-return { raw, weighted };
+  return { raw, weighted };
 }
 
 function updateScoringProgress() {
-const totalCells = criteria.length * vendors.length;
-let scored = 0;
+  const totalCells = criteria.length * vendors.length;
+  let scored = 0;
 
-criteria.forEach(c => {
-vendors.forEach(v => {
-const val = scores[c.id] ? scores[c.id][v] : "";
-if (val !== "" && val !== undefined) scored++;
-});
-});
+  criteria.forEach(c => {
+    vendors.forEach(v => {
+      const val = scores[c.id] ? scores[c.id][v] : "";
+      if (val !== "" && val !== undefined) scored++;
+    });
+  });
 
-const percent = totalCells === 0 ? 0 : Math.round((scored / totalCells) * 100);
+  const percent = totalCells === 0 ? 0 : Math.round((scored / totalCells) * 100);
 
-const bar = document.getElementById("progressBarFill");
-const pctEl = document.getElementById("progressPercent");
-const countEl = document.getElementById("progressCounts");
+  const bar = document.getElementById("progressBarFill");
+  const pctEl = document.getElementById("progressPercent");
+  const countEl = document.getElementById("progressCounts");
 
-if (bar) bar.style.width = percent + "%";
-if (pctEl) pctEl.textContent = percent + "%";
-if (countEl) countEl.textContent = `${scored} / ${totalCells} scores captured`;
+  if (bar) bar.style.width = percent + "%";
+  if (pctEl) pctEl.textContent = percent + "%";
+  if (countEl) countEl.textContent = `${scored} / ${totalCells} scores captured`;
 }
 
 function updateInsights(raw, weighted) {
-const gapEl = document.getElementById("insightGap");
-const lowEl = document.getElementById("insightLowest");
-const impactEl = document.getElementById("insightImpact");
-if (!gapEl || !lowEl || !impactEl) return;
+  const gapEl = document.getElementById("insightGap");
+  const lowEl = document.getElementById("insightLowest");
+  const impactEl = document.getElementById("insightImpact");
+  if (!gapEl || !lowEl || !impactEl) return;
 
-const vendorEntries = vendors
-.map(v => ({ name: v, weighted: weighted[v] || 0 }))
-.sort((a, b) => b.weighted - a.weighted);
+  const vendorEntries = vendors
+    .map(v => ({ name: v, weighted: weighted[v] || 0 }))
+    .sort((a, b) => b.weighted - a.weighted);
 
-if (vendorEntries.length >= 2 && vendorEntries[0].weighted > 0) {
-const diff = vendorEntries[0].weighted - vendorEntries[1].weighted;
-gapEl.textContent =
-`${vendorEntries[0].name} vs ${vendorEntries[1].name} (${diff.toFixed(2)} pts)`;
-} else {
-gapEl.textContent = "Not enough scored data yet";
-}
+  if (vendorEntries.length >= 2 && vendorEntries[0].weighted > 0) {
+    const diff = vendorEntries[0].weighted - vendorEntries[1].weighted;
+    gapEl.textContent =
+      `${vendorEntries[0].name} vs ${vendorEntries[1].name} (${diff.toFixed(2)} pts)`;
+  } else {
+    gapEl.textContent = "Not enough scored data yet";
+  }
 
-let lowestSection = null;
-criteria.forEach(c => {
-let total = 0;
-let count = 0;
-vendors.forEach(v => {
-const val = scores[c.id] && scores[c.id][v] !== "" ? Number(scores[c.id][v]) : null;
-if (val !== null && !isNaN(val)) {
-total += val;
-count++;
-}
-});
-if (count > 0) {
-const avg = total / count;
-if (!lowestSection || avg < lowestSection.avg) {
-lowestSection = { name: c.name, avg };
-}
-}
-});
+  let lowestSection = null;
+  criteria.forEach(c => {
+    let total = 0;
+    let count = 0;
+    vendors.forEach(v => {
+      const val = scores[c.id] && scores[c.id][v] !== "" ? Number(scores[c.id][v]) : null;
+      if (val !== null && !isNaN(val)) {
+        total += val;
+        count++;
+      }
+    });
+    if (count > 0) {
+      const avg = total / count;
+      if (!lowestSection || avg < lowestSection.avg) {
+        lowestSection = { name: c.name, avg };
+      }
+    }
+  });
 
-if (lowestSection) {
-lowEl.textContent = `${lowestSection.name} (avg ${lowestSection.avg.toFixed(2)})`;
-} else {
-lowEl.textContent = "No scored sections yet";
-}
+  if (lowestSection) {
+    lowEl.textContent = `${lowestSection.name} (avg ${lowestSection.avg.toFixed(2)})`;
+  } else {
+    lowEl.textContent = "No scored sections yet";
+  }
 
-if (criteria.length > 0) {
-let hi = criteria[0];
-criteria.forEach(c => {
-if (Number(c.weight) > Number(hi.weight)) hi = c;
-});
-impactEl.textContent = `${hi.name} (${hi.weight}% weight)`;
-} else {
-impactEl.textContent = "No sections defined";
-}
+  if (criteria.length > 0) {
+    let hi = criteria[0];
+    criteria.forEach(c => {
+      if (Number(c.weight) > Number(hi.weight)) hi = c;
+    });
+    impactEl.textContent = `${hi.name} (${hi.weight}% weight)`;
+  } else {
+    impactEl.textContent = "No sections defined";
+  }
 }
 
 function updateDashboard(raw, weighted, weightTotal) {
-const vendorsInScope = vendors.length;
-const criteriaCount = criteria.length;
+  const vendorsInScope = vendors.length;
+  const criteriaCount = criteria.length;
 
-document.getElementById("vendorsInScopeCount").textContent = vendorsInScope;
-document.getElementById("criteriaCount").textContent = criteriaCount;
+  document.getElementById("vendorsInScopeCount").textContent = vendorsInScope;
+  document.getElementById("criteriaCount").textContent = criteriaCount;
 
-const leadingNameEl = document.getElementById("leadingVendorName");
-const leadingScoreEl = document.getElementById("leadingVendorScore");
-const leadingMetaEl = document.getElementById("leadingVendorMeta");
-const rankingEl = document.getElementById("rankingList");
-const leadingCardEl = document.getElementById("leadingVendorCard");
+  const leadingNameEl = document.getElementById("leadingVendorName");
+  const leadingScoreEl = document.getElementById("leadingVendorScore");
+  const leadingMetaEl = document.getElementById("leadingVendorMeta");
+  const rankingEl = document.getElementById("rankingList");
+  const leadingCardEl = document.getElementById("leadingVendorCard");
 
-let bestVendor = null;
-let bestScoreWeighted = -1;
-let bestScoreRaw = 0;
+  let bestVendor = null;
+  let bestScoreWeighted = -1;
+  let bestScoreRaw = 0;
 
-vendors.forEach(v => {
-const sw = weighted[v] || 0;
-if (sw > bestScoreWeighted) {
-bestScoreWeighted = sw;
-bestVendor = v;
-bestScoreRaw = raw[v] || 0;
-}
-});
+  vendors.forEach(v => {
+    const sw = weighted[v] || 0;
+    if (sw > bestScoreWeighted) {
+      bestScoreWeighted = sw;
+      bestVendor = v;
+      bestScoreRaw = raw[v] || 0;
+    }
+  });
 
-if (bestVendor && bestScoreWeighted > 0) {
-leadingCardEl.classList.remove("leader-empty");
-leadingCardEl.classList.add("leader-active");
-leadingNameEl.textContent = bestVendor;
-leadingScoreEl.textContent =
-`Score ${bestScoreRaw.toFixed(2)} • Weighted ${bestScoreWeighted.toFixed(2)}`;
-} else {
-leadingCardEl.classList.remove("leader-active");
-leadingCardEl.classList.add("leader-empty");
-leadingNameEl.textContent = "No scores yet";
-leadingScoreEl.textContent = "";
-}
+  if (bestVendor && bestScoreWeighted > 0) {
+    leadingCardEl.classList.remove("leader-empty");
+    leadingCardEl.classList.add("leader-active");
+    leadingNameEl.textContent = bestVendor;
+    leadingScoreEl.textContent =
+      `Score ${bestScoreRaw.toFixed(2)} • Weighted ${bestScoreWeighted.toFixed(2)}`;
+  } else {
+    leadingCardEl.classList.remove("leader-active");
+    leadingCardEl.classList.add("leader-empty");
+    leadingNameEl.textContent = "No scores yet";
+    leadingScoreEl.textContent = "";
+  }
 
-if (weightTotal === 100) {
-leadingMetaEl.className = "kpi-caption kpi-meta-ok";
-leadingMetaEl.textContent = `Weight total: 100% • Perfectly normalised to 100%.`;
-} else {
-leadingMetaEl.className = "kpi-caption kpi-meta-warn";
-leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Must be normalised to 100%.`;
-}
+  if (weightTotal === 100) {
+    leadingMetaEl.className = "kpi-caption kpi-meta-ok";
+    leadingMetaEl.textContent = `Weight total: 100% • Perfectly normalised to 100%.`;
+  } else {
+    leadingMetaEl.className = "kpi-caption kpi-meta-warn";
+    leadingMetaEl.textContent = `Weight total: ${weightTotal}% • Must be normalised to 100%.`;
+  }
 
-const entries = vendors.map(v => ({
-name: v,
-raw: raw[v] || 0,
-weighted: weighted[v] || 0
-})).sort((a, b) => b.weighted - a.weighted);
+  const entries = vendors.map(v => ({
+    name: v,
+    raw: raw[v] || 0,
+    weighted: weighted[v] || 0
+  })).sort((a, b) => b.weighted - a.weighted);
 
-if (entries.every(e => e.raw === 0 && e.weighted === 0)) {
-rankingEl.classList.add("kpi-ranking-empty");
-rankingEl.textContent = "Start scoring to see vendor rankings here.";
-} else {
-rankingEl.classList.remove("kpi-ranking-empty");
-rankingEl.innerHTML = entries.map((e, idx) =>
-`<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(2)}, Weighted ${e.weighted.toFixed(2)}</div>`
-).join("");
-}
+  if (entries.every(e => e.raw === 0 && e.weighted === 0)) {
+    rankingEl.classList.add("kpi-ranking-empty");
+    rankingEl.textContent = "Start scoring to see vendor rankings here.";
+  } else {
+    rankingEl.classList.remove("kpi-ranking-empty");
+    rankingEl.innerHTML = entries.map((e, idx) =>
+      `<div>${idx + 1}) ${e.name} — Score ${e.raw.toFixed(2)}, Weighted ${e.weighted.toFixed(2)}</div>`
+    ).join("");
+  }
 
-updateScoringProgress();
-updateInsights(raw, weighted);
+  updateScoringProgress();
+  updateInsights(raw, weighted);
 }
 
 function renderTable() {
-ensureScores();
-const table = document.getElementById("scorecardTable");
+  ensureScores();
+  const table = document.getElementById("scorecardTable");
 
-const { raw, weighted } = calculateTotals();
-const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
+  const { raw, weighted } = calculateTotals();
+  const weightTotal = criteria.reduce((a, c) => a + Number(c.weight), 0);
 
-updateDashboard(raw, weighted, weightTotal);
+  updateDashboard(raw, weighted, weightTotal);
 
-table.innerHTML = "";
+  table.innerHTML = "";
 
-const header = document.createElement("tr");
-header.innerHTML = `
-<th class="cell-label">RFx Evaluation Section</th>
-<th>Weight %</th>
-${vendors.map(
-v => `
-<th>
-<input class="vendor-name-input" value="${v}" data-vendor="${v}" />
-<button class="remove-btn" onclick="removeVendor('${v}')" style="margin-left:6px;">
-<span class="remove-btn-icon">
-<svg viewBox="0 0 20 20">
-<path d="M6.5 6.5h7" />
-<path d="M8 6.5v-1A1.5 1.5 0 019.5 4h1A1.5 1.5 0 0112 5.5v1" />
-<path d="M7.5 8v5.5" />
-<path d="M10 8v5.5" />
-<path d="M12.5 8v5.5" />
-<path d="M6.5 6.5L7 14a1.5 1.5 0 001.5 1.4h3A1.5 1.5 0 0013 14l.5-7.5" />
-</svg>
-</span>
-</button>
-</th>`
-).join("")}
-<th>Remove</th>
-`;
-table.appendChild(header);
+  const header = document.createElement("tr");
+  header.innerHTML = `
+    <th class="cell-label">RFx Evaluation Section</th>
+    <th>Weight %</th>
+    ${vendors.map(
+      v => `
+      <th>
+        <input class="vendor-name-input" value="${v}" data-vendor="${v}" />
+        <button class="remove-btn" onclick="removeVendor('${v}')" style="margin-left:6px;">
+          <span class="remove-btn-icon">
+            <svg viewBox="0 0 20 20">
+              <path d="M6.5 6.5h7" />
+              <path d="M8 6.5v-1A1.5 1.5 0 019.5 4h1A1.5 1.5 0 0112 5.5v1" />
+              <path d="M7.5 8v5.5" />
+              <path d="M10 8v5.5" />
+              <path d="M12.5 8v5.5" />
+              <path d="M6.5 6.5L7 14a1.5 1.5 0 001.5 1.4h3A1.5 1.5 0 0013 14l.5-7.5" />
+            </svg>
+          </span>
+        </button>
+      </th>`
+    ).join("")}
+    <th>Remove</th>
+  `;
+  table.appendChild(header);
 
-criteria.forEach((c, idx) => {
-const row = document.createElement("tr");
+  criteria.forEach((c, idx) => {
+    const row = document.createElement("tr");
 
-let html = `
-<td class="cell-label">
-<input class="criterion-name-input" value="${c.name}" data-id="${c.id}" />
-</td>
-<td><input type="number" value="${c.weight}" class="weight-input" data-index="${idx}" /></td>
-`;
+    let html = `
+      <td class="cell-label">
+        <input class="criterion-name-input" value="${c.name}" data-id="${c.id}" />
+      </td>
+      <td><input type="number" value="${c.weight}" class="weight-input" data-index="${idx}" /></td>
+    `;
 
-vendors.forEach(v => {
-html += `
-<td>
-<select data-id="${c.id}" data-vendor="${v}" class="score-cell">
-<option value="">-</option>
-<option value="0" ${scores[c.id][v] == 0 ? "selected" : ""}>0</option>
-<option value="1" ${scores[c.id][v] == 1 ? "selected" : ""}>1</option>
-<option value="2" ${scores[c.id][v] == 2 ? "selected" : ""}>2</option>
-<option value="3" ${scores[c.id][v] == 3 ? "selected" : ""}>3</option>
-</select>
-</td>
-`;
-});
+    vendors.forEach(v => {
+      html += `
+        <td>
+          <select data-id="${c.id}" data-vendor="${v}" class="score-cell">
+            <option value="">-</option>
+            <option value="0" ${scores[c.id][v] == 0 ? "selected" : ""}>0</option>
+            <option value="1" ${scores[c.id][v] == 1 ? "selected" : ""}>1</option>
+            <option value="2" ${scores[c.id][v] == 2 ? "selected" : ""}>2</option>
+            <option value="3" ${scores[c.id][v] == 3 ? "selected" : ""}>3</option>
+          </select>
+        </td>
+      `;
+    });
 
-html += `
-<td>
-<button class="remove-btn" onclick="removeCriterion(${c.id})">
-<span class="remove-btn-icon">
-<svg viewBox="0 0 20 20">
-<path d="M6.5 6.5h7" />
-<path d="M8 6.5v-1A1.5 1.5 0 019.5 4h1A1.5 1.5 0 0112 5.5v1" />
-<path d="M7.5 8v5.5" />
-<path d="M10 8v5.5" />
-<path d="M12.5 8v5.5" />
-<path d="M6.5 6.5L7 14a1.5 1.5 0 001.5 1.4h3A1.5 1.5 0 0013 14l.5-7.5" />
-</svg>
-</span>
-</button>
-</td>
-`;
+    html += `
+      <td>
+        <button class="remove-btn" onclick="removeCriterion(${c.id})">
+          <span class="remove-btn-icon">
+            <svg viewBox="0 0 20 20">
+              <path d="M6.5 6.5h7" />
+              <path d="M8 6.5v-1A1.5 1.5 0 019.5 4h1A1.5 1.5 0 0112 5.5v1" />
+              <path d="M7.5 8v5.5" />
+              <path d="M10 8v5.5" />
+              <path d="M12.5 8v5.5" />
+              <path d="M6.5 6.5L7 14a1.5 1.5 0 001.5 1.4h3A1.5 1.5 0 0013 14l.5-7.5" />
+            </svg>
+          </span>
+        </button>
+      </td>
+    `;
 
-row.innerHTML = html;
-table.appendChild(row);
-});
+    row.innerHTML = html;
+    table.appendChild(row);
+  });
 
-const maxRaw = criteria.length * 3;
-const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
+  const maxRaw = criteria.length * 3;
+  const maxWeighted = criteria.reduce((sum, c) => sum + (c.weight / 100) * 3, 0);
 
-const weightRow = document.createElement("tr");
-weightRow.innerHTML = `
-<td class="cell-label"><b>Total Weight %</b></td>
-<td><b style="color:${weightTotal === 100 ? "#16a34a" : "#b91c1c"};">${weightTotal}%</b></td>
-${vendors.map(() => "<td></td>").join("")}
-<td></td>
-`;
-table.appendChild(weightRow);
+  const weightRow = document.createElement("tr");
+  weightRow.innerHTML = `
+    <td class="cell-label"><b>Total Weight %</b></td>
+    <td><b style="color:${weightTotal === 100 ? "#16a34a" : "#b91c1c"};">${weightTotal}%</b></td>
+    ${vendors.map(() => "<td></td>").join("")}
+    <td></td>
+  `;
+  table.appendChild(weightRow);
 
-const rawRow = document.createElement("tr");
-rawRow.className = "totals-row";
-rawRow.innerHTML = `
-<td class="cell-label total-label">
-Total Vendor Score <span style="color:#16a34a;">(${maxRaw})</span>
-</td>
-<td></td>
-${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
-<td></td>
-`;
-table.appendChild(rawRow);
+  const rawRow = document.createElement("tr");
+  rawRow.className = "totals-row";
+  rawRow.innerHTML = `
+    <td class="cell-label total-label">
+      Total Vendor Score <span style="color:#16a34a;">(${maxRaw})</span>
+    </td>
+    <td></td>
+    ${vendors.map(v => `<td>${raw[v].toFixed(1)}</td>`).join("")}
+    <td></td>
+  `;
+  table.appendChild(rawRow);
 
-const weightedRow = document.createElement("tr");
-weightedRow.className = "totals-row";
-weightedRow.innerHTML = `
-<td class="cell-label total-label">
-Total Weighted Score <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
-</td>
-<td></td>
-${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
-<td></td>
-`;
-table.appendChild(weightedRow);
+  const weightedRow = document.createElement("tr");
+  weightedRow.className = "totals-row";
+  weightedRow.innerHTML = `
+    <td class="cell-label total-label">
+      Total Weighted Score <span style="color:#16a34a;">(${maxWeighted.toFixed(2)})</span>
+    </td>
+    <td></td>
+    ${vendors.map(v => `<td>${weighted[v].toFixed(2)}</td>`).join("")}
+    <td></td>
+  `;
+  table.appendChild(weightedRow);
 
-document.querySelectorAll(".score-cell").forEach(sel => {
-sel.onchange = () => {
-const id = Number(sel.dataset.id);
-const v = sel.dataset.vendor;
-scores[id][v] = sel.value;
-renderTable();
-};
-});
+  document.querySelectorAll(".score-cell").forEach(sel => {
+    sel.onchange = () => {
+      const id = Number(sel.dataset.id);
+      const v = sel.dataset.vendor;
+      scores[id][v] = sel.value;
+      renderTable();
+    };
+  });
 
-document.querySelectorAll(".weight-input").forEach(inp => {
-inp.oninput = () => {
-const index = Number(inp.dataset.index);
-criteria[index].weight = Number(inp.value);
-renderTable();
-};
-});
+  document.querySelectorAll(".weight-input").forEach(inp => {
+    inp.oninput = () => {
+      const index = Number(inp.dataset.index);
+      criteria[index].weight = Number(inp.value);
+      renderTable();
+    };
+  });
 
-document.querySelectorAll(".vendor-name-input").forEach(input => {
-input.onchange = () => {
-const oldName = input.dataset.vendor;
-const newName = input.value.trim();
-if (!newName || (vendors.includes(newName) && newName !== oldName)) {
-input.value = oldName;
-return;
-}
-renameVendor(oldName, newName);
-};
-});
+  document.querySelectorAll(".vendor-name-input").forEach(input => {
+    input.onchange = () => {
+      const oldName = input.dataset.vendor;
+      const newName = input.value.trim();
+      if (!newName || (vendors.includes(newName) && newName !== oldName)) {
+        input.value = oldName;
+        return;
+      }
+      renameVendor(oldName, newName);
+    };
+  });
 
-document.querySelectorAll(".criterion-name-input").forEach(input => {
-input.onchange = () => {
-const id = Number(input.dataset.id);
-const newName = input.value.trim();
-if (!newName) {
-const crit = criteria.find(c => c.id === id);
-if (crit) input.value = crit.name;
-return;
-}
-const idx = criteria.findIndex(c => c.id === id);
-if (idx !== -1) {
-criteria[idx].name = newName;
-}
-};
-});
+  document.querySelectorAll(".criterion-name-input").forEach(input => {
+    input.onchange = () => {
+      const id = Number(input.dataset.id);
+      const newName = input.value.trim();
+      if (!newName) {
+        const crit = criteria.find(c => c.id === id);
+        if (crit) input.value = crit.name;
+        return;
+      }
+      const idx = criteria.findIndex(c => c.id === id);
+      if (idx !== -1) {
+        criteria[idx].name = newName;
+      }
+    };
+  });
 }
 
 function renameVendor(oldName, newName) {
-vendors = vendors.map(v => (v === oldName ? newName : v));
-Object.keys(scores).forEach(cid => {
-scores[cid][newName] = scores[cid][oldName];
-delete scores[cid][oldName];
-});
-renderTable();
+  vendors = vendors.map(v => (v === oldName ? newName : v));
+  Object.keys(scores).forEach(cid => {
+    scores[cid][newName] = scores[cid][oldName];
+    delete scores[cid][oldName];
+  });
+  renderTable();
 }
 
 function removeCriterion(id) {
-criteria = criteria.filter(c => c.id !== id);
-delete scores[id];
-renderTable();
-populateDropdown();
+  criteria = criteria.filter(c => c.id !== id);
+  delete scores[id];
+  renderTable();
+  populateDropdown();
 }
 
 function removeVendor(vendorName) {
-if (!confirm(`Remove ${vendorName} from the scorecard?`)) return;
+  if (!confirm(`Remove ${vendorName} from the scorecard?`)) return;
 
-vendors = vendors.filter(v => v !== vendorName);
-Object.keys(scores).forEach(cid => {
-delete scores[cid][vendorName];
-});
-renderTable();
+  vendors = vendors.filter(v => v !== vendorName);
+  Object.keys(scores).forEach(cid => {
+    delete scores[cid][vendorName];
+  });
+  renderTable();
 }
 
 document.getElementById("addVendorBtn").onclick = () => {
-const name = prompt("Vendor name?");
-if (name) {
-const trimmed = name.trim();
-if (trimmed && !vendors.includes(trimmed)) {
-vendors.push(trimmed);
-renderTable();
-}
-}
+  const name = prompt("Vendor name?");
+  if (name) {
+    const trimmed = name.trim();
+    if (trimmed && !vendors.includes(trimmed)) {
+      vendors.push(trimmed);
+      renderTable();
+    }
+  }
 };
 
 document.getElementById("addCriterionBtn").onclick = () => {
-const bar = document.getElementById("addCriterionBar");
-bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "flex" : "none";
+  const bar = document.getElementById("addCriterionBar");
+  bar.style.display = bar.style.display === "none" || bar.style.display === "" ? "flex" : "none";
 };
 
 function populateDropdown() {
-const s = document.getElementById("criterionLibrarySelect");
-s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
-criteriaLibrary.forEach(c => {
-const opt = document.createElement("option");
-opt.value = c.id;
-opt.textContent = c.name;
-s.appendChild(opt);
-});
+  const s = document.getElementById("criterionLibrarySelect");
+  s.innerHTML = `<option value="">-- Select RFx Evaluation Section --</option>`;
+  criteriaLibrary.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c.id;
+    opt.textContent = c.name;
+    s.appendChild(opt);
+  });
 }
 
 document.getElementById("confirmAddCriterion").onclick = () => {
-const libSel = document.getElementById("criterionLibrarySelect").value;
-const custom = document.getElementById("customCriterionName").value.trim();
-const weight = Number(document.getElementById("newCriterionWeight").value);
+  const libSel = document.getElementById("criterionLibrarySelect").value;
+  const custom = document.getElementById("customCriterionName").value.trim();
+  const weight = Number(document.getElementById("newCriterionWeight").value);
 
-if (!libSel && !custom) {
-alert("Select a library item or enter a custom name.");
-return;
-}
+  if (!libSel && !custom) {
+    alert("Select a library item or enter a custom name.");
+    return;
+  }
 
-let newName, newId;
-if (libSel) {
-const libItem = criteriaLibrary.find(c => c.id == libSel);
-newName = libItem.name;
-newId = libItem.id;
-} else {
-newName = custom;
-newId = Date.now();
-}
+  let newName, newId;
+  if (libSel) {
+    const libItem = criteriaLibrary.find(c => c.id == libSel);
+    newName = libItem.name;
+    newId = libItem.id;
+  } else {
+    newName = custom;
+    newId = Date.now();
+  }
 
-criteria.push({ id: newId, name: newName, weight });
-scores[newId] = {};
-vendors.forEach(v => {
-scores[newId][v] = "";
-});
+  criteria.push({ id: newId, name: newName, weight });
+  scores[newId] = {};
+  vendors.forEach(v => {
+    scores[newId][v] = "";
+  });
 
-document.getElementById("criterionLibrarySelect").value = "";
-document.getElementById("customCriterionName").value = "";
-document.getElementById("addCriterionBar").style.display = "none";
+  document.getElementById("criterionLibrarySelect").value = "";
+  document.getElementById("customCriterionName").value = "";
+  document.getElementById("addCriterionBar").style.display = "none";
 
-renderTable();
+  renderTable();
 };
 
 function exportToExcel() {
-const wb = XLSX.utils.book_new();
-const data = [["Criterion", "Weight", ...vendors]];
+  const wb = XLSX.utils.book_new();
+  const data = [["Criterion", "Weight", ...vendors]];
 
-criteria.forEach(c => {
-const row = [c.name, c.weight];
-vendors.forEach(v => row.push(scores[c.id][v] || ""));
-data.push(row);
-});
+  criteria.forEach(c => {
+    const row = [c.name, c.weight];
+    vendors.forEach(v => row.push(scores[c.id][v] || ""));
+    data.push(row);
+  });
 
-const ws = XLSX.utils.aoa_to_sheet(data);
-XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
-XLSX.writeFile(wb, "Scorecard.xlsx");
+  const ws = XLSX.utils.aoa_to_sheet(data);
+  XLSX.utils.book_append_sheet(wb, ws, "Scorecard");
+  XLSX.writeFile(wb, "Scorecard.xlsx");
 }
 
 function exportToPDF() {
-window.print();
+  window.print();
 }
 
 const exportBtn = document.getElementById("exportBtn");
 const exportMenu = document.getElementById("exportMenu");
 
 exportBtn.addEventListener("click", (e) => {
-e.stopPropagation();
-exportMenu.style.display = exportMenu.style.display === "block" ? "none" : "block";
+  e.stopPropagation();
+  exportMenu.style.display = exportMenu.style.display === "block" ? "none" : "block";
 });
 
 document.querySelectorAll(".export-option").forEach(opt => {
-opt.addEventListener("click", (e) => {
-const type = e.currentTarget.dataset.type;
-exportMenu.style.display = "none";
-if (type === "excel") exportToExcel();
-if (type === "pdf") exportToPDF();
-});
+  opt.addEventListener("click", (e) => {
+    const type = e.currentTarget.dataset.type;
+    exportMenu.style.display = "none";
+    if (type === "excel") exportToExcel();
+    if (type === "pdf") exportToPDF();
+  });
 });
 
 document.addEventListener("click", () => {
-exportMenu.style.display = "none";
+  exportMenu.style.display = "none";
 });
 
 populateDropdown();
