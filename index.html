@@ -861,7 +861,68 @@ tr:nth-child(even) td {
 .info-icon:hover::before {
   opacity: 1;
 }
+/* Mobile polish: header + spacing */
+@media (max-width: 768px) {
+  .app-shell {
+    max-width: 100%;
+    margin: 8px auto;
+    padding: 8px 10px 16px;
+    border-radius: 18px;
+  }
 
+  .app-header {
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .brand-left {
+    gap: 16px;
+  }
+
+  .brand-logo-hero {
+    height: 32px;
+    transform: scale(1);       /* remove the extra 1.35x zoom on mobile */
+  }
+
+  .brand-tagline {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .brand-heading {
+    font-size: 15px;
+  }
+
+  .top-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .top-inputs {
+    width: 100%;
+  }
+
+  .project-input input {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-ghost,
+  .btn-primary {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
 @media (max-width: 900px) {
   .kpi-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
